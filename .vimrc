@@ -90,7 +90,7 @@ filetype on
 filetype indent on
 filetype plugin on
 
-" 追加設定
+"""""" 追加設定 """"""
 
 "http://www.vim.org/scripts/script.php?script_id=2332
 "Vundle を利用するようにしたため、利用中止。
@@ -117,7 +117,7 @@ command! Sqlfromj :call SQLFromJava()
 set nobackup
 set noswapfile
 
-"バッファをクリップボードにコピー
+"バッファをクリップボードにコピー(for OSX)
 set clipboard=unnamed,autoselect
 
 "自動改行オフ
@@ -133,14 +133,6 @@ au FileType ruby setlocal errorformat=%m\ in\ %f\ on\ line\ %l
 
 " neocomplcache
 let g:neocomplcache_enable_at_startup = 1 " 起動時に有効化
-
-" Command + j or k で行を移動する
-nnoremap <D-j> :m+<CR>==
-nnoremap <D-k> :m-2<CR>==
-inoremap <D-j> <Esc>:m+<CR>==gi
-inoremap <D-k> <Esc>:m-2<CR>==gi
-vnoremap <D-j> :m'>+<CR>gv=gv
-vnoremap <D-k> :m-2<CR>gv=gv
 
 " ,, でコメントアウトをトグル
 let NERDSpaceDelims = 1
