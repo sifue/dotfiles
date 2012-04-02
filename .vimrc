@@ -6,6 +6,11 @@ set nocompatible
 filetype off  
 
 " https://github.com/gmarik/vundle
+"
+" インストールは、
+" $ git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+" を実行
+"
 " Vundle を初期化して  
 " Vundle 自身も Vundle で管理
 " 以下に追記後 :BundleInstall
