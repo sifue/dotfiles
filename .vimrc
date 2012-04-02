@@ -123,11 +123,11 @@ set clipboard=unnamed,autoselect
 "自動改行オフ
 set tw=0
 
-" PHP構文チェック
+" :makeでPHP構文チェック
 au FileType php setlocal makeprg=php\ -l\ %
 au FileType php setlocal errorformat=%m\ in\ %f\ on\ line\ %l
 
-" Ruby構文チェック
+" :makeでRuby構文チェック
 au FileType ruby setlocal makeprg=ruby\ -c\ %
 au FileType ruby setlocal errorformat=%m\ in\ %f\ on\ line\ %l
 
