@@ -1,0 +1,12 @@
+autodetach on
+startup_message off
+defscrollback 50000
+defmonitor on
+caption always "%{= wk} %-w%{=bu dr}%n %t%{-}%+w %= %{=b wk}[%0`] [%l] %{=b wk}%y/%m/%d %{=b wr}%c"
+backtick 0 0 0 echo ${ttyname}
+escape ^Tt
+termcapinfo xterm* ti@:te@
+term xterm-256color
+
+
+
