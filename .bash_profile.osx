@@ -1,0 +1,6 @@
+PATH=$PATH:/opt/local/lib/mysql5/bin
+export PATH
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # Load RVM into a shell session *as a function*
+if [ -f ~/.bashrc ] ; then
+. ~/.bashrc
+fi
