@@ -32,6 +32,9 @@ Bundle 'project.tar.gz'
 Bundle 'surround.vim'
 """"""""""""""""""""""""""""""""
 
+"コメントアウトが連続して入力されるのを禁止
+autocmd FileType * setlocal formatoptions-=ro
+
 "バックスペースキーの動作を決定する
 "2:indent,eol,startと同じ
 set backspace=2
