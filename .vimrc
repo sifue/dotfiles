@@ -42,6 +42,8 @@ NeoBundle 'project.tar.gz'
 NeoBundle 'surround.vim'
 " :Tlistでctagsの一覧表示
 NeoBundle 'taglist.vim'
+" SVNの差分表示用 http://blog.blueblack.net/item_144
+NeoBundle 'vcscommand.vim'
 
 filetype on
 filetype indent on
