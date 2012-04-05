@@ -1,9 +1,10 @@
-####### MacVim for default vim
+################# PATH Setting
+# MacVim for default vim
 export EDITOR=/Applications/MacVim.app/Contents/MacOS/Vim
 alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 alias vim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 
-##### zsh setting
+################# zsh setting
 # 補完機能
 autoload -U compinit
 compinit
@@ -59,4 +60,3 @@ zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
 bindkey "^P" history-beginning-search-backward-end
 bindkey "^N" history-beginning-search-forward-end
-
