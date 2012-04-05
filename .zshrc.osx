@@ -74,7 +74,7 @@ setopt list_packed
 # 補完候補表示時などにピッピとビープ音をならないように設定
 setopt nolistbeep
 
-# Emacsライクキーバインド設定
+# viライクキーバインド設定
 bindkey -v
 
 # コマンド履歴検索
