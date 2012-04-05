@@ -8,25 +8,39 @@
 set nocompatible
 
 """""""""" NeoBundle設定 """"""""""
+" https://github.com/Shougo/neobundle.vim
+" インストール
+" $ mkdir -p ~/.vim/bundle
+" $ git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
 filetype plugin indent off     " required!
 if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim/
   call neobundle#rc(expand('~/.vim/bundle/'))
 endif
 
+" gitを使ったプラグインマネージャ
 NeoBundle 'Shougo/neobundle.vim'
 
-" github
+"""""""" github
+" 強力なオムニ補完
 NeoBundle 'Shougo/neocomplcache'
+" Uniteコマンドによる読み出し
 NeoBundle 'Shougo/unite.vim'
+" CoffeeScriptのハイライト
 NeoBundle 'kchmck/vim-coffee-script'
+" :JSHintコマンドによるJS文法チェック
 NeoBundle 'walm/jshint.vim'
+" ,,でトグルでコメントアウト
 NeoBundle 'scrooloose/nerdcommenter'
+" Scalaのハイライト
 NeoBundle 'derekwyatt/vim-scala'
 
-" vim-scripts repos
+""""""" vim-scripts repos
+" プロジェクトのツリー表示
 NeoBundle 'project.tar.gz'
+" 括弧囲みの編集操作
 NeoBundle 'surround.vim'
+" :Tlistでctagsの一覧表示
 NeoBundle 'taglist.vim'
 
 filetype on
@@ -148,4 +162,7 @@ autocmd FileType * setlocal formatoptions-=ro
 "全角スペースを　で表示
 highlight JpSpace cterm=underline ctermfg=Blue guifg=Blue
 au BufRead,BufNew * match JpSpace /　/
+
+"ctagsの埋め込み 各環境であるものを全て記述(なくても問題ない)
+set tags=~/.tags.trunk,~/.tags.study 
 
