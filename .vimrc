@@ -1,40 +1,39 @@
+"###############################################################
+"# My vimrc                                                    #
+"#      >lastutpdate: 2012.04.04                               #
+"#      >auther: Soichiro Yoshimura <yoshimura@soichiro.org>   #
+"###############################################################
+
 ")VimをなるべくVi互換にする
 set nocompatible
 
-"""""""""" vundle設定 """"""""""
-" ファイル形式の検出を無効にする  
-filetype off  
+"""""""""" NeoBundle設定 """"""""""
+filetype plugin indent off     " required!
+if has('vim_starting')
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
+  call neobundle#rc(expand('~/.vim/bundle/'))
+endif
 
-" https://github.com/gmarik/vundle
-"
-" インストールは、
-" $ git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-" を実行
-"
-" Vundle を初期化して  
-" Vundle 自身も Vundle で管理
-" 以下に追記後 :BundleInstall
-" これでインストール可能になる
-set rtp+=~/.vim/bundle/vundle/  
-call vundle#rc()  
-Bundle 'gmarik/vundle'  
+NeoBundle 'Shougo/neobundle.vim'
 
 " github
-Bundle 'Shougo/neocomplcache'
-Bundle 'Shougo/unite.vim'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'walm/jshint.vim'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'derekwyatt/vim-scala'
+NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'walm/jshint.vim'
+NeoBundle 'scrooloose/nerdcommenter'
+NeoBundle 'derekwyatt/vim-scala'
 
 " vim-scripts repos
-Bundle 'project.tar.gz'
-Bundle 'surround.vim'
-""""""""""""""""""""""""""""""""
+NeoBundle 'project.tar.gz'
+NeoBundle 'surround.vim'
+NeoBundle 'taglist.vim'
 
-"コメントアウトが連続して入力されるのを禁止
-autocmd FileType * setlocal formatoptions-=ro
+filetype on
+filetype indent on
+filetype plugin on
 
+"""""" 追加設定 """"""
 "バックスペースキーの動作を決定する
 "2:indent,eol,startと同じ
 set backspace=2
@@ -94,16 +93,6 @@ set laststatus=2
 "ステータス行の表示内容を設定する
 set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
 
-filetype on
-filetype indent on
-filetype plugin on
-
-"""""" 追加設定 """"""
-
-"http://www.vim.org/scripts/script.php?script_id=2332
-"Vundle を利用するようにしたため、利用中止。
-"call pathogen#infect()
-
 "SQLのJava文字リテラルへの整形
 function! SQLToJava()
   %s/^\(.\+\)$/"\1 " \+/g
@@ -152,4 +141,11 @@ let g:neocomplcache_dictionary_filetype_lists = {
   \ 'default' : '',
   \ 'scala' : $HOME . '/.vim/dict/scala.dict',
   \ }
+
+"コメントアウトが連続して入力されるのを禁止
+autocmd FileType * setlocal formatoptions-=ro
+
+"全角スペースを　で表示
+highlight JpSpace cterm=underline ctermfg=Blue guifg=Blue
+au BufRead,BufNew * match JpSpace /　/
 
