@@ -1,3 +1,6 @@
+# SVN
+export SVN_EDITOR=vim
+
 # PATH
 export PATH=$PATH:/Developer/usr/bin/:/usr/local/google_appengine/
 
