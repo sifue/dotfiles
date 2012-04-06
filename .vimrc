@@ -1,6 +1,6 @@
 "###############################################################
 "# My vimrc                                                    #
-"#      >lastutpdate: 2012.04.05                               #
+"#      >lastutpdate: 2012.04.06                              #
 "#      >auther: Soichiro Yoshimura <yoshimura@soichiro.org>   #
 "###############################################################
 
@@ -107,9 +107,6 @@ syntax on
 " カラースキーマ設定
 colorscheme wombat
 
-" タブキャラクタを設定
-set listchars=tab:->
-
 "ステータスラインを表示するウィンドウを設定する
 "2:常にステータスラインを表示する
 set laststatus=2
@@ -141,6 +138,10 @@ autocmd FileType * setlocal formatoptions-=ro
 "全角スペースを　で表示
 highlight JpSpace cterm=underline ctermfg=Blue guifg=Blue
 au BufRead,BufNew * match JpSpace /　/
+
+"タブを見えるように設定
+set list
+set listchars=tab:->
 
 " サーチハイライトををESC二回で消す
 nnoremap <Esc><Esc> :nohlsearch<CR><Esc>
