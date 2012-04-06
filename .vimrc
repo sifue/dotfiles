@@ -22,9 +22,9 @@ endif
 NeoBundle 'Shougo/neobundle.vim'
 
 """""""" github
-" 強力なオムニ補完
+" 強力な入力補完(Uniteと連携)
 NeoBundle 'Shougo/neocomplcache'
-" Uniteコマンドによる読み出し
+" Uniteコマンドによる読み出し等
 NeoBundle 'Shougo/unite.vim'
 " CoffeeScriptのハイライト
 NeoBundle 'kchmck/vim-coffee-script'
