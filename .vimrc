@@ -34,6 +34,8 @@ NeoBundle 'walm/jshint.vim'
 NeoBundle 'scrooloose/nerdcommenter'
 " Scalaのハイライト
 NeoBundle 'derekwyatt/vim-scala'
+" zendogingプラグイン
+NeoBundle 'mattn/zencoding-vim'
 
 """"""" vim-scripts repos
 " プロジェクトのツリー表示
@@ -49,7 +51,7 @@ filetype on
 filetype indent on
 filetype plugin on
 
-"""""" 追加設定 """"""
+"""""""""" 追加設定 """"""""""
 "バックスペースキーの動作を決定する
 "2:indent,eol,startと同じ
 set backspace=2
@@ -109,6 +111,46 @@ set laststatus=2
 "ステータス行の表示内容を設定する
 set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
 
+"vimのバックアップファイルとスワップファイル
+set nobackup
+set noswapfile
+
+"バッファをクリップボードにコピー(for OSX)
+set clipboard=unnamed,autoselect
+
+"自動改行オフ
+set tw=0
+
+" neocomplcache
+let g:neocomplcache_enable_at_startup = 1 " 起動時に有効化
+
+" ,, でコメントアウトをトグル
+let NERDSpaceDelims = 1
+nmap ,, <Plug>NERDCommenterToggle
+vmap ,, <Plug>NERDCommenterToggle
+
+"コメントアウトが連続して入力されるのを禁止
+autocmd FileType * setlocal formatoptions-=ro
+
+"全角スペースを　で表示
+highlight JpSpace cterm=underline ctermfg=Blue guifg=Blue
+au BufRead,BufNew * match JpSpace /　/
+
+"ctagsの埋め込み 各環境であるものを全て記述(なくても問題ない)
+set tags=~/.tags.trunk,~/.tags.study 
+
+"""""""""" 言語ごとの設定 """"""""""
+inoreabbrev /** /**<CR> * <CR>* <CR>*/
+
+""""" PHP用設定 """"""""
+" :makeでPHP構文チェック
+au FileType php setlocal makeprg=php\ -l\ %
+au FileType php setlocal errorformat=%m\ in\ %f\ on\ line\ %l
+ 
+"""""" phpのコードスニペット
+au FileType php inoreabbrev vd var_dump();<Left><Left>
+
+""""" Java用設定 """"""""
 "SQLのJava文字リテラルへの整形
 function! SQLToJava()
   %s/^\(.\+\)$/"\1 " \+/g
@@ -126,45 +168,15 @@ function! SQLFromJava()
 endfunction
 command! Sqlfromj :call SQLFromJava()
 
-"vimのバックアップファイルとスワップファイル
-set nobackup
-set noswapfile
-
-"バッファをクリップボードにコピー(for OSX)
-set clipboard=unnamed,autoselect
-
-"自動改行オフ
-set tw=0
-
-" :makeでPHP構文チェック
-au FileType php setlocal makeprg=php\ -l\ %
-au FileType php setlocal errorformat=%m\ in\ %f\ on\ line\ %l
-
+""""" Ruby用設定 """"""""
 " :makeでRuby構文チェック
 au FileType ruby setlocal makeprg=ruby\ -c\ %
 au FileType ruby setlocal errorformat=%m\ in\ %f\ on\ line\ %l
 
-" neocomplcache
-let g:neocomplcache_enable_at_startup = 1 " 起動時に有効化
-
-" ,, でコメントアウトをトグル
-let NERDSpaceDelims = 1
-nmap ,, <Plug>NERDCommenterToggle
-vmap ,, <Plug>NERDCommenterToggle
-
+""""" Scala用設定 """"""""
 "ユーザ定義の辞書を指定
 let g:neocomplcache_dictionary_filetype_lists = {
   \ 'default' : '',
   \ 'scala' : $HOME . '/.vim/dict/scala.dict',
   \ }
-
-"コメントアウトが連続して入力されるのを禁止
-autocmd FileType * setlocal formatoptions-=ro
-
-"全角スペースを　で表示
-highlight JpSpace cterm=underline ctermfg=Blue guifg=Blue
-au BufRead,BufNew * match JpSpace /　/
-
-"ctagsの埋め込み 各環境であるものを全て記述(なくても問題ない)
-set tags=~/.tags.trunk,~/.tags.study 
 
