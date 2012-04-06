@@ -149,6 +149,11 @@ nnoremap <Esc><Esc> :nohlsearch<CR><Esc>
 "ctagsの埋め込み 各環境であるものを全て記述(なくても問題ない)
 set tags=~/.tags.trunk,~/.tags.study 
 
+" マウスモード有効
+set mouse=a
+" screen対応
+set ttymouse=xterm2
+
 """""""""" 言語ごとの設定 """"""""""
 " /**の入力 Ctrl+]でコメントスニペット挿入
 inoreabbrev /** /**<CR> * <CR>* <CR>*/
