@@ -104,6 +104,12 @@ set smarttab
 "強調表示(色付け)のON/OFF設定
 syntax on
 
+" カラースキーマ設定
+colorscheme wombat
+
+" タブキャラクタを設定
+set listchars=tab:->
+
 "ステータスラインを表示するウィンドウを設定する
 "2:常にステータスラインを表示する
 set laststatus=2
@@ -135,6 +141,9 @@ autocmd FileType * setlocal formatoptions-=ro
 "全角スペースを　で表示
 highlight JpSpace cterm=underline ctermfg=Blue guifg=Blue
 au BufRead,BufNew * match JpSpace /　/
+
+" サーチハイライトををESC二回で消す
+nnoremap <Esc><Esc> :nohlsearch<CR><Esc>
 
 "ctagsの埋め込み 各環境であるものを全て記述(なくても問題ない)
 set tags=~/.tags.trunk,~/.tags.study 
