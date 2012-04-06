@@ -90,13 +90,13 @@ set hidden
 set fileencoding=utf-8
 
 "Insertモードで<Tab> を挿入するのに、適切な数の空白を使う
-set expandtab
+"set expandtab
 
 "ファイル内の <Tab> が対応する空白の数
-set tabstop=2
+set tabstop=4
 
 "自動インデントの各段階に使われる空白の数
-set shiftwidth=2
+set shiftwidth=4
 
 "行頭の余白内で Tab を打ち込むと、'shiftwidth' の数だけインデントする
 set smarttab
@@ -141,7 +141,7 @@ au BufRead,BufNew * match JpSpace /　/
 
 "タブを見えるように設定
 set list
-set listchars=tab:->
+set listchars=tab:»\ 
 
 " サーチハイライトををESC二回で消す
 nnoremap <Esc><Esc> :nohlsearch<CR><Esc>
