@@ -104,7 +104,7 @@ set smarttab
 "強調表示(色付け)のON/OFF設定
 syntax on
 
-" カラースキーマ設定
+" カラースキーマ設定 (~/.vim/colors/wombat.vimが必要)
 colorscheme wombat
 
 "ステータスラインを表示するウィンドウを設定する
@@ -118,13 +118,13 @@ set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V
 set nobackup
 set noswapfile
 
-"バッファをクリップボードにコピー(for OSX)
+"バッファをクリップボードにコピー(for OSX, UNIXのgvim用)
 set clipboard=unnamed,autoselect
 
 "自動改行オフ
 set tw=0
 
-" neocomplcache
+" neocomplcache 起動時に有効化
 let g:neocomplcache_enable_at_startup = 1 " 起動時に有効化
 
 " ,, でコメントアウトをトグル
@@ -150,6 +150,7 @@ nnoremap <Esc><Esc> :nohlsearch<CR><Esc>
 set tags=~/.tags.trunk,~/.tags.study 
 
 """""""""" 言語ごとの設定 """"""""""
+" /**の入力 Ctrl+]でコメントスニペット挿入
 inoreabbrev /** /**<CR> * <CR>* <CR>*/
 
 """"" PHP用設定 """"""""
@@ -157,7 +158,7 @@ inoreabbrev /** /**<CR> * <CR>* <CR>*/
 au FileType php setlocal makeprg=php\ -l\ %
 au FileType php setlocal errorformat=%m\ in\ %f\ on\ line\ %l
  
-"""""" phpのコードスニペット
+" phpのコードスニペット
 au FileType php inoreabbrev vd var_dump();<Left><Left>
 
 """"" Java用設定 """"""""
