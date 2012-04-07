@@ -105,7 +105,7 @@ set smarttab
 syntax on
 
 " カラースキーマ設定 (~/.vim/colors/wombat.vimが必要)
-"colorscheme wombat
+colorscheme wombat
 
 "ステータスラインを表示するウィンドウを設定する
 "2:常にステータスラインを表示する
