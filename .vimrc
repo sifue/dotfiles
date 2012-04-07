@@ -1,6 +1,6 @@
 "###############################################################
 "# My vimrc                                                    #
-"#      >lastutpdate: 2012.04.06                              #
+"#      >lastutpdate: 2012.04.06                               #
 "#      >auther: Soichiro Yoshimura <yoshimura@soichiro.org>   #
 "###############################################################
 
@@ -11,6 +11,7 @@ set nocompatible
 " https://github.com/Shougo/neobundle.vim
 " インストール
 " $ mkdir -p ~/.vim/bundle
+" $ export GIT_SSL_NO_VERIFY=true
 " $ git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
 filetype plugin indent off     " required!
 if has('vim_starting')
