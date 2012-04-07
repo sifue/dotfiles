@@ -167,7 +167,7 @@ inoreabbrev /** /**<CR> * <CR>* <CR>*/
 au FileType php setlocal makeprg=php\ -l\ %
 au FileType php setlocal errorformat=%m\ in\ %f\ on\ line\ %l
  
-" phpのコードスニペット vd Ctrl+]でvar_dump();
+" phpのコードスニペット
 au FileType php inoreabbrev vd var_dump();<Left><Left>
 
 """"" Java用設定 """"""""
