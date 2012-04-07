@@ -105,7 +105,7 @@ set smarttab
 syntax on
 
 " カラースキーマ設定 (~/.vim/colors/wombat.vimが必要)
-colorscheme wombat
+"colorscheme wombat
 
 "ステータスラインを表示するウィンドウを設定する
 "2:常にステータスラインを表示する
@@ -146,13 +146,17 @@ set listchars=tab:»\
 " サーチハイライトををESC二回で消す
 nnoremap <Esc><Esc> :nohlsearch<CR><Esc>
 
-"ctagsの埋め込み 各環境であるものを全て記述(なくても問題ない)
-set tags=~/.tags.trunk,~/.tags.study 
-
 " マウスモード有効
 set mouse=a
 " screen対応
 set ttymouse=xterm2
+
+" 挿入モードとノーマルモードでステータスラインの色を変更する
+au InsertEnter * hi StatusLine guifg=DarkBlue guibg=DarkYellow gui=none ctermfg=Blue ctermbg=Yellow cterm=none
+au InsertLeave * hi StatusLine guifg=Black guibg=White gui=none ctermfg=Black ctermbg=White cterm=none
+
+"ctagsの埋め込み 各環境であるものを全て記述(なくても問題ない)
+set tags=~/.tags.trunk,~/.tags.study 
 
 """""""""" 言語ごとの設定 """"""""""
 " /**の入力 Ctrl+]でコメントスニペット挿入
