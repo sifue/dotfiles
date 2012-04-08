@@ -7,6 +7,9 @@
 ")VimをなるべくVi互換にする
 set nocompatible
 
+"ctagsの埋め込み 各環境であるものを全て記述(なくても問題ない)
+set tags=~/.tags.ircbot,~/.tags.trunk,~/.tags.study 
+
 """""""""" NeoBundle設定 """"""""""
 " https://github.com/Shougo/neobundle.vim
 " インストール
@@ -155,9 +158,6 @@ set ttymouse=xterm2
 " 挿入モードとノーマルモードでステータスラインの色を変更する
 au InsertEnter * hi StatusLine guifg=DarkBlue guibg=DarkYellow gui=none ctermfg=Blue ctermbg=Yellow cterm=none
 au InsertLeave * hi StatusLine guifg=Black guibg=White gui=none ctermfg=Black ctermbg=White cterm=none
-
-"ctagsの埋め込み 各環境であるものを全て記述(なくても問題ない)
-set tags=~/.tags,~/.tags.trunk,~/.tags.study 
 
 """""""""" 言語ごとの設定 """"""""""
 " /**の入力 Ctrl+]でコメントスニペット挿入
