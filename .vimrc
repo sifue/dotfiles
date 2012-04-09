@@ -1,6 +1,6 @@
 "###############################################################
 "# My vimrc                                                    #
-"#      >lastutpdate: 2012.04.06                               #
+"#      >lastutpdate: 2012.04.09                               #
 "#      >auther: Soichiro Yoshimura <yoshimura@soichiro.org>   #
 "###############################################################
 
@@ -50,6 +50,8 @@ NeoBundle 'surround.vim'
 NeoBundle 'taglist.vim'
 " SVNの差分表示用 http://blog.blueblack.net/item_144
 NeoBundle 'vcscommand.vim'
+" XDebug/PHP用プラグイン
+NeoBundle 'DBGp-client'
 
 filetype on
 filetype indent on
@@ -103,7 +105,7 @@ set tabstop=4
 set shiftwidth=4
 
 "行頭の余白内で Tab を打ち込むと、'shiftwidth' の数だけインデントする
-set smarttab
+"set smarttab
 
 "強調表示(色付け)のON/OFF設定
 syntax on
@@ -150,6 +152,10 @@ set listchars=tab:»\
 " サーチハイライトををESC二回で消す
 nnoremap <Esc><Esc> :nohlsearch<CR><Esc>
 
+" インサートモードでのVim外からの張り付けのためにオートインデントをON/OFFする
+nnoremap <C-c>p :set noautoindent<CR><ESC>:set nosmartindent<CR><ESC>:echo "TURN OFF! autoindent and smartindent"<CR><ESC>
+nnoremap <C-c>n :set autoindent<CR><ESC>:set smartindent<CR><ESC>:echo "TURN ON! autoindent and smartindent"<CR><ESC>
+
 " マウスモード有効
 set mouse=a
 " screen対応
@@ -160,17 +166,10 @@ au InsertEnter * hi StatusLine guifg=DarkBlue guibg=DarkYellow gui=none ctermfg=
 au InsertLeave * hi StatusLine guifg=Black guibg=White gui=none ctermfg=Black ctermbg=White cterm=none
 
 """""""""" 言語ごとの設定 """"""""""
-" /**の入力 Ctrl+]でコメントスニペット挿入
-inoreabbrev /** /**<CR> * <CR>* <CR>*/
-
 """"" PHP用設定 """"""""
 " :makeでPHP構文チェック
 au FileType php setlocal makeprg=php\ -l\ %
 au FileType php setlocal errorformat=%m\ in\ %f\ on\ line\ %l
- 
-" phpのコードスニペット
-au FileType php inoreabbrev vd var_dump();<Left><Left>
-
 """"" Java用設定 """"""""
 "SQLのJava文字リテラルへの整形
 function! SQLToJava()
