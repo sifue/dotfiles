@@ -50,8 +50,6 @@ NeoBundle 'surround.vim'
 NeoBundle 'taglist.vim'
 " SVNの差分表示用 http://blog.blueblack.net/item_144
 NeoBundle 'vcscommand.vim'
-" XDebug/PHP用プラグイン
-NeoBundle 'DBGp-client'
 
 filetype on
 filetype indent on
@@ -166,6 +164,18 @@ set ttymouse=xterm2
 " 挿入モードとノーマルモードでステータスラインの色を変更する
 au InsertEnter * hi StatusLine guifg=DarkBlue guibg=DarkYellow gui=none ctermfg=Blue ctermbg=Yellow cterm=none
 au InsertLeave * hi StatusLine guifg=Black guibg=White gui=none ctermfg=Black ctermbg=White cterm=none
+
+"バイナリ編集(xxd)モード（vim -b での起動、もしくは *.bin で発動します）
+augroup BinaryXXD
+	autocmd!
+	autocmd BufReadPre  *.bin let &binary =1
+	autocmd BufReadPost * if &binary | silent %!xxd -g 1
+	autocmd BufReadPost * set ft=xxd | endif
+	autocmd BufWritePre * if &binary | %!xxd -r
+	autocmd BufWritePre * endif
+	autocmd BufWritePost * if &binary | silent %!xxd -g 1
+	autocmd BufWritePost * set nomod | endif
+augroup END
 
 """""""""" 言語ごとの設定 """"""""""
 """"" PHP用設定 """"""""
