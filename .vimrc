@@ -129,7 +129,7 @@ set clipboard=unnamed,autoselect
 set tw=0
 
 " neocomplcache 起動時に有効化
-let g:neocomplcache_enable_at_startup = 1 " 起動時に有効化
+let g:neocomplcache_enable_at_startup = 1
 
 " ,, でコメントアウトをトグル
 let NERDSpaceDelims = 1
@@ -171,8 +171,8 @@ augroup BinaryXXD
 	autocmd BufWritePost * set nomod | endif
 augroup END
 
-" ヴィジュアルモードで選択したテキストを*で検索する
-vnoremap <silent> * "vy/\V<C-r>=substitute(escape(@v,'\/'),"\n",'\\n','g')<CR><CR>
+" ヴィジュアルモードで選択したテキストをfで検索する
+vnoremap <silent> f "vy/\V<C-r>=substitute(escape(@v,'\/'),"\n",'\\n','g')<CR><CR>
 
 """""""""" 言語ごとの設定 """"""""""
 """"" PHP用設定 """"""""
