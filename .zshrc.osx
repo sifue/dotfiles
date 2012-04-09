@@ -27,6 +27,9 @@ export EDITOR=/Applications/MacVim.app/Contents/MacOS/Vim
 alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 alias vim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 
+# Homebrew Emacs for default emacs
+alias emacs='/usr/local/bin/emacs-23.4'
+
 ################# zsh setting
 # 補完機能
 autoload -U compinit
