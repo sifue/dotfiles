@@ -116,7 +116,7 @@ colorscheme wombat
 set laststatus=2
 
 "ステータス行の表示内容を設定する
-set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
+set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}G8%=%l,%c%V%8P
 
 "vimのバックアップファイルとスワップファイル
 set nobackup
@@ -191,6 +191,14 @@ vnoremap <silent> <C-a> 0
 nnoremap <silent> <C-e> $
 inoremap <silent> <C-e> $
 vnoremap <silent> <C-e> $
+
+" Ctlr + 上矢印、下矢印で選択行を移動する (Eclipseと同じショートカット)
+nnoremap <C-Down> :m+<CR>==
+nnoremap <C-Up> :m-2<CR>==
+inoremap <C-Down> <Esc>:m+<CR>==gi
+inoremap <C-Up> <Esc>:m-2<CR>==gi
+vnoremap <C-Down> :m'>+<CR>gv=gv
+vnoremap <C-Up> :m-2<CR>gv=gv
 
 """""""""" 言語ごとの設定 """"""""""
 """"" PHP用設定 """"""""
