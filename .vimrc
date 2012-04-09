@@ -153,8 +153,10 @@ set listchars=tab:»\
 nnoremap <Esc><Esc> :nohlsearch<CR><Esc>
 
 " インサートモードでのVim外からの張り付けのためにオートインデントをON/OFFする
-nnoremap <C-c>p :set noautoindent<CR><ESC>:set nosmartindent<CR><ESC>:echo "TURN OFF! autoindent and smartindent"<CR><ESC>
-nnoremap <C-c>n :set autoindent<CR><ESC>:set smartindent<CR><ESC>:echo "TURN ON! autoindent and smartindent"<CR><ESC>
+nnoremap <C-c><C-p> :set noautoindent<CR><ESC>:set nosmartindent<CR><ESC>:echo "TURN OFF! autoindent and smartindent"<CR><ESC>
+inoremap <C-c><C-p> <ESC>:set noautoindent<CR><ESC>:set nosmartindent<CR><ESC>:echo "TURN OFF! autoindent and smartindent"<CR><ESC>
+nnoremap <C-c><C-n> :set autoindent<CR><ESC>:set smartindent<CR><ESC>:echo "TURN ON! autoindent and smartindent"<CR><ESC>
+inoremap <C-c><C-n> <ESC>:set autoindent<CR><ESC>:set smartindent<CR><ESC>:echo "TURN ON! autoindent and smartindent"<CR><ESC>
 
 " マウスモード有効
 set mouse=a
