@@ -1,6 +1,6 @@
 "###############################################################
 "# My vimrc                                                    #
-"#      >lastutpdate: 2012.04.09                               #
+"#      >lastutpdate: 2012.04.10                               #
 "#      >auther: Soichiro Yoshimura <yoshimura@soichiro.org>   #
 "###############################################################
 
@@ -171,8 +171,26 @@ augroup BinaryXXD
 	autocmd BufWritePost * set nomod | endif
 augroup END
 
-" ヴィジュアルモードで選択したテキストをfで検索する
-vnoremap <silent> f "vy/\V<C-r>=substitute(escape(@v,'\/'),"\n",'\\n','g')<CR><CR>
+" ヴィジュアルモードで選択したテキストをnで検索する
+vnoremap <silent> n "vy/\V<C-r>=substitute(escape(@v,'\/'),"\n",'\\n','g')<CR><CR>
+
+" ヤンク時にレジスタ"の値をzにもコピーしておく(連続張付に使う)
+vnoremap <silent> y y:let @z=@"<CR>
+
+" ペーストはレジスタを連続貼付けできるようにレジスタzを利用
+nnoremap <silent> p "zp
+nnoremap <silent> P "zP
+
+" ビジュアルモードで選択したテキストを消してレジスタの内容を貼付ける
+vnoremap <silent> p x"zP
+
+" 行頭行末へのショートカット (Emacsと一緒のキーバインド)
+nnoremap <silent> <C-a> 0
+inoremap <silent> <C-a> 0
+vnoremap <silent> <C-a> 0
+nnoremap <silent> <C-e> $
+inoremap <silent> <C-e> $
+vnoremap <silent> <C-e> $
 
 """""""""" 言語ごとの設定 """"""""""
 """"" PHP用設定 """"""""
