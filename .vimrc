@@ -176,8 +176,12 @@ augroup END
 " ヴィジュアルモードで選択したテキストをnで検索する(レジスタv使用)
 vnoremap <silent> n "vy/\V<C-r>=substitute(escape(@v,'\/'),"\n",'\\n','g')<CR><CR>
 
-"fで選択テキストでカレントディレクトリ以下をファイル検索してリストで出す(レジスタf使用)
+" fで選択テキストでカレントディレクトリ以下をファイル検索してリストで出す(レジスタf使用)
 vnoremap f "fy:new<CR>:r!find . -iregex ".*<C-r>f.*"<CR><ESC>==gg
+
+" gでカーソル下のファイル名を新しいウインドウで開く
+nnoremap g <C-w>f
+vnoremap g <C-w>f
 
 " ヤンク、切り取り時にレジスタ"の値をzにもコピーしておく(連続貼付可に使う)
 vnoremap <silent> y y:let @z=@"<CR>
@@ -218,6 +222,7 @@ nnoremap <silent> <Space>eg  :<C-u>edit $MYGVIMRC<CR>
 " vimrcとgvimrcを読み込み設定
 nnoremap <silent> <Space>rv :<C-u>source $MYVIMRC \| if has('gui_running') \| source $MYGVIMRC \| endif <CR>
 nnoremap <silent> <Space>rg :<C-u>source $MYGVIMRC<CR>
+
 
 """"""""""" プラグインの設定 """"""""""""""""
 " neocomplcache 起動時に有効化
