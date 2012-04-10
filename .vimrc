@@ -201,8 +201,6 @@ vnoremap <silent> <C-Up> :m-2<CR>gv=gv
 " Ctlr + Shift + 左右でバッファを行き来
 nnoremap <silent> <C-p> :bp<CR>
 nnoremap <silent> <C-n> :bn<CR>
-inoremap <silent> <C-p> <Esc>:bp<CR>==gi
-inoremap <silent> <C-n> <Esc>:bn<CR>==gi
 vnoremap <silent> <C-p> :bn<CR>gv=gv
 vnoremap <silent> <C-n> :bp<CR>gv=gv
 
@@ -238,9 +236,10 @@ nnoremap <C-o> :Tlist<CR>
 inoremap <C-o> <ESC>:Tlist<CR>
 vnoremap <C-o> :Tlist<CR>
 
-" VCSコマンドの設定
+" VCSコマンドの設定(Revertだけは確認のために<CR>を入力)
 nnoremap <F1> :VCSLog<CR>
 nnoremap <F2> :VCSVimDiff<CR> 
+nnoremap <F3> :VCSRevert 
 
 
 """""""""" 言語ごとの設定 """"""""""
