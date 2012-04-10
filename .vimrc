@@ -171,7 +171,7 @@ augroup BinaryXXD
 	autocmd BufWritePost * set nomod | endif
 augroup END
 
-" ヴィジュアルモードで選択したテキストをnで検索する
+" ヴィジュアルモードで選択したテキストをnで検索する(レジスタv使用)
 vnoremap <silent> n "vy/\V<C-r>=substitute(escape(@v,'\/'),"\n",'\\n','g')<CR><CR>
 
 " ヤンク時にレジスタ"の値をzにもコピーしておく(連続張付に使う)
@@ -181,7 +181,7 @@ vnoremap <silent> y y:let @z=@"<CR>
 nnoremap <silent> p "zp
 nnoremap <silent> P "zP
 
-" ビジュアルモードで選択したテキストを消してレジスタの内容を貼付ける
+" ビジュアルモードで選択したテキストを消してレジスタzの内容を貼付ける
 vnoremap <silent> p x"zP
 
 " 行頭行末へのショートカット (Emacsと一緒のキーバインド)
@@ -193,12 +193,35 @@ inoremap <silent> <C-e> $
 vnoremap <silent> <C-e> $
 
 " Ctlr + 上矢印、下矢印で選択行を移動する (Eclipseと同じショートカット)
-nnoremap <C-Down> :m+<CR>==
-nnoremap <C-Up> :m-2<CR>==
-inoremap <C-Down> <Esc>:m+<CR>==gi
-inoremap <C-Up> <Esc>:m-2<CR>==gi
-vnoremap <C-Down> :m'>+<CR>gv=gv
-vnoremap <C-Up> :m-2<CR>gv=gv
+nnoremap <silent> <C-Down> :m+<CR>==
+nnoremap <silent> <C-Up> :m-2<CR>==
+inoremap <silent> <C-Down> <Esc>:m+<CR>==gi
+inoremap <silent> <C-Up> <Esc>:m-2<CR>==gi
+vnoremap <silent> <C-Down> :m'>+<CR>gv=gv
+vnoremap <silent> <C-Up> :m-2<CR>gv=gv
+
+" Ctrl +  o でタグアウトライン
+nnoremap <silent> <C-o> :Tlist<CR> 
+inoremap <silent> <C-o> :Tlist<CR>
+vnoremap <silent> <C-o> :Tlist<CR>
+
+" Ctlr + Shift + 左右でバッファを行き来
+nnoremap <silent> <C-S-Left> :bp<CR>
+nnoremap <silent> <C-S-Right> :bn<CR>
+inoremap <silent> <C-S-Left> <Esc>:bp<CR>==gi
+inoremap <silent> <C-S-Right> <Esc>:bn<CR>==gi
+vnoremap <silent> <C-S-Left> :bn<CR>gv=gv
+vnoremap <silent> <C-S-Right> :bp<CR>gv=gv
+
+" Ctlr + Shift + u で選択した単語を現在のファイル内でgrep (レジスタu使用)
+nnoremap <silent> <C-S-u> "uy:vimgrep /<C-r>u/ <C-r>%<CR>:copen<CR>
+inoremap <silent> <C-S-u> <Esc>"uy:vimgrep /<C-r>u/ <C-r>%<CR>:copen<CR>==gi
+vnoremap <silent> <C-S-u> "uy:vimgrep /<C-r>u/ <C-r>%<CR>:copen<CR>gv=gv
+
+" Ctlr + d で行削除してレジスタdに格納
+nnoremap <silent> <C-d> "ddd
+inoremap <silent> <C-d> <Esc>"ddd==gi
+vnoremap <silent> <C-d> "dddgv=gv
 
 """""""""" 言語ごとの設定 """"""""""
 """"" PHP用設定 """"""""
