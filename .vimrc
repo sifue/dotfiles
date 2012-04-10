@@ -10,7 +10,7 @@ set nocompatible
 "ctagsの埋め込み 各環境であるものを全て記述(なくても問題ない)
 set tags=~/.tags.ircbot,~/.tags.trunk,~/.tags.study 
 
-"""""""""" NeoBundle設定 """"""""""
+""""""""""" NeoBundle設定  """"""""""""""""
 " https://github.com/Shougo/neobundle.vim
 " インストール
 " $ mkdir -p ~/.vim/bundle
@@ -55,8 +55,8 @@ filetype on
 filetype indent on
 filetype plugin on
 
-"""""""""" 追加設定 """"""""""
-"バックスペースキーの動作を決定する
+""""""""""" Vimの基本的な設定  """"""""""""""""
+"Pバックスペースキーの動作を決定する
 "2:indent,eol,startと同じ
 set backspace=2
 
@@ -128,13 +128,20 @@ set clipboard=unnamed,autoselect
 "自動改行オフ
 set tw=0
 
-" neocomplcache 起動時に有効化
-let g:neocomplcache_enable_at_startup = 1
+" マウスモード有効
+set mouse=a
+" screen対応
+set ttymouse=xterm2
 
-" ,, でコメントアウトをトグル
-let NERDSpaceDelims = 1
-nmap ,, <Plug>NERDCommenterToggle
-vmap ,, <Plug>NERDCommenterToggle
+""""""""""" 効率化UPのための設定 """"""""""""""""
+" <Leader>を\にリマッップ
+nnoremap \ <Leader>
+vnoremap \ <Leader>
+
+" Ctlr + aで全体選択
+nnoremap <silent> <C-a> ggVG<CR>==
+inoremap <silent> <C-a> <Esc>ggVG<CR>==gi
+vnoremap <silent> <C-a> ggVG<CR>gv=gv
 
 "コメントアウトが連続して入力されるのを禁止
 autocmd FileType * setlocal formatoptions-=ro
@@ -149,11 +156,6 @@ set listchars=tab:»\
 
 " サーチハイライトををESC二回で消す
 nnoremap <Esc><Esc> :nohlsearch<CR><Esc>
-
-" マウスモード有効
-set mouse=a
-" screen対応
-set ttymouse=xterm2
 
 " 挿入モードとノーマルモードでステータスラインの色を変更する
 au InsertEnter * hi StatusLine guifg=DarkBlue guibg=DarkYellow gui=none ctermfg=Blue ctermbg=Yellow cterm=none
@@ -174,23 +176,15 @@ augroup END
 " ヴィジュアルモードで選択したテキストをnで検索する(レジスタv使用)
 vnoremap <silent> n "vy/\V<C-r>=substitute(escape(@v,'\/'),"\n",'\\n','g')<CR><CR>
 
-" ヤンク時にレジスタ"の値をzにもコピーしておく(連続張付に使う)
+"選択したテキスト含むテキストをfでファイル検索してリストで出す(レジスタf使用)
+vnoremap f "fy:new<CR>:r!find . -iregex ".*<C-r>f.*"<CR><ESC>==gg
+
+" ヤンク、切り取り時にレジスタ"の値をzにもコピーしておく(連続貼付可に使う)
 vnoremap <silent> y y:let @z=@"<CR>
+vnoremap <silent> d d:let @z=@"<CR>
 
-" ペーストはレジスタを連続貼付けできるようにレジスタzを利用
-nnoremap <silent> p "zp
-nnoremap <silent> P "zP
-
-" ビジュアルモードで選択したテキストを消してレジスタzの内容を貼付ける
+" ビジュアルモードで選択したテキストを消してレジスタzの内容を貼付ける(連続貼付可)
 vnoremap <silent> p x"zP
-
-" 行頭行末へのショートカット (Emacsと一緒のキーバインド)
-nnoremap <silent> <C-a> 0
-inoremap <silent> <C-a> 0
-vnoremap <silent> <C-a> 0
-nnoremap <silent> <C-e> $
-inoremap <silent> <C-e> $
-vnoremap <silent> <C-e> $
 
 " Ctlr + 上矢印、下矢印で選択行を移動する (Eclipseと同じショートカット)
 nnoremap <silent> <C-Down> :m+<CR>==
@@ -199,11 +193,6 @@ inoremap <silent> <C-Down> <Esc>:m+<CR>==gi
 inoremap <silent> <C-Up> <Esc>:m-2<CR>==gi
 vnoremap <silent> <C-Down> :m'>+<CR>gv=gv
 vnoremap <silent> <C-Up> :m-2<CR>gv=gv
-
-" Ctrl +  o でタグアウトライン
-nnoremap <silent> <C-o> :Tlist<CR> 
-inoremap <silent> <C-o> :Tlist<CR>
-vnoremap <silent> <C-o> :Tlist<CR>
 
 " Ctlr + Shift + 左右でバッファを行き来
 nnoremap <silent> <C-S-Left> :bp<CR>
@@ -214,14 +203,33 @@ vnoremap <silent> <C-S-Left> :bn<CR>gv=gv
 vnoremap <silent> <C-S-Right> :bp<CR>gv=gv
 
 " Ctlr + Shift + u で選択した単語を現在のファイル内でgrep (レジスタu使用)
-nnoremap <silent> <C-S-u> "uy:vimgrep /<C-r>u/ <C-r>%<CR>:copen<CR>
-inoremap <silent> <C-S-u> <Esc>"uy:vimgrep /<C-r>u/ <C-r>%<CR>:copen<CR>==gi
 vnoremap <silent> <C-S-u> "uy:vimgrep /<C-r>u/ <C-r>%<CR>:copen<CR>gv=gv
 
 " Ctlr + d で行削除してレジスタdに格納
 nnoremap <silent> <C-d> "ddd
 inoremap <silent> <C-d> <Esc>"ddd==gi
 vnoremap <silent> <C-d> "dddgv=gv
+
+" Ctrl + jklhでウインドウ移動
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+nnoremap <C-h> <C-w>h
+
+""""""""""" プラグインの設定 """"""""""""""""
+" neocomplcache 起動時に有効化
+let g:neocomplcache_enable_at_startup = 1
+
+" ,, でコメントアウトをトグル
+let NERDSpaceDelims = 1
+nmap ,, <Plug>NERDCommenterToggle
+vmap ,, <Plug>NERDCommenterToggle
+
+" Ctrl +  o でタグアウトライン
+nnoremap <silent> <C-o> :Tlist<CR> 
+inoremap <silent> <C-o> <ESC>:Tlist<CR>
+vnoremap <silent> <C-o> :Tlist<CR>
+
 
 """""""""" 言語ごとの設定 """"""""""
 """"" PHP用設定 """"""""
