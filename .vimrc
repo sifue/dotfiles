@@ -239,7 +239,7 @@ vnoremap <C-o> :Tlist<CR>
 " VCSコマンドの設定(Revertだけは確認のために<CR>を入力)
 nnoremap <F1> :VCSLog<CR>
 nnoremap <F2> :VCSVimDiff<CR> 
-nnoremap <F3> :VCSRevert 
+nnoremap <F3> :VCSRevert
 
 
 """""""""" 言語ごとの設定 """"""""""
