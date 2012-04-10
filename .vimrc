@@ -195,26 +195,29 @@ vnoremap <silent> <C-Down> :m'>+<CR>gv=gv
 vnoremap <silent> <C-Up> :m-2<CR>gv=gv
 
 " Ctlr + Shift + 左右でバッファを行き来
-nnoremap <silent> <C-S-Left> :bp<CR>
-nnoremap <silent> <C-S-Right> :bn<CR>
-inoremap <silent> <C-S-Left> <Esc>:bp<CR>==gi
-inoremap <silent> <C-S-Right> <Esc>:bn<CR>==gi
-vnoremap <silent> <C-S-Left> :bn<CR>gv=gv
-vnoremap <silent> <C-S-Right> :bp<CR>gv=gv
+nnoremap <silent> <C-p> :bp<CR>
+nnoremap <silent> <C-n> :bn<CR>
+inoremap <silent> <C-p> <Esc>:bp<CR>==gi
+inoremap <silent> <C-n> <Esc>:bn<CR>==gi
+vnoremap <silent> <C-p> :bn<CR>gv=gv
+vnoremap <silent> <C-n> :bp<CR>gv=gv
 
 " Ctlr + Shift + u で選択した単語を現在のファイル内でgrep (レジスタu使用)
 vnoremap <silent> <C-S-u> "uy:vimgrep /<C-r>u/ <C-r>%<CR>:copen<CR>gv=gv
-
-" Ctlr + d で行削除してレジスタdに格納
-nnoremap <silent> <C-d> "ddd
-inoremap <silent> <C-d> <Esc>"ddd==gi
-vnoremap <silent> <C-d> "dddgv=gv
 
 " Ctrl + jklhでウインドウ移動
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <C-h> <C-w>h
+
+" vimrcとgvimrcを開く設定
+nnoremap <silent> <Space>ev  :<C-u>edit $MYVIMRC<CR>
+nnoremap <silent> <Space>eg  :<C-u>edit $MYGVIMRC<CR>
+
+" vimrcとgvimrcを読み込み設定
+nnoremap <silent> <Space>rv :<C-u>source $MYVIMRC \| if has('gui_running') \| source $MYGVIMRC \| endif <CR>
+nnoremap <silent> <Space>rg :<C-u>source $MYGVIMRC<CR>
 
 """"""""""" プラグインの設定 """"""""""""""""
 " neocomplcache 起動時に有効化
