@@ -176,12 +176,12 @@ augroup END
 " ヴィジュアルモードで選択したテキストをnで検索する(レジスタv使用)
 vnoremap <silent> n "vy/\V<C-r>=substitute(escape(@v,'\/'),"\n",'\\n','g')<CR><CR>
 
-" fで選択テキストでカレントディレクトリ以下をファイル検索してリストで出す(レジスタf使用)
-vnoremap f "fy:new<CR>:r!find . -iregex ".*<C-r>f.*"<CR><ESC>==gg
+" fでカーソル下のファイル名を新しいウインドウで開く
+nnoremap f <C-w>f
+vnoremap f <C-w>f
 
-" gでカーソル下のファイル名を新しいウインドウで開く
-nnoremap g <C-w>f
-vnoremap g <C-w>f
+" fiで選択テキストでカレントディレクトリ以下をファイル検索してリストで出す(レジスタf使用)
+vnoremap fi "fy:new<CR>:r!find . -iregex ".*<C-r>f.*"<CR><ESC>==gg
 
 " ヤンク、切り取り時にレジスタ"の値をzにもコピーしておく(連続貼付可に使う)
 vnoremap <silent> y y:let @z=@"<CR>
