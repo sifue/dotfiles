@@ -216,12 +216,12 @@ nnoremap <C-l> <C-w>l
 nnoremap <C-h> <C-w>h
 
 " vimrcとgvimrcを開く設定
-nnoremap <silent> <Space>ev  :<C-u>edit $MYVIMRC<CR>
-nnoremap <silent> <Space>eg  :<C-u>edit $MYGVIMRC<CR>
+nnoremap <Space>ev  :<C-u>edit $MYVIMRC<CR>
+nnoremap <Space>eg  :<C-u>edit $MYGVIMRC<CR>
 
 " vimrcとgvimrcを読み込み設定
-nnoremap <silent> <Space>rv :<C-u>source $MYVIMRC \| if has('gui_running') \| source $MYGVIMRC \| endif <CR>
-nnoremap <silent> <Space>rg :<C-u>source $MYGVIMRC<CR>
+nnoremap <Space>rv :<C-u>source $MYVIMRC \| if has('gui_running') \| source $MYGVIMRC \| endif <CR>
+nnoremap <Space>rg :<C-u>source $MYGVIMRC<CR>
 
 
 """"""""""" プラグインの設定 """"""""""""""""
@@ -234,9 +234,13 @@ nmap ,, <Plug>NERDCommenterToggle
 vmap ,, <Plug>NERDCommenterToggle
 
 " Ctrl +  o でタグアウトライン
-nnoremap <silent> <C-o> :Tlist<CR> 
-inoremap <silent> <C-o> <ESC>:Tlist<CR>
-vnoremap <silent> <C-o> :Tlist<CR>
+nnoremap <C-o> :Tlist<CR> 
+inoremap <C-o> <ESC>:Tlist<CR>
+vnoremap <C-o> :Tlist<CR>
+
+" VCSコマンドの設定
+nnoremap <F1> :VCSLog<CR>
+nnoremap <F2> :VCSVimDiff<CR> 
 
 
 """""""""" 言語ごとの設定 """"""""""
