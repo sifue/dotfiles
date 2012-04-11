@@ -1,14 +1,11 @@
 "###############################################################
 "# My vimrc                                                    #
-"#      >lastutpdate: 2012.04.10                               #
+"#      >lastutpdate: 2012.04.11                               #
 "#      >auther: Soichiro Yoshimura <yoshimura@soichiro.org>   #
 "###############################################################
 
 ")VimをなるべくVi互換にする
 set nocompatible
-
-"ctagsの埋め込み 各環境であるものを全て記述(なくても問題ない)
-set tags=~/.tags.ircbot,~/.tags.trunk,~/.tags.study 
 
 """"""""""" NeoBundle設定  """"""""""""""""
 " https://github.com/Shougo/neobundle.vim
@@ -28,6 +25,8 @@ NeoBundle 'Shougo/neobundle.vim'
 """""""" github
 " 強力な入力補完(Uniteと連携)
 NeoBundle 'Shougo/neocomplcache'
+" neocomを使ったスニペッツ補完
+NeoBundle 'Shougo/neocomplcache-snippets-complete'
 " Uniteコマンドによる読み出し等
 NeoBundle 'Shougo/unite.vim'
 " CoffeeScriptのハイライト
@@ -55,8 +54,40 @@ filetype on
 filetype indent on
 filetype plugin on
 
+""""""""""" プラグインの設定 """"""""""""""""
+" neocomplcache 起動時に有効化
+let g:neocomplcache_enable_at_startup = 1
+
+" ,, でコメントアウトをトグル
+let NERDSpaceDelims = 1
+nmap ,, <Plug>NERDCommenterToggle
+vmap ,, <Plug>NERDCommenterToggle
+
+" Ctrl +  o でタグアウトライン
+nnoremap <C-o> :Tlist<CR> 
+inoremap <C-o> <ESC>:Tlist<CR>
+vnoremap <C-o> :Tlist<CR>
+
+" VCSコマンドの設定(Revertだけは確認のために<CR>を入力)
+nnoremap <F1> :VCSLog<CR>
+nnoremap <F2> :VCSVimDiff<CR> 
+nnoremap <F3> :VCSRevert
+
+" <Leader>Pで、プロジェクトをトグルで開閉する
+nmap <silent> <Leader>P <Plug>ToggleProject
+
+" <Leader>pで、デフォルトのプロジェクトを開く(デフォルト設定のこと)
+nmap <silent> <Leader>p :Project ~/.pr/trunk<CR>
+
+" Ctrl + スペースでNeoComのスニペッツを展開する
+imap <C-k> <Plug>(neocomplcache_snippets_expand)
+smap <C-k> <Plug>(neocomplcache_snippets_expand)
+
+" NeoComの自作スニペッツのフォルダ読み込み
+let g:neocomplcache_snippets_dir = $HOME . '/.vim/snippets'
+
 """"""""""" Vimの基本的な設定  """"""""""""""""
-"Pバックスペースキーの動作を決定する
+"バックスペースキーの動作を決定する
 "2:indent,eol,startと同じ
 set backspace=2
 
@@ -132,6 +163,10 @@ set tw=0
 set mouse=a
 " screen対応
 set ttymouse=xterm2
+
+"ctagsの埋め込み 各環境であるものを全て記述(なくても問題ない)
+set tags=~/.tags.ircbot,~/.tags.trunk,~/.tags.study 
+
 
 """"""""""" 効率化UPのための設定 """"""""""""""""
 " <Leader>を\にリマッップ
@@ -221,25 +256,20 @@ nnoremap <Space>eg  :<C-u>edit $MYGVIMRC<CR>
 nnoremap <Space>rv :<C-u>source $MYVIMRC \| if has('gui_running') \| source $MYGVIMRC \| endif <CR>
 nnoremap <Space>rg :<C-u>source $MYGVIMRC<CR>
 
+" vimrcとgvimrcの編集がされたときに自動的に読み込むため設定
+augroup MyAutoCmd
+	autocmd!
+augroup END
 
-""""""""""" プラグインの設定 """"""""""""""""
-" neocomplcache 起動時に有効化
-let g:neocomplcache_enable_at_startup = 1
-
-" ,, でコメントアウトをトグル
-let NERDSpaceDelims = 1
-nmap ,, <Plug>NERDCommenterToggle
-vmap ,, <Plug>NERDCommenterToggle
-
-" Ctrl +  o でタグアウトライン
-nnoremap <C-o> :Tlist<CR> 
-inoremap <C-o> <ESC>:Tlist<CR>
-vnoremap <C-o> :Tlist<CR>
-
-" VCSコマンドの設定(Revertだけは確認のために<CR>を入力)
-nnoremap <F1> :VCSLog<CR>
-nnoremap <F2> :VCSVimDiff<CR> 
-nnoremap <F3> :VCSRevert
+if !has('gui_running') && !(has('win32') || has('win64'))
+	" .vimrcの再読込時にも色が変化するようにする
+	autocmd MyAutoCmd BufWritePost $MYVIMRC nested source $MYVIMRC
+else
+	" .vimrcの再読込時にも色が変化するようにする
+	autocmd MyAutoCmd BufWritePost $MYVIMRC source $MYVIMRC | 
+				\if has('gui_running') | source $MYGVIMRC  
+	autocmd MyAutoCmd BufWritePost $MYGVIMRC if has('gui_running') | source $MYGVIMRC
+endif
 
 
 """""""""" 言語ごとの設定 """"""""""

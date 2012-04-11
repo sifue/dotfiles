@@ -1,0 +1,6 @@
+# デバッグ用のvar_dump
+snippet var_d
+    // TODO Remove! var_dump code by Soichiro Yoshimura
+    print_r("\n!DEBUG! var_dump at " . __FILE__ . "(" . __LINE__ . ")" . ": " . __CLASS__ . "#" . __FUNCTION__ . "\n");
+    var_dump(${1});
+
