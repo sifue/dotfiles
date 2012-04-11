@@ -27,6 +27,10 @@ export EDITOR=/Applications/MacVim.app/Contents/MacOS/Vim
 alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 alias vim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 
+# git sync dotfiles
+alias push_dotfiles='cd ~/dotfiles;git add . ;git commit -m "update";git push;cd ~;'
+alias pull_dotfiles='cd ~/dotfiles;git pull;cd ~;'
+
 # Homebrew Emacs for default emacs
 alias emacs='/usr/local/bin/emacs-23.4'
 
