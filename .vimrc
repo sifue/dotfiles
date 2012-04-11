@@ -71,7 +71,7 @@ vnoremap <C-o> :Tlist<CR>
 " VCSコマンドの設定(Revertだけは確認のために<CR>を入力)
 nnoremap <F1> :VCSLog<CR>
 nnoremap <F2> :VCSVimDiff<CR> 
-nnoremap <F3> :VCSRevert
+nnoremap <F4> :VCSRevert
 
 " <Leader>Pで、プロジェクトをトグルで開閉する
 nmap <silent> <Leader>P <Plug>ToggleProject
@@ -85,6 +85,12 @@ smap <C-k> <Plug>(neocomplcache_snippets_expand)
 
 " NeoComの自作スニペッツのフォルダ読み込み
 let g:neocomplcache_snippets_dir = $HOME . '/.vim/snippets'
+
+
+""""""""""" 外部ツールの連携に関する設定  """"""""""""""""
+" カレントディレクトリにてSVNのステータスを見る
+nnoremap <F3> :new<CR>:r!svn status -u<CR>
+
 
 """"""""""" Vimの基本的な設定  """"""""""""""""
 "バックスペースキーの動作を決定する
