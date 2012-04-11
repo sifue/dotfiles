@@ -231,14 +231,6 @@ vnoremap <silent> d d:let @z=@"<CR>
 " ビジュアルモードで選択したテキストを消してレジスタzの内容を貼付ける(連続貼付可)
 vnoremap <silent> p x"zP
 
-" Ctlr + 上矢印、下矢印で選択行を移動する (Eclipseと同じショートカット)
-nnoremap <silent> <C-Down> :m+<CR>==
-nnoremap <silent> <C-Up> :m-2<CR>==
-inoremap <silent> <C-Down> <Esc>:m+<CR>==gi
-inoremap <silent> <C-Up> <Esc>:m-2<CR>==gi
-vnoremap <silent> <C-Down> :m'>+<CR>gv=gv
-vnoremap <silent> <C-Up> :m-2<CR>gv=gv
-
 " Ctlr + Shift + 左右でバッファを行き来
 nnoremap <silent> <C-p> :bp<CR>
 nnoremap <silent> <C-n> :bn<CR>
@@ -247,12 +239,6 @@ vnoremap <silent> <C-n> :bp<CR>gv=gv
 
 " Ctlr + Shift + u で選択した単語を現在のファイル内でgrep (レジスタu使用)
 vnoremap <silent> <C-S-u> "uy:vimgrep /<C-r>u/ <C-r>%<CR>:copen<CR>gv=gv
-
-" Ctrl + jklhでウインドウ移動
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-nnoremap <C-h> <C-w>h
 
 " vimrcとgvimrcを開く設定
 nnoremap <Space>ev  :<C-u>edit $MYVIMRC<CR>
@@ -276,6 +262,15 @@ else
 				\if has('gui_running') | source $MYGVIMRC  
 	autocmd MyAutoCmd BufWritePost $MYGVIMRC if has('gui_running') | source $MYGVIMRC
 endif
+
+" :DeleteHideBufferで全ての隠れているバッファを削除する
+function! s:delete_hide_buffer()
+	let list = filter(range(1, bufnr("$")), "bufexists(v:val) && !buflisted(v:val)")
+	for num in list
+		execute "bw ".num
+	endfor
+endfunction
+command! DeleteHideBuffer :call s:delete_hide_buffer()
 
 
 """""""""" 言語ごとの設定 """"""""""
