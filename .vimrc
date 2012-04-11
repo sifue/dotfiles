@@ -79,7 +79,7 @@ nmap <silent> <Leader>P <Plug>ToggleProject
 " <Leader>pで、デフォルトのプロジェクトを開く(デフォルト設定のこと)
 nmap <silent> <Leader>p :Project ~/.pr/trunk<CR>
 
-" Ctrl + スペースでNeoComのスニペッツを展開する
+" Ctrl + kでNeoComのスニペッツを展開する
 imap <C-k> <Plug>(neocomplcache_snippets_expand)
 smap <C-k> <Plug>(neocomplcache_snippets_expand)
 
