@@ -159,8 +159,10 @@ set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}G8%=%l,%c
 set nobackup
 set noswapfile
 
-"バッファをクリップボードにコピー(for OSX, UNIXのgvim用)
-set clipboard=unnamed,autoselect
+"バッファをクリップボードにコピー(for OSX)
+if has('mac')
+	 set clipboard=unnamed,autoselect
+endif
 
 "自動改行オフ
 set tw=0
@@ -272,6 +274,8 @@ function! s:delete_hide_buffer()
 endfunction
 command! DeleteHideBuffer :call s:delete_hide_buffer()
 
+" makeやgrepをした際に自動的にquickfixが開くようにする
+autocmd QuickfixCmdPost make,grep,grepadd,vimgrep,vimgrepadd if len(getqflist()) != 0 | copen | endif
 
 """""""""" 言語ごとの設定 """"""""""
 """"" PHP用設定 """"""""
