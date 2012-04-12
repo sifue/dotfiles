@@ -63,10 +63,16 @@ let NERDSpaceDelims = 1
 nmap ,, <Plug>NERDCommenterToggle
 vmap ,, <Plug>NERDCommenterToggle
 
-" Ctrl +  o でタグアウトライン
-nnoremap <C-o> :Tlist<CR> 
-inoremap <C-o> <ESC>:Tlist<CR>
-vnoremap <C-o> :Tlist<CR>
+" Ctrl +  o でタグアウトラインをトグル
+nnoremap <C-o> :TlistToggle<CR>
+" タグリストをコンパクトに表示
+let Tlist_Compact_Format = 1
+" 現在表示中のファイルのタグリストのみを表示
+let Tlist_Show_One_File = 1
+" タグの順番は名前でソートせずそのままの順番で
+let Tlist_Sort_Type = "order"
+" タグリストは右側に表示(project.vimのツリーが左にあるため)
+let Tlist_Use_Right_Window = 1
 
 " VCSコマンドの設定(Revertだけは確認のために<CR>を入力)
 nnoremap <F1> :VCSLog<CR>
@@ -277,11 +283,24 @@ command! DeleteHideBuffer :call s:delete_hide_buffer()
 " makeやgrepをした際に自動的にquickfixが開くようにする
 autocmd QuickfixCmdPost make,grep,grepadd,vimgrep,vimgrepadd if len(getqflist()) != 0 | copen | endif
 
+" テキストファイル専用の設定
+augroup ettext
+	autocmd!
+	autocmd BufRead,BufNewFile *.txt setlocal expandtab nolist nonumber tw=0
+augroup END
+
 """""""""" 言語ごとの設定 """"""""""
 """"" PHP用設定 """"""""
 " :makeでPHP構文チェック
 au FileType php setlocal makeprg=php\ -l\ %
 au FileType php setlocal errorformat=%m\ in\ %f\ on\ line\ %l
+
+" PHPプログラムの文法チェック
+augroup phpsyntaxcheck
+	autocmd!
+	autocmd BufWrite *.php w !php -l
+augroup END
+
 """"" Java用設定 """"""""
 "SQLのJava文字リテラルへの整形
 function! SQLToJava()
@@ -304,6 +323,12 @@ command! Sqlfromj :call SQLFromJava()
 " :makeでRuby構文チェック
 au FileType ruby setlocal makeprg=ruby\ -c\ %
 au FileType ruby setlocal errorformat=%m\ in\ %f\ on\ line\ %l
+
+" Rubyプログラムの文法チェック
+augroup rbsyntaxcheck
+	autocmd!
+	autocmd BufWrite *.rb w !ruby -c
+augroup END
 
 """"" Scala用設定 """"""""
 "ユーザ定義の辞書を指定
