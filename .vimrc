@@ -229,8 +229,8 @@ vnoremap <silent> n "vy/\V<C-r>=substitute(escape(@v,'\/'),"\n",'\\n','g')<CR><C
 nnoremap f <C-w>f
 vnoremap f <C-w>f
 
-" fiで選択テキストでカレントディレクトリ以下をファイル検索してリストで出す(レジスタf使用)
-vnoremap fi "fy:new<CR>:r!find . -iregex ".*<C-r>f.*"<CR><ESC>==gg
+" rで選択テキストでカレントディレクトリ以下をファイル検索してリストで出す(レジスタf使用)
+vnoremap r "fy:new<CR>:r!find . -iregex ".*<C-r>f.*"<CR><ESC>==gg
 
 " ヤンク、切り取り時にレジスタ"の値をzにもコピーしておく(連続貼付可に使う)
 vnoremap <silent> y y:let @z=@"<CR>
@@ -245,8 +245,11 @@ nnoremap <silent> <C-n> :bn<CR>
 vnoremap <silent> <C-p> :bn<CR>gv=gv
 vnoremap <silent> <C-n> :bp<CR>gv=gv
 
-" Ctlr + Shift + u で選択した単語を現在のファイル内でgrep (レジスタu使用)
+" Ctrl + Shift + u で選択した単語を現在のファイル内でgrep (レジスタu使用)
 vnoremap <silent> <C-S-u> "uy:vimgrep /<C-r>u/ <C-r>%<CR>:copen<CR>gv=gv
+
+" Ctrl + r でカレントディレクトリ化のファイル一覧の出力を新しいバッファに行う
+nnoremap <C-r> :new<CR>>:r!find . -iregex ".*.*"<Left><Left><Left>
 
 " vimrcとgvimrcを開く設定
 nnoremap <Space>ev  :<C-u>edit $MYVIMRC<CR>
