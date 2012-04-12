@@ -293,6 +293,23 @@ augroup ettext
 	autocmd BufRead,BufNewFile *.txt setlocal expandtab nolist nonumber tw=0
 augroup END
 
+" UNCパスからsmbのURLに変更する
+function! SMBfromUNC()
+  %s/\\\\/smb:\/\//g
+  %s/\\/\//g
+  echo "Convert from UNC."
+endfunction
+command! SMBfromUNC :call SMBfromUNC()
+
+" smbのURLからUNCパスに変更する
+function! SMBtoUNC()
+  %s/smb:\/\//\\\\/g
+  %s/\//\\/g
+  echo "Convert to UNC."
+endfunction
+command! SMBtoUNC :call SMBtoUNC()
+
+
 """""""""" 言語ごとの設定 """"""""""
 """"" PHP用設定 """"""""
 " :makeでPHP構文チェック
