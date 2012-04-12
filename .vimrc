@@ -260,21 +260,6 @@ nnoremap <Space>eg  :<C-u>edit $MYGVIMRC<CR>
 nnoremap <Space>rv :<C-u>source $MYVIMRC \| if has('gui_running') \| source $MYGVIMRC \| endif <CR>
 nnoremap <Space>rg :<C-u>source $MYGVIMRC<CR>
 
-" vimrcとgvimrcの編集がされたときに自動的に読み込むため設定
-augroup MyAutoCmd
-	autocmd!
-augroup END
-
-if !has('gui_running') && !(has('win32') || has('win64'))
-	" .vimrcの再読込時にも色が変化するようにする
-	autocmd MyAutoCmd BufWritePost $MYVIMRC nested source $MYVIMRC
-else
-	" .vimrcの再読込時にも色が変化するようにする
-	autocmd MyAutoCmd BufWritePost $MYVIMRC source $MYVIMRC | 
-				\if has('gui_running') | source $MYGVIMRC  
-	autocmd MyAutoCmd BufWritePost $MYGVIMRC if has('gui_running') | source $MYGVIMRC
-endif
-
 " :DeleteHideBufferで全ての隠れているバッファを削除する
 function! s:delete_hide_buffer()
 	let list = filter(range(1, bufnr("$")), "bufexists(v:val) && !buflisted(v:val)")
@@ -316,7 +301,7 @@ command! SMBtoUNC :call SMBtoUNC()
 au FileType php setlocal makeprg=php\ -l\ %
 au FileType php setlocal errorformat=%m\ in\ %f\ on\ line\ %l
 
-" PHPプログラムの文法チェック
+" 保存時のPHPプログラムの文法チェック
 augroup phpsyntaxcheck
 	autocmd!
 	autocmd BufWrite *.php w !php -l
@@ -345,7 +330,7 @@ command! Sqlfromj :call SQLFromJava()
 au FileType ruby setlocal makeprg=ruby\ -c\ %
 au FileType ruby setlocal errorformat=%m\ in\ %f\ on\ line\ %l
 
-" Rubyプログラムの文法チェック
+" 保存時のRubyプログラムの文法チェック
 augroup rbsyntaxcheck
 	autocmd!
 	autocmd BufWrite *.rb w !ruby -c
