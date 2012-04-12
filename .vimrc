@@ -81,9 +81,10 @@ nnoremap <F4> :VCSRevert
 
 " <Leader>Pで、プロジェクトをトグルで開閉する
 nmap <silent> <Leader>P <Plug>ToggleProject
-
 " <Leader>pで、デフォルトのプロジェクトを開く(デフォルト設定のこと)
 nmap <silent> <Leader>p :Project ~/.pr/trunk<CR>
+" サブプロジェクトを上に、vimgrepではなくgrepを使うように設定
+let g:proj_flags = 'imsTv'
 
 " Ctrl + kでNeoComのスニペッツを展開する
 imap <C-k> <Plug>(neocomplcache_snippets_expand)
@@ -248,8 +249,8 @@ vnoremap <silent> <C-n> :bp<CR>gv=gv
 " Ctrl + Shift + u で選択した単語を現在のファイル内でgrep (レジスタu使用)
 vnoremap <silent> <C-S-u> "uy:vimgrep /<C-r>u/ <C-r>%<CR>:copen<CR>gv=gv
 
-" Ctrl + r でカレントディレクトリ化のファイル一覧の出力を新しいバッファに行う
-nnoremap <C-r> :new<CR>>:r!find . -iregex ".*.*"<Left><Left><Left>
+" Ctrl + xからrでカレントディレクトリ化のファイル一覧の出力を新しいバッファに行う
+nnoremap <C-x>r :new<CR>>:r!find . -iregex ".*.*"<Left><Left><Left>
 
 " vimrcとgvimrcを開く設定
 nnoremap <Space>ev  :<C-u>edit $MYVIMRC<CR>
