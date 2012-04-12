@@ -145,8 +145,8 @@ set shiftwidth=4
 "強調表示(色付け)のON/OFF設定
 syntax on
 
-" カラースキーマ設定 (~/.vim/colors/wombat.vimが必要)
-colorscheme wombat
+" カラースキーマ設定 (~/.vim/colors/wombat.vimなどが必要)
+colorscheme wombat_CAApprox
 
 "ステータスラインを表示するウィンドウを設定する
 "2:常にステータスラインを表示する
