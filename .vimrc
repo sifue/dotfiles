@@ -84,7 +84,7 @@ nmap <silent> <Leader>P <Plug>ToggleProject
 " <Leader>pで、デフォルトのプロジェクトを開く(デフォルト設定のこと)
 nmap <silent> <Leader>p :Project ~/.pr/trunk<CR>
 " サブプロジェクトを上に、vimgrepではなくgrepを使うように設定
-let g:proj_flags = 'imsTv'
+let g:proj_flags = 'imstTv'
 
 " Ctrl + kでNeoComのスニペッツを展開する
 imap <C-k> <Plug>(neocomplcache_snippets_expand)
