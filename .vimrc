@@ -146,7 +146,7 @@ set shiftwidth=4
 syntax on
 
 " カラースキーマ設定 (~/.vim/colors/wombat.vimなどが必要)
-colorscheme wombat_CAApprox
+colorscheme wombat
 
 "ステータスラインを表示するウィンドウを設定する
 "2:常にステータスラインを表示する
