@@ -1,6 +1,6 @@
 "###############################################################
 "# My vimrc                                                    #
-"#      >lastutpdate: 2012.04.12                               #
+"#      >lastutpdate: 2012.04.13                               #
 "#      >auther: Soichiro Yoshimura <yoshimura@soichiro.org>   #
 "###############################################################
 
@@ -19,7 +19,7 @@ if has('vim_starting')
   call neobundle#rc(expand('~/.vim/bundle/'))
 endif
 
-" gitを使ったプラグインマネージャ
+" gitを使ったプラグインマネージャ 基本Vundleと一緒
 NeoBundle 'Shougo/neobundle.vim'
 
 """""""" github
@@ -27,7 +27,7 @@ NeoBundle 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/neocomplcache'
 " neocomを使ったスニペッツ補完
 NeoBundle 'Shougo/neocomplcache-snippets-complete'
-" Uniteコマンドによる読み出し等
+" Uniteコマンドによるフィルタ付き読み出し等
 NeoBundle 'Shougo/unite.vim'
 " CoffeeScriptのハイライト
 NeoBundle 'kchmck/vim-coffee-script'
@@ -47,7 +47,7 @@ NeoBundle 'project.tar.gz'
 NeoBundle 'surround.vim'
 " :Tlistでctagsの一覧表示
 NeoBundle 'taglist.vim'
-" SVNの差分表示用 http://blog.blueblack.net/item_144
+" SVNやgitなどの差分表示用 http://blog.blueblack.net/item_144
 NeoBundle 'vcscommand.vim'
 
 filetype on
@@ -57,6 +57,28 @@ filetype plugin on
 """"""""""" プラグインの設定 """"""""""""""""
 " neocomplcache 起動時に有効化
 let g:neocomplcache_enable_at_startup = 1
+
+" Ctrl + kでNeoComのスニペッツを展開する :NeoComplCacheEditRuntimeSnippetsで確認
+imap <C-k> <Plug>(neocomplcache_snippets_expand)
+smap <C-k> <Plug>(neocomplcache_snippets_expand)
+
+" NeoComの自作スニペッツのフォルダ読み込み :NeoComplCacheEditSnippetsで編集
+let g:neocomplcache_snippets_dir = $HOME . '/.vim/snippets'
+
+" Unite起動時にインサートモードで開始
+let g:unite_enable_start_insert = 1
+
+" Uniteの各種ショートカット設定 
+" バッファ一覧
+nnoremap <silent> ;ub :<C-u>Unite buffer<CR>
+" ファイル一覧  
+nnoremap <silent> ;uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+" レジスタ一覧
+nnoremap <silent> ;ur :<C-u>Unite -buffer-name=register register<CR>
+" 最近使用したファイル一覧
+nnoremap <silent> ;um :<C-u>Unite file_mru<CR>
+" 全部乗せ
+nnoremap <silent> ;ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
 
 " ,, でコメントアウトをトグル
 let NERDSpaceDelims = 1
@@ -86,21 +108,10 @@ nmap <silent> <Leader>p :Project ~/.pr/trunk<CR>
 " サブプロジェクトを上に、vimgrepではなくgrepを使うように設定
 let g:proj_flags = 'imstTv'
 
-" Ctrl + kでNeoComのスニペッツを展開する
-imap <C-k> <Plug>(neocomplcache_snippets_expand)
-smap <C-k> <Plug>(neocomplcache_snippets_expand)
-
-" NeoComの自作スニペッツのフォルダ読み込み
-let g:neocomplcache_snippets_dir = $HOME . '/.vim/snippets'
-
-" Uniteの各種ショートカット設定 
-nnoremap <C-u>b :Unite buffer<CR>
-nnoremap <C-u>f :Unite file<CR>
-nnoremap <C-u>m :Unite file_mru<CR>
 
 """"""""""" 外部ツールの連携に関する設定  """"""""""""""""
 " カレントディレクトリにてSVNのステータスを見る
-nnoremap <F3> :new<CR>:r!svn status -u<CR>
+nnoremap <F3> :tabnew<CR>:r!svn status -u<CR>
 
 
 """"""""""" Vimの基本的な設定  """"""""""""""""
@@ -181,7 +192,8 @@ set tw=0
 
 " マウスモード有効
 set mouse=a
-" screen対応
+
+" xtermとscreen対応
 set ttymouse=xterm2
 
 "ctagsの埋め込み 各環境であるものを全て記述(なくても問題ない)
@@ -231,12 +243,22 @@ augroup END
 " ヴィジュアルモードで選択したテキストをnで検索する(レジスタv使用)
 vnoremap <silent> n "vy/\V<C-r>=substitute(escape(@v,'\/'),"\n",'\\n','g')<CR><CR>
 
-" fでカーソル下のファイル名を新しいウインドウで開く
-nnoremap f <C-w>f
-vnoremap f <C-w>f
+" fでカーソル下のファイル名を新しいタブで開く
+nnoremap f :tabe <cfile><CR>
+vnoremap f :tabe <cfile><CR>
+
+" 検索語が画面中央にくるように
+nmap n nzz
+nmap N Nzz
 
 " rで選択テキストでカレントディレクトリ以下をファイル検索してリストで出す(レジスタf使用)
-vnoremap r "fy:new<CR>:r!find . -iregex ".*<C-r>f.*"<CR><ESC>==gg
+vnoremap r "fy:tabnew<CR>:r!find . -iregex ".*<C-r>f.*"<CR><ESC>==gg
+
+" Ctrl + Shift + u で選択した単語を現在のファイル内でgrep (レジスタu使用)
+vnoremap <silent> <C-S-u> "uy:vimgrep /<C-r>u/ <C-r>%<CR>:copen<CR>gv=gv
+
+" Ctrl + xからrでカレントディレクトリ化のファイル一覧の出力を新しいバッファに行う
+nnoremap <C-x>r :tabnew<CR>>:r!find . -iregex ".*.*"<Left><Left><Left>
 
 " ヤンク、切り取り時にレジスタ"の値をzにもコピーしておく(連続貼付可に使う)
 vnoremap <silent> y y:let @z=@"<CR>
@@ -245,29 +267,22 @@ vnoremap <silent> d d:let @z=@"<CR>
 " ビジュアルモードで選択したテキストを消してレジスタzの内容を貼付ける(連続貼付可)
 vnoremap <silent> p x"zP
 
-" Ctlr + n or pでバッファを行き来
+" Ctrl + n or pでバッファを行き来
 nnoremap <silent> <C-p> :bp<CR>
 nnoremap <silent> <C-n> :bn<CR>
-vnoremap <silent> <C-p> :bn<CR>gv=gv
-vnoremap <silent> <C-n> :bp<CR>gv=gv
 
 " Ctrl + j で裏バッファに切り替え
 nnoremap <silent> <C-j> <C-^>
 vnoremap <silent> <C-j> <C-^> 
 
-" Ctrl + Shift + u で選択した単語を現在のファイル内でgrep (レジスタu使用)
-vnoremap <silent> <C-S-u> "uy:vimgrep /<C-r>u/ <C-r>%<CR>:copen<CR>gv=gv
+" Ctrl + Shift +  n or pでタブ移動
+nnoremap <C-N> gt
+nnoremap <C-P> gT
 
-" Ctrl + xからrでカレントディレクトリ化のファイル一覧の出力を新しいバッファに行う
-nnoremap <C-x>r :new<CR>>:r!find . -iregex ".*.*"<Left><Left><Left>
-
-" vimrcとgvimrcを開く設定
-nnoremap <Space>ev  :<C-u>edit $MYVIMRC<CR>
-nnoremap <Space>eg  :<C-u>edit $MYGVIMRC<CR>
-
-" vimrcとgvimrcを読み込み設定
-nnoremap <Space>rv :<C-u>source $MYVIMRC \| if has('gui_running') \| source $MYGVIMRC \| endif <CR>
-nnoremap <Space>rg :<C-u>source $MYGVIMRC<CR>
+" vimrcの新しいタブでの編集と読み込みのショートカット設定
+nnoremap ;s :source $MYVIMRC<CR>
+nnoremap ;v :tabe $MYVIMRC<CR>
+nnoremap ;l :tabe ~/.vimrc.local<CR>
 
 " :DeleteHideBufferで全ての隠れているバッファを削除する
 function! s:delete_hide_buffer()
@@ -278,7 +293,7 @@ function! s:delete_hide_buffer()
 endfunction
 command! DeleteHideBuffer :call s:delete_hide_buffer()
 
-" makeやgrepをした際に自動的にquickfixが開くようにする
+" :makeや:grepをした際に自動的にquickfixが開くようにする
 autocmd QuickfixCmdPost make,grep,grepadd,vimgrep,vimgrepadd if len(getqflist()) != 0 | copen | endif
 
 " テキストファイル専用の設定
@@ -303,6 +318,17 @@ function! SMBtoUNC()
 endfunction
 command! SMBtoUNC :call SMBtoUNC()
 
+" <Leader> でカーソル下のURL開く
+function! HandleURI() 
+  let s:uri = matchstr(getline("."), '[a-z]*:\/\/[^ >,;:]*')
+  echo s:uri
+  if s:uri != ""
+    exec "!open \"" . s:uri . "\""
+  else
+    echo "No URI found in line."
+  endif
+endfunction
+map <Leader>u :call HandleURI()<CR>
 
 """""""""" 言語ごとの設定 """"""""""
 """"" PHP用設定 """"""""
@@ -315,6 +341,18 @@ augroup phpsyntaxcheck
 	autocmd!
 	autocmd BufWrite *.php w !php -l
 augroup END
+
+" PHPの関数やクラスの折りたたみ
+let php_folding = 1
+
+" 文字列の中のSQLをハイライト
+let php_sql_query = 1
+
+" HTMLもハイライト
+let php_htmlInStrings = 1
+
+" <? を無効にする→ハイライト除外にする
+let php_noShortTags = 1
 
 """"" Java用設定 """"""""
 "SQLのJava文字リテラルへの整形
@@ -352,3 +390,8 @@ let g:neocomplcache_dictionary_filetype_lists = {
   \ 'scala' : $HOME . '/.vim/dict/scala.dict',
   \ }
 
+
+"""""""""" ローカルの設定があれば読み込み """"""""""
+if filereadable(expand('~/.vimrc.local'))
+    source ~/.vimrc.local
+endif
