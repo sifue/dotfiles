@@ -180,7 +180,7 @@ set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}G8%=%l,%c
 
 "vimのバックアップファイルとスワップファイル
 set nobackup
-set noswapfile
+"set noswapfile
 
 "バッファをクリップボードにコピー(for OSX)
 if has('mac')
@@ -332,6 +332,10 @@ function! HandleURI()
   endif
 endfunction
 map <Leader>u :call HandleURI()<CR>
+
+" ファイルを開いたときに前回の編集箇所に移動
+autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
+
 
 """""""""" 言語ごとの設定 """"""""""
 """"" PHP用設定 """"""""
