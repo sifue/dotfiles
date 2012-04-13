@@ -93,6 +93,10 @@ smap <C-k> <Plug>(neocomplcache_snippets_expand)
 " NeoComの自作スニペッツのフォルダ読み込み
 let g:neocomplcache_snippets_dir = $HOME . '/.vim/snippets'
 
+" Uniteの各種ショートカット設定 
+nnoremap <C-u>b :Unite buffer<CR>
+nnoremap <C-u>f :Unite file<CR>
+nnoremap <C-u>m :Unite file_mru<CR>
 
 """"""""""" 外部ツールの連携に関する設定  """"""""""""""""
 " カレントディレクトリにてSVNのステータスを見る
@@ -135,6 +139,7 @@ set smartindent
 set hidden
 
 "カレントバッファ内のファイルの文字エンコーディングを設定する
+
 set fileencoding=utf-8
 
 "Insertモードで<Tab> を挿入するのに、適切な数の空白を使う
@@ -240,11 +245,15 @@ vnoremap <silent> d d:let @z=@"<CR>
 " ビジュアルモードで選択したテキストを消してレジスタzの内容を貼付ける(連続貼付可)
 vnoremap <silent> p x"zP
 
-" Ctlr + Shift + 左右でバッファを行き来
+" Ctlr + n or pでバッファを行き来
 nnoremap <silent> <C-p> :bp<CR>
 nnoremap <silent> <C-n> :bn<CR>
 vnoremap <silent> <C-p> :bn<CR>gv=gv
 vnoremap <silent> <C-n> :bp<CR>gv=gv
+
+" Ctrl + j で裏バッファに切り替え
+nnoremap <silent> <C-j> <C-^>
+vnoremap <silent> <C-j> <C-^> 
 
 " Ctrl + Shift + u で選択した単語を現在のファイル内でgrep (レジスタu使用)
 vnoremap <silent> <C-S-u> "uy:vimgrep /<C-r>u/ <C-r>%<CR>:copen<CR>gv=gv
