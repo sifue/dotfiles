@@ -321,7 +321,7 @@ function! SMBtoUNC()
 endfunction
 command! SMBtoUNC :call SMBtoUNC()
 
-" <Leader> でカーソル下のURL開く
+" <Leader>u でカーソル下のURL開く
 function! HandleURI() 
   let s:uri = matchstr(getline("."), '[a-z]*:\/\/[^ >,;:]*')
   echo s:uri
