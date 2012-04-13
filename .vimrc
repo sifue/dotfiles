@@ -196,6 +196,9 @@ set mouse=a
 " xtermとscreen対応
 set ttymouse=xterm2
 
+"MacVimやGVimを利用する際にIMEがモードの切替でオフとなる設定
+set imdisable
+
 "ctagsの埋め込み 各環境であるものを全て記述(なくても問題ない)
 set tags=~/.tags.ircbot,~/.tags.trunk,~/.tags.study 
 
