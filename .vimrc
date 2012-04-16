@@ -1,13 +1,12 @@
 "###############################################################
 "# My vimrc                                                    #
-"#      >lastutpdate: 2012.04.13                               #
+"#      >lastutpdate: 2012.04.16                               #
 "#      >auther: Soichiro Yoshimura <yoshimura@soichiro.org>   #
 "###############################################################
-
-")VimをなるべくVi互換にする
+"VimをなるべくVi互換にする
 set nocompatible
 
-""""""""""" NeoBundle設定  """"""""""""""""
+""""""""""" NeoBundle設定  """""""""""{{{
 " https://github.com/Shougo/neobundle.vim
 " インストール
 " $ mkdir -p ~/.vim/bundle
@@ -53,8 +52,8 @@ NeoBundle 'vcscommand.vim'
 filetype on
 filetype indent on
 filetype plugin on
-
-""""""""""" プラグインの設定 """"""""""""""""
+"}}}
+""""""""""" プラグインごとの設定 """""""""""{{{
 " neocomplcache 起動時に有効化
 let g:neocomplcache_enable_at_startup = 1
 
@@ -108,13 +107,13 @@ nmap <silent> <Leader>p :Project ~/.pr/trunk<CR>
 " サブプロジェクトを上に、vimgrepではなくgrepを使うように設定
 let g:proj_flags = 'imstTv'
 
-
-""""""""""" 外部ツールの連携に関する設定  """"""""""""""""
+"}}}
+""""""""""" 外部ツールの連携に関する設定  """""""""""{{{
 " カレントディレクトリにてSVNのステータスを見る
 nnoremap <F3> :tabnew<CR>:r!svn status -u<CR>
 
-
-""""""""""" Vimの基本的な設定  """"""""""""""""
+"}}}
+""""""""""" Vimの基本的な設定  """""""""""{{{
 "バックスペースキーの動作を決定する
 "2:indent,eol,startと同じ
 set backspace=2
@@ -202,8 +201,8 @@ set imdisable
 "ctagsの埋め込み 各環境であるものを全て記述(なくても問題ない)
 set tags=~/.tags.ircbot,~/.tags.trunk,~/.tags.study 
 
-
-""""""""""" 効率化UPのための設定 """"""""""""""""
+"}}}
+""""""""""" 効率化UPのための設定 """""""""""{{{
 " <Leader>を\にリマッップ
 nnoremap \ <Leader>
 vnoremap \ <Leader>
@@ -336,8 +335,12 @@ map <Leader>u :call HandleURI()<CR>
 " ファイルを開いたときに前回の編集箇所に移動
 autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
 
+"}}}
+""""""""""" 言語ごとの設定 """""""""""{{{
+""""" VIM用設定 """"""""
+" vimファイルに関して{と}による折りたたみ設定をする
+au FileType vim setlocal foldmethod=marker
 
-"""""""""" 言語ごとの設定 """"""""""
 """"" PHP用設定 """"""""
 " :makeでPHP構文チェック
 au FileType php setlocal makeprg=php\ -l\ %
@@ -397,8 +400,9 @@ let g:neocomplcache_dictionary_filetype_lists = {
   \ 'scala' : $HOME . '/.vim/dict/scala.dict',
   \ }
 
-
-"""""""""" ローカルの設定があれば読み込み """"""""""
+"}}}
+""""""""""" ローカルの設定があれば読み込み """"""""""""{{{
 if filereadable(expand('~/.vimrc.local'))
     source ~/.vimrc.local
 endif
+"}}}
