@@ -207,11 +207,6 @@ set tags=~/.tags.ircbot,~/.tags.trunk,~/.tags.study
 nnoremap \ <Leader>
 vnoremap \ <Leader>
 
-" Ctlr + aで全体選択
-nnoremap <silent> <C-a> ggVG<CR>==
-inoremap <silent> <C-a> <Esc>ggVG<CR>==gi
-vnoremap <silent> <C-a> ggVG<CR>gv=gv
-
 "コメントアウトが連続して入力されるのを禁止
 autocmd FileType * setlocal formatoptions-=ro
 
