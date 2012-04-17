@@ -309,7 +309,7 @@ endfunction
 command! DeleteHideBuffer :call s:delete_hide_buffer()
 
 " :makeや:grepをした際に自動的にquickfixが開くようにする
-autocmd QuickfixCmdPost make,grep,grepadd,vimgrep,vimgrepadd if len(getqflist()) != 0 | copen 4 | endif
+autocmd QuickfixCmdPost make,grep,grepadd,vimgrep,vimgrepadd if len(getqflist()) != 0 | copen | endif
 
 " テキストファイル専用の設定
 augroup ettext
@@ -350,10 +350,11 @@ autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "norm
 
 "}}}
 """"""""""" 言語ごとの設定 """""""""""{{{
-" 各言語で保存する際に:makeを実施
+" 各言語で保存する際に:makeと:cw(エラーがあれば開く)を実施
 if !exists('g:flymake_enabled')
 	let g:flymake_enabled = 1
 	autocmd BufWritePost *.rb,*.php,*.py,*.pl silent make
+	autocmd BufWritePost *.rb,*.php,*.py,*.pl silent cw
 endif
 
 """"" VIM用設定 """"""""
