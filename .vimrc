@@ -38,6 +38,8 @@ NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'derekwyatt/vim-scala'
 " zendogingプラグイン
 NeoBundle 'mattn/zencoding-vim'
+" <Leader>rで:QuickRunという言語ごとの実行コマンド
+NeoBundle 'thinca/vim-quickrun'
 
 """"""" vim-scripts repos
 " プロジェクトのツリー表示
@@ -48,6 +50,12 @@ NeoBundle 'surround.vim'
 NeoBundle 'taglist.vim'
 " SVNやgitなどの差分表示用 http://blog.blueblack.net/item_144
 NeoBundle 'vcscommand.vim'
+" :DirDiff <A:Src Directory> <B:Src Directory> でディレクトリ比較
+NeoBundle 'DirDiff.vim'
+" マークを可視化(maでマーク、'aで呼び出し)
+NeoBundle 'ShowMarks'
+" :make時のエラーマーカーを表示
+NeoBundle 'errormarker.vim'
 
 filetype on
 filetype indent on
@@ -106,6 +114,16 @@ nmap <silent> <Leader>P <Plug>ToggleProject
 nmap <silent> <Leader>p :Project ~/.pr/trunk<CR>
 " サブプロジェクトを上に、vimgrepではなくgrepを使うように設定
 let g:proj_flags = 'imstTv'
+
+" マークの表示はアルファベットのみにする
+let g:showmarks_include="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+" エラーマーカーの設定
+let g:errormarker_errortext = '!!'
+let g:errormarker_warningtext = '??'
+let g:errormarker_errorgroup = 'Error'
+let g:errormarker_errorgroup = 'Todo'
+
 
 "}}}
 """"""""""" 外部ツールの連携に関する設定  """""""""""{{{
@@ -291,7 +309,7 @@ endfunction
 command! DeleteHideBuffer :call s:delete_hide_buffer()
 
 " :makeや:grepをした際に自動的にquickfixが開くようにする
-autocmd QuickfixCmdPost make,grep,grepadd,vimgrep,vimgrepadd if len(getqflist()) != 0 | copen | endif
+autocmd QuickfixCmdPost make,grep,grepadd,vimgrep,vimgrepadd if len(getqflist()) != 0 | copen 4 | endif
 
 " テキストファイル専用の設定
 augroup ettext
@@ -332,6 +350,12 @@ autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "norm
 
 "}}}
 """"""""""" 言語ごとの設定 """""""""""{{{
+" 各言語で保存する際に:makeを実施
+if !exists('g:flymake_enabled')
+	let g:flymake_enabled = 1
+	autocmd BufWritePost *.rb,*.php,*.py,*.pl silent make
+endif
+
 """"" VIM用設定 """"""""
 " vimファイルに関して{と}による折りたたみ設定をする
 au FileType vim setlocal foldmethod=marker
@@ -340,12 +364,6 @@ au FileType vim setlocal foldmethod=marker
 " :makeでPHP構文チェック
 au FileType php setlocal makeprg=php\ -l\ %
 au FileType php setlocal errorformat=%m\ in\ %f\ on\ line\ %l
-
-" 保存時のPHPプログラムの文法チェック
-augroup phpsyntaxcheck
-	autocmd!
-	autocmd BufWrite *.php w !php -l
-augroup END
 
 " PHPの関数やクラスの折りたたみ
 let php_folding = 1
@@ -381,12 +399,6 @@ command! Sqlfromj :call SQLFromJava()
 " :makeでRuby構文チェック
 au FileType ruby setlocal makeprg=ruby\ -c\ %
 au FileType ruby setlocal errorformat=%m\ in\ %f\ on\ line\ %l
-
-" 保存時のRubyプログラムの文法チェック
-augroup rbsyntaxcheck
-	autocmd!
-	autocmd BufWrite *.rb w !ruby -c
-augroup END
 
 """"" Scala用設定 """"""""
 "ユーザ定義の辞書を指定
