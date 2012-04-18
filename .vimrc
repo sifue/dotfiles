@@ -225,6 +225,9 @@ set tags=~/.tags.ircbot,~/.tags.trunk,~/.tags.study
 nnoremap \ <Leader>
 vnoremap \ <Leader>
 
+" 全てのバッファを捨てて強制終了する
+nnoremap <C-x>c :qall!<CR>
+
 "コメントアウトが連続して入力されるのを禁止
 autocmd FileType * setlocal formatoptions-=ro
 
