@@ -285,17 +285,13 @@ vnoremap <silent> d d:let @z=@"<CR>
 " ビジュアルモードで選択したテキストを消してレジスタzの内容を貼付ける(連続貼付可)
 vnoremap <silent> p x"zP
 
-" Ctrl + n or pでバッファを行き来
-nnoremap <silent> <C-p> :bp<CR>
-nnoremap <silent> <C-n> :bn<CR>
-
 " Ctrl + j で裏バッファに切り替え
 nnoremap <silent> <C-j> <C-^>
 vnoremap <silent> <C-j> <C-^> 
 
-" Ctrl + Shift +  n or pでタブ移動
-nnoremap <C-N> gt
-nnoremap <C-P> gT
+" Ctrl + n or pでバッファ移動
+nnoremap <C-n> :bn<CR>
+nnoremap <C-p> :bp<CR> 
 
 " vimrcの新しいタブでの編集と読み込みのショートカット設定
 nnoremap ;s :source $MYVIMRC<CR>
@@ -354,11 +350,13 @@ autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "norm
 "}}}
 """"""""""" 言語ごとの設定 """""""""""{{{
 " 各言語で保存する際に:makeと:cw(エラーがあれば開く)を実施
-if !exists('g:flymake_enabled')
-	let g:flymake_enabled = 1
-	autocmd BufWritePost *.rb,*.php,*.py,*.pl silent make
-	autocmd BufWritePost *.rb,*.php,*.py,*.pl silent cw
-endif
+" 描画がおかしくなるパターンがあるので封印
+" if !exists('g:flymake_enabled')
+	" let g:flymake_enabled = 1
+	" autocmd BufWritePost *.rb,*.php,*.py,*.pl silent make
+	" autocmd BufWritePost *.rb,*.php,*.py,*.pl silent cw
+	" autocmd BufWritePost *.rb,*.php,*.py,*.pl redraw
+" endif
 
 """"" VIM用設定 """"""""
 " vimファイルに関して{と}による折りたたみ設定をする
