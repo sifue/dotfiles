@@ -40,6 +40,8 @@ NeoBundle 'derekwyatt/vim-scala'
 NeoBundle 'mattn/zencoding-vim'
 " <Leader>rで:QuickRunという言語ごとの実行コマンド
 NeoBundle 'thinca/vim-quickrun'
+" true/falseなどの文字列をトグル
+NeoBundle 'taku-o/vim-toggle'
 
 """"""" vim-scripts repos
 " プロジェクトのツリー表示
@@ -125,6 +127,9 @@ let g:errormarker_errortext = '!!'
 let g:errormarker_warningtext = '??'
 let g:errormarker_errorgroup = 'Error'
 let g:errormarker_errorgroup = 'Todo'
+
+" Ctrl + c にて選択した true / false などをトグル
+vmap <C-c> <Plug>ToggleV
 
 
 "}}}
