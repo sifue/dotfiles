@@ -228,8 +228,8 @@ vnoremap \ <Leader>
 " 全てのバッファを捨てて強制終了する
 nnoremap <C-x>c :qall!<CR>
 
-"コメントアウトが連続して入力されるのを禁止
-autocmd FileType * setlocal formatoptions-=ro
+"コメントアウトが連続して入力されるのを禁止 :a!でも代用可
+"autocmd FileType * setlocal formatoptions-=ro
 
 "全角スペースを　で表示
 highlight JpSpace cterm=underline ctermfg=Blue guifg=Blue
