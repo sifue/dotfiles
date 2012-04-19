@@ -63,7 +63,7 @@ filetype plugin on
 "}}}
 """"""""""" プラグインごとの設定 """""""""""{{{
 " neocomplcache 起動時に有効化
-let g:neocomplcache_enable_at_startup = 1
+"let g:neocomplcache_enable_at_startup = 1
 
 " Ctrl + kでNeoComのスニペッツを展開する :NeoComplCacheEditRuntimeSnippetsで確認
 imap <C-k> <Plug>(neocomplcache_snippets_expand)
@@ -237,7 +237,7 @@ au BufRead,BufNew * match JpSpace /　/
 
 "タブを見えるように設定
 set list
-set listchars=tab:»\ 
+set listchars=tab:>-,trail:-
 
 " サーチハイライトををESC二回で消す
 nnoremap <Esc><Esc> :nohlsearch<CR><Esc>
@@ -261,9 +261,9 @@ augroup END
 " ヴィジュアルモードで選択したテキストをnで検索する(レジスタv使用)
 vnoremap <silent> n "vy/\V<C-r>=substitute(escape(@v,'\/'),"\n",'\\n','g')<CR><CR>
 
-" fでカーソル下のファイル名を新しいタブで開く
-nnoremap f :tabe <cfile><CR>
-vnoremap f :tabe <cfile><CR>
+" gfでカーソル下のファイル名を新しいタブで開く
+nnoremap gf :tabe <cfile><CR>
+vnoremap gf :tabe <cfile><CR>
 
 " 検索語が画面中央にくるように
 nmap n nzz
@@ -287,11 +287,11 @@ vnoremap <silent> p x"zP
 
 " Ctrl + j で裏バッファに切り替え
 nnoremap <silent> <C-j> <C-^>
-vnoremap <silent> <C-j> <C-^> 
+vnoremap <silent> <C-j> <C-^>
 
-" Ctrl + n or pでバッファ移動
-nnoremap <C-n> :bn<CR>
-nnoremap <C-p> :bp<CR> 
+" Ctrl + n or pでタブ移動
+nnoremap <C-n> gt
+nnoremap <C-p> gT
 
 " vimrcの新しいタブでの編集と読み込みのショートカット設定
 nnoremap ;s :source $MYVIMRC<CR>
