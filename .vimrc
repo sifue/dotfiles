@@ -56,14 +56,16 @@ NeoBundle 'DirDiff.vim'
 NeoBundle 'ShowMarks'
 " :make時のエラーマーカーを表示
 NeoBundle 'errormarker.vim'
+" tabでスニペット補完
+NeoBundle 'snipMate'
 
 filetype on
 filetype indent on
 filetype plugin on
 "}}}
 """"""""""" プラグインごとの設定 """""""""""{{{
-" neocomplcache 起動時に有効化
-"let g:neocomplcache_enable_at_startup = 1
+" neocomplcache 起動時に有効化 (普段は重いので起動しない)
+" let g:neocomplcache_enable_at_startup = 1
 
 " Ctrl + kでNeoComのスニペッツを展開する :NeoComplCacheEditRuntimeSnippetsで確認
 imap <C-k> <Plug>(neocomplcache_snippets_expand)
@@ -308,7 +310,7 @@ endfunction
 command! DeleteHideBuffer :call s:delete_hide_buffer()
 
 " :makeや:grepをした際に自動的にquickfixが開くようにする
-autocmd QuickfixCmdPost make,grep,grepadd,vimgrep,vimgrepadd if len(getqflist()) != 0 | copen | endif
+autocmd QuickfixCmdPost make,grep,grepadd,vimgrep,vimgrepadd if len(getqflist()) != 0 | cw | endif
 
 " テキストファイル専用の設定
 augroup ettext
