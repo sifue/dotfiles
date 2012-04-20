@@ -1,11 +1,14 @@
 "###############################################################
 "# My vimrc                                                    #
-"#      >lastutpdate: 2012.04.18                               #
+"#      >lastutpdate: 2012.04.23                               #
 "#      >auther: Soichiro Yoshimura <yoshimura@soichiro.org>   #
 "###############################################################
 "VimをなるべくVi互換にする
 set nocompatible
 
+""""""""""" メモ """""""""""{{{
+" :vertical diffsplit {差分を見たい対象ファイル名}
+"}}}
 """"""""""" NeoBundle設定  """""""""""{{{
 " https://github.com/Shougo/neobundle.vim
 " インストール
