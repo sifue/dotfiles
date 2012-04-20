@@ -57,8 +57,6 @@ NeoBundle 'taglist.vim'
 NeoBundle 'vcscommand.vim'
 " :DirDiff <A:Src Directory> <B:Src Directory> でディレクトリ比較
 NeoBundle 'DirDiff.vim'
-" マークを可視化(maでマーク、'aで呼び出し)
-NeoBundle 'ShowMarks'
 " :make時のエラーマーカーを表示
 NeoBundle 'errormarker.vim'
 " tabでスニペット補完
@@ -121,9 +119,6 @@ nmap <silent> <Leader>P <Plug>ToggleProject
 nmap <silent> <Leader>p :Project ~/.pr/trunk<CR>
 " サブプロジェクトを上に、vimgrepではなくgrepを使うように設定
 let g:proj_flags = 'imstTv'
-
-" マークの表示はアルファベットのみにする
-let g:showmarks_include="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 " エラーマーカーの設定
 let g:errormarker_errortext = '!!'

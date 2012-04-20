@@ -7,4 +7,4 @@ snippet var_
 	ini_set('xdebug.var_display_max_data', 1048576);
 	ini_set('xdebug.var_display_max_depth', 20);
 	print_r("\n!DEBUG! var_dump at " . __FILE__ . "(" . __LINE__ . ")" . ": " . __CLASS__ . "#" . __FUNCTION__ . "\n");
-	var_dump($${1})
+	var_dump($${1});
