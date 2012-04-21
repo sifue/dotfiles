@@ -1,6 +1,6 @@
 "###############################################################
 "# My vimrc                                                    #
-"#      >lastutpdate: 2012.04.21                               #
+"#      >lastutpdate: 2012.04.22                               #
 "#      >auther: Soichiro Yoshimura <yoshimura@soichiro.org>   #
 "###############################################################
 "VimをなるべくVi互換にする
@@ -75,8 +75,12 @@ filetype indent on
 filetype plugin on
 "}}}
 """"""""""" プラグインごとの設定 """""""""""{{{
-" neocomplcache 起動時に有効化 (普段は重いので起動しない)
-" let g:neocomplcache_enable_at_startup = 1
+" neocomplcache 起動時に有効化
+let g:neocomplcache_enable_at_startup = 1
+
+" バックスペース時にポップアップしない設定を入れる
+inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
 
 " Ctrl + kでNeoComのスニペッツを展開する :NeoComplCacheEditRuntimeSnippetsで確認
 imap <C-k> <Plug>(neocomplcache_snippets_expand)
