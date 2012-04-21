@@ -76,7 +76,7 @@ filetype plugin on
 "}}}
 """"""""""" プラグインごとの設定 """""""""""{{{
 " neocomplcache 起動時に有効化 (普段は重いので起動しない)
-let g:neocomplcache_enable_at_startup = 1
+" let g:neocomplcache_enable_at_startup = 1
 
 " Ctrl + kでNeoComのスニペッツを展開する :NeoComplCacheEditRuntimeSnippetsで確認
 imap <C-k> <Plug>(neocomplcache_snippets_expand)
