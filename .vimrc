@@ -1,13 +1,21 @@
 "###############################################################
 "# My vimrc                                                    #
-"#      >lastutpdate: 2012.04.23                               #
+"#      >lastutpdate: 2012.04.21                               #
 "#      >auther: Soichiro Yoshimura <yoshimura@soichiro.org>   #
 "###############################################################
 "VimをなるべくVi互換にする
 set nocompatible
 
 """"""""""" メモ """""""""""{{{
+" 現在のファイルとのvimdiff
 " :vertical diffsplit {差分を見たい対象ファイル名}
+"
+" 現在のファイルのカレントディレクトリに移動
+" :cd %:h
+"
+" 現在のファイルを開き直す
+" :cd %
+"
 "}}}
 """"""""""" NeoBundle設定  """""""""""{{{
 " https://github.com/Shougo/neobundle.vim
@@ -110,7 +118,7 @@ let Tlist_Use_Right_Window = 1
 
 " VCSコマンドの設定(Revertだけは確認のために<CR>を入力)
 nnoremap <F1> :VCSLog<CR>
-nnoremap <F2> :VCSVimDiff<CR> 
+nnoremap <F2> :VCSVimDiff<CR>
 nnoremap <F4> :VCSRevert
 
 " <Leader>Pで、プロジェクトをトグルで開閉する
@@ -172,7 +180,6 @@ set smartindent
 set hidden
 
 "カレントバッファ内のファイルの文字エンコーディングを設定する
-
 set fileencoding=utf-8
 
 "Insertモードで<Tab> を挿入するのに、適切な数の空白を使う
@@ -205,9 +212,7 @@ set nobackup
 "set noswapfile
 
 "バッファをクリップボードにコピー(for OSX)
-if has('mac')
-	 set clipboard=unnamed,autoselect
-endif
+set clipboard=unnamed,autoselect
 
 "自動改行オフ
 set tw=0
@@ -220,9 +225,6 @@ set ttymouse=xterm2
 
 "MacVimやGVimを利用する際にIMEがモードの切替でオフとなる設定
 set imdisable
-
-"ctagsの埋め込み 各環境であるものを全て記述(なくても問題ない)
-set tags=~/.tags.ircbot,~/.tags.trunk,~/.tags.study 
 
 "}}}
 """"""""""" 効率化UPのための設定 """""""""""{{{
@@ -354,6 +356,9 @@ autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "norm
 
 "}}}
 """"""""""" 言語ごとの設定 """""""""""{{{
+"ctagsの埋め込み 各環境であるものを全て記述(なくても問題ない)
+set tags=~/.tags.ircbot,~/.tags.trunk,~/.tags.study 
+
 " 各言語で保存する際に:makeと:cw(エラーがあれば開く)を実施
 " 描画がおかしくなるパターンがあるので封印
 " if !exists('g:flymake_enabled')
