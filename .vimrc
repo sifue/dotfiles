@@ -213,7 +213,7 @@ set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}G8%=%l,%c
 
 "vimのバックアップファイルとスワップファイル
 set nobackup
-"set noswapfile
+set noswapfile
 
 "バッファをクリップボードにコピー(for OSX)
 set clipboard=unnamed,autoselect
