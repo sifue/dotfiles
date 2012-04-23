@@ -358,6 +358,12 @@ map <Leader>u :call HandleURI()<CR>
 " ファイルを開いたときに前回の編集箇所に移動
 autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
 
+" ウインドウを移動した際にファイルの変更を検知する
+augroup vimrc-checktime
+	  autocmd!
+	    autocmd WinEnter * checktime
+	augroup END
+
 "}}}
 """"""""""" 言語ごとの設定 """""""""""{{{
 "ctagsの埋め込み 各環境であるものを全て記述(なくても問題ない)
