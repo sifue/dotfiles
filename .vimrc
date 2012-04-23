@@ -75,8 +75,8 @@ filetype indent on
 filetype plugin on
 "}}}
 """"""""""" プラグインごとの設定 """""""""""{{{
-" neocomplcache 起動時に有効化
-let g:neocomplcache_enable_at_startup = 1
+" neocomplcache 起動時に有効化 (共有サーバー上では重すぎて使えないため断念)
+" let g:neocomplcache_enable_at_startup = 1
 
 " バックスペース時にポップアップしない設定を入れる
 inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
