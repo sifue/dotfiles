@@ -146,20 +146,21 @@ let g:errormarker_errorgroup = 'Todo'
 " Ctrl + c にて選択した true / false などをトグル
 vmap <C-c> <Plug>ToggleV
 
-" URLエンコード
+" URLエンコード、デコード
 function! s:URLEncode()
 	let l:line = getline('.')
 	let l:encoded = AL_urlencode(l:line)
 	call setline('.', l:encoded)
 endfunction
 
-" URLデコード
 function! s:URLDecode()
 	let l:line = getline('.')
 	let l:encoded = AL_urldecode(l:line)
 	call setline('.', l:encoded)
 endfunction
 
+command! -nargs=0 -range URLEncode :<line1>,<line2>call <SID>URLEncode()
+command! -nargs=0 -range URLDecode :<line1>,<line2>call <SID>URLDecode()
 
 "}}}
 """"""""""" 外部ツールの連携に関する設定  """""""""""{{{
