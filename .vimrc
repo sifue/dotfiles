@@ -14,10 +14,13 @@ set nocompatible
 " :cd %:h
 "
 " 現在のファイルを開き直す
-" :e %
+" :e
+"
+" タブだけの行のタブを消す
+" :%s/^\t\+$//g
 "
 "}}}
-""""""""""" NeoBundle設定  """""""""""{{{
+""""""""""" NeoBundle設定  ""　"""""""""{{{
 " https://github.com/Shougo/neobundle.vim
 " インストール
 " $ mkdir -p ~/.vim/bundle
@@ -53,6 +56,8 @@ NeoBundle 'mattn/zencoding-vim'
 NeoBundle 'thinca/vim-quickrun'
 " true/falseなどの文字列をトグル
 NeoBundle 'taku-o/vim-toggle'
+" URLエンコード、デコードするためのプラグイン
+NeoBundle 'koron/chalice'
 
 """"""" vim-scripts repos
 " プロジェクトのツリー表示
@@ -140,6 +145,20 @@ let g:errormarker_errorgroup = 'Todo'
 
 " Ctrl + c にて選択した true / false などをトグル
 vmap <C-c> <Plug>ToggleV
+
+" URLエンコード
+function! s:URLEncode()
+	let l:line = getline('.')
+	let l:encoded = AL_urlencode(l:line)
+	call setline('.', l:encoded)
+endfunction
+
+" URLデコード
+function! s:URLDecode()
+	let l:line = getline('.')
+	let l:encoded = AL_urldecode(l:line)
+	call setline('.', l:encoded)
+endfunction
 
 
 "}}}
@@ -363,6 +382,8 @@ autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "norm
 	  " autocmd!
 		" autocmd WinEnter * checktime
 " augroup END
+
+
 
 "}}}
 """"""""""" 言語ごとの設定 """""""""""{{{
