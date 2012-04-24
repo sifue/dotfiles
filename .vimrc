@@ -359,10 +359,10 @@ map <Leader>u :call HandleURI()<CR>
 autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
 
 " ウインドウを移動した際にファイルの変更を検知する
-augroup vimrc-checktime
-	  autocmd!
-	    autocmd WinEnter * checktime
-	augroup END
+" augroup vimrc-checktime
+	  " autocmd!
+		" autocmd WinEnter * checktime
+" augroup END
 
 "}}}
 """"""""""" 言語ごとの設定 """""""""""{{{
