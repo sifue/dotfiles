@@ -1,6 +1,6 @@
 "###############################################################
 "# My vimrc                                                    #
-"#      >lastutpdate: 2012.04.24                               #
+"#      >lastutpdate: 2012.05.15                               #
 "#      >auther: Soichiro Yoshimura <yoshimura@soichiro.org>   #
 "###############################################################
 "VimをなるべくVi互換にする
@@ -18,6 +18,10 @@ set nocompatible
 "
 " タブだけの行のタブを消す
 " :%s/^\t\+$//g
+"
+" タブを2スペースに置き換える
+" :set expandtab
+" :set ts=2
 "
 "}}}
 """"""""""" NeoBundle設定  ""　"""""""""{{{
@@ -222,7 +226,12 @@ set shiftwidth=4
 syntax on
 
 " カラースキーマ設定 (~/.vim/colors/wombat.vimなどが必要)
-colorscheme wombat
+" MacVimでwombatを利用するとuniteが正しく表示できないで変更
+if has('mac')
+	" colorscheme wombat
+else
+	colorscheme wombat
+endif
 
 "ステータスラインを表示するウィンドウを設定する
 "2:常にステータスラインを表示する
