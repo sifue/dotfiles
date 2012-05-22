@@ -1,6 +1,6 @@
 "###############################################################
 "# My vimrc                                                    #
-"#      >lastutpdate: 2012.05.15                               #
+"#      >lastutpdate: 2012.05.22                               #
 "#      >auther: Soichiro Yoshimura <yoshimura@soichiro.org>   #
 "###############################################################
 "VimをなるべくVi互換にする
@@ -78,6 +78,8 @@ NeoBundle 'DirDiff.vim'
 NeoBundle 'errormarker.vim'
 " tabでスニペット補完
 NeoBundle 'snipMate'
+" F5でxDebugのリモートデバッグ開始
+NeoBundle 'DBGp-client'
 
 filetype on
 filetype indent on
@@ -129,11 +131,6 @@ let Tlist_Sort_Type = "order"
 " タグリストは右側に表示(project.vimのツリーが左にあるため)
 let Tlist_Use_Right_Window = 1
 
-" VCSコマンドの設定(Revertだけは確認のために<CR>を入力)
-nnoremap <F1> :VCSLog<CR>
-nnoremap <F2> :VCSVimDiff<CR>
-nnoremap <F4> :VCSRevert
-
 " <Leader>Pで、プロジェクトをトグルで開閉する
 nmap <silent> <Leader>P <Plug>ToggleProject
 " <Leader>pで、デフォルトのプロジェクトを開く(デフォルト設定のこと)
@@ -165,11 +162,6 @@ endfunction
 
 command! -nargs=0 -range URLEncode :<line1>,<line2>call <SID>URLEncode()
 command! -nargs=0 -range URLDecode :<line1>,<line2>call <SID>URLDecode()
-
-"}}}
-""""""""""" 外部ツールの連携に関する設定  """""""""""{{{
-" カレントディレクトリにてSVNのステータスを見る
-nnoremap <F3> :tabnew<CR>:r!svn status -u<CR>
 
 "}}}
 """"""""""" Vimの基本的な設定  """""""""""{{{
