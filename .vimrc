@@ -70,7 +70,7 @@ NeoBundle 'project.tar.gz'
 NeoBundle 'surround.vim'
 " :Tlistでctagsの一覧表示
 NeoBundle 'taglist.vim'
-" SVNやgitなどの差分表示用 http://blog.blueblack.net/item_144
+" SVNやgitなど http://blog.blueblack.net/item_144 :VCS* で実行
 NeoBundle 'vcscommand.vim'
 " :DirDiff <A:Src Directory> <B:Src Directory> でディレクトリ比較
 NeoBundle 'DirDiff.vim'
@@ -78,7 +78,7 @@ NeoBundle 'DirDiff.vim'
 NeoBundle 'errormarker.vim'
 " tabでスニペット補完
 NeoBundle 'snipMate'
-" F5でxDebugのリモートデバッグ開始
+" F5でxDebugのリモートデバッグ開始 :Bp でブレークポイント ,eで変数評価
 NeoBundle 'DBGp-client'
 
 filetype on
