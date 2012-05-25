@@ -58,7 +58,7 @@ NeoBundle 'derekwyatt/vim-scala'
 NeoBundle 'mattn/zencoding-vim'
 " <Leader>rで:QuickRunという言語ごとの実行コマンド
 NeoBundle 'thinca/vim-quickrun'
-" true/falseなどの文字列をトグル
+" true/falseなどの文字列を + キーでトグル
 NeoBundle 'taku-o/vim-toggle'
 " URLエンコード、デコードするためのプラグイン
 NeoBundle 'koron/chalice'
