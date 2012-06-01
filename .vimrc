@@ -1,6 +1,6 @@
 "###############################################################
 "# My vimrc                                                    #
-"#      >lastutpdate: 2012.05.22                               #
+"#      >lastutpdate: 2012.06.01                               #
 "#      >auther: Soichiro Yoshimura <yoshimura@soichiro.org>   #
 "###############################################################
 "VimをなるべくVi互換にする
@@ -134,7 +134,7 @@ let Tlist_Use_Right_Window = 1
 " <Leader>Pで、プロジェクトをトグルで開閉する
 nmap <silent> <Leader>P <Plug>ToggleProject
 " <Leader>pで、デフォルトのプロジェクトを開く(デフォルト設定のこと)
-nmap <silent> <Leader>p :Project ~/.pr/trunk<CR>
+nmap <silent> <Leader>p :Project ~/.vimprojects<CR>
 " サブプロジェクトを上に、vimgrepではなくgrepを使うように設定
 let g:proj_flags = 'imstTv'
 
@@ -381,8 +381,8 @@ autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "norm
 
 " ウインドウを移動した際にファイルの変更を検知する
 " augroup vimrc-checktime
-	  " autocmd!
-		" autocmd WinEnter * checktime
+	" autocmd!
+	" autocmd WinEnter * checktime
 " augroup END
 
 
