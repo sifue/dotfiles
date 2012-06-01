@@ -87,18 +87,18 @@ filetype plugin on
 "}}}
 """"""""""" プラグインごとの設定 """""""""""{{{
 " neocomplcache 起動時に有効化 (共有サーバー上では重すぎて使えないため断念)
-let g:neocomplcache_enable_at_startup = 1
+" let g:neocomplcache_enable_at_startup = 1
 
 " バックスペース時にポップアップしない設定を入れる
-inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+" inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+" inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
 
 " Ctrl + kでNeoComのスニペッツを展開する :NeoComplCacheEditRuntimeSnippetsで確認
-imap <C-k> <Plug>(neocomplcache_snippets_expand)
-smap <C-k> <Plug>(neocomplcache_snippets_expand)
+" imap <C-k> <Plug>(neocomplcache_snippets_expand)
+" smap <C-k> <Plug>(neocomplcache_snippets_expand)
 
 " NeoComの自作スニペッツのフォルダ読み込み :NeoComplCacheEditSnippetsで編集
-let g:neocomplcache_snippets_dir = $HOME . '/.vim/snippets'
+" let g:neocomplcache_snippets_dir = $HOME . '/.vim/snippets'
 
 " Unite起動時にインサートモードで開始
 let g:unite_enable_start_insert = 1
