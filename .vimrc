@@ -80,6 +80,11 @@ NeoBundle 'errormarker.vim'
 NeoBundle 'snipMate'
 " F5でxDebugのリモートデバッグ開始 :Bp でブレークポイント ,eで変数評価
 NeoBundle 'DBGp-client'
+" JavaScriptのシンタクスハイライト
+NeoBundle 'JavaScript-syntax'
+" JavaScriptのインデント
+NeoBundle 'pangloss/vim-javascript'
+
 
 filetype on
 filetype indent on
