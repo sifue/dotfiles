@@ -431,7 +431,6 @@ let php_htmlInStrings = 1
 " <? を無効にする→ハイライト除外にする
 let php_noShortTags = 1
 
-
 "SQLのPHP文字リテラルへの整形
 function! SQLToPHP()
   %s/^\(.\+\)$/"\1 " \./g
@@ -448,6 +447,7 @@ function! SQLFromPHP()
   echo "Convert from PHP String is finished."
 endfunction
 command! Sqlfromp :call SQLFromPHP()
+
 
 """"" Java用設定 """"""""
 "SQLのJava文字リテラルへの整形
