@@ -1,6 +1,6 @@
 "###############################################################
 "# My vimrc                                                    #
-"#      >lastutpdate: 2012.06.01                               #
+"#      >lastutpdate: 2012.06.04                               #
 "#      >auther: Soichiro Yoshimura <yoshimura@soichiro.org>   #
 "###############################################################
 "VimをなるべくVi互換にする
@@ -62,6 +62,10 @@ NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'taku-o/vim-toggle'
 " URLエンコード、デコードするためのプラグイン
 NeoBundle 'koron/chalice'
+" SQL の整形のために必要なプラグイン
+NeoBundle 'Align'
+" 選択後 :SQLUFormatter でSQL整形
+NeoBundle 'vim-scripts/SQLUtilities'
 
 """"""" vim-scripts repos
 " プロジェクトのツリー表示
@@ -426,6 +430,24 @@ let php_htmlInStrings = 1
 
 " <? を無効にする→ハイライト除外にする
 let php_noShortTags = 1
+
+
+"SQLのPHP文字リテラルへの整形
+function! SQLToPHP()
+  %s/^\(.\+\)$/"\1 " \./g
+  normal G$
+  execute "normal ?.<CR>"
+  normal xxggVG
+  echo "Convert to PHP String is finished."
+endfunction
+command! Sqltop :call SQLToPHP()
+
+function! SQLFromPHP()
+  %s/^"\(.\+\) " *\.*$/\1/g
+  normal ggVG
+  echo "Convert from PHP String is finished."
+endfunction
+command! Sqlfromp :call SQLFromPHP()
 
 """"" Java用設定 """"""""
 "SQLのJava文字リテラルへの整形
