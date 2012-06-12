@@ -1,6 +1,6 @@
 "###############################################################
 "# My vimrc                                                    #
-"#      >lastutpdate: 2012.06.04                               #
+"#      >lastutpdate: 2012.06.12                               #
 "#      >auther: Soichiro Yoshimura <yoshimura@soichiro.org>   #
 "###############################################################
 "VimをなるべくVi互換にする
@@ -12,9 +12,6 @@ set nocompatible
 "
 " 現在のファイルのカレントディレクトリに移動
 " :cd %:h
-"
-" 現在のファイルを開き直す
-" :e
 "
 " タブだけの行のタブを消す
 " :%s/^\t\+$//g
@@ -310,14 +307,8 @@ vnoremap gf :tabe <cfile><CR>
 nmap n nzz
 nmap N Nzz
 
-" rで選択テキストでカレントディレクトリ以下をファイル検索してリストで出す(レジスタf使用)
-vnoremap r "fy:tabnew<CR>:r!find . -iregex ".*<C-r>f.*"<CR><ESC>==gg
-
 " Ctrl + Shift + u で選択した単語を現在のファイル内でgrep (レジスタu使用)
 vnoremap <silent> <C-S-u> "uy:vimgrep /<C-r>u/ <C-r>%<CR>:copen<CR>gv=gv
-
-" Ctrl + xからrでカレントディレクトリ化のファイル一覧の出力を新しいバッファに行う
-nnoremap <C-x>r :tabnew<CR>>:r!find . -iregex ".*.*"<Left><Left><Left>
 
 " ヤンク、切り取り時にレジスタ"の値をzにもコピーしておく(連続貼付可に使う)
 vnoremap <silent> y y:let @z=@"<CR>
@@ -374,7 +365,7 @@ endfunction
 command! SMBtoUNC :call SMBtoUNC()
 
 " <Leader>u でカーソル下のURL開く
-function! HandleURI() 
+function! HandleURI()
   let s:uri = matchstr(getline("."), '[a-z]*:\/\/[^ >,;:]*')
   echo s:uri
   if s:uri != ""
@@ -395,20 +386,10 @@ autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "norm
 " augroup END
 
 
-
 "}}}
 """"""""""" 言語ごとの設定 """""""""""{{{
 "ctagsの埋め込み 各環境であるものを全て記述(なくても問題ない)
-set tags=~/.tags.ircbot,~/.tags.trunk,~/.tags.study 
-
-" 各言語で保存する際に:makeと:cw(エラーがあれば開く)を実施
-" 描画がおかしくなるパターンがあるので封印
-" if !exists('g:flymake_enabled')
-	" let g:flymake_enabled = 1
-	" autocmd BufWritePost *.rb,*.php,*.py,*.pl silent make
-	" autocmd BufWritePost *.rb,*.php,*.py,*.pl silent cw
-	" autocmd BufWritePost *.rb,*.php,*.py,*.pl redraw
-" endif
+set tags=~/.tags.ircbot,~/.tags.trunk,~/.tags.study
 
 """"" VIM用設定 """"""""
 " vimファイルに関して{と}による折りたたみ設定をする
