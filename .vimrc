@@ -37,10 +37,6 @@ endif
 NeoBundle 'Shougo/neobundle.vim'
 
 """""""" github
-" 強力な入力補完(Uniteと連携)
-NeoBundle 'Shougo/neocomplcache'
-" neocomを使ったスニペッツ補完
-NeoBundle 'Shougo/neocomplcache-snippets-complete'
 " Uniteコマンドによるフィルタ付き読み出し等
 NeoBundle 'Shougo/unite.vim'
 " CoffeeScriptのハイライト
@@ -55,8 +51,6 @@ NeoBundle 'derekwyatt/vim-scala'
 NeoBundle 'mattn/zencoding-vim'
 " <Leader>rで:QuickRunという言語ごとの実行コマンド
 NeoBundle 'thinca/vim-quickrun'
-" true/falseなどの文字列を + キーでトグル
-NeoBundle 'taku-o/vim-toggle'
 " URLエンコード、デコードするためのプラグイン
 NeoBundle 'koron/chalice'
 " SQL の整形のために必要なプラグイン
@@ -69,8 +63,6 @@ NeoBundle 'vim-scripts/SQLUtilities'
 NeoBundle 'project.tar.gz'
 " 括弧囲みの編集操作
 NeoBundle 'surround.vim'
-" :Tlistでctagsの一覧表示
-NeoBundle 'taglist.vim'
 " SVNやgitなど http://blog.blueblack.net/item_144 :VCS* で実行
 NeoBundle 'vcscommand.vim'
 " :DirDiff <A:Src Directory> <B:Src Directory> でディレクトリ比較
@@ -92,20 +84,6 @@ filetype indent on
 filetype plugin on
 "}}}
 """"""""""" プラグインごとの設定 """""""""""{{{
-" neocomplcache 起動時に有効化 (共有サーバー上では重すぎて使えないため断念)
-" let g:neocomplcache_enable_at_startup = 1
-
-" バックスペース時にポップアップしない設定を入れる
-" inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
-" inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
-
-" Ctrl + kでNeoComのスニペッツを展開する :NeoComplCacheEditRuntimeSnippetsで確認
-" imap <C-k> <Plug>(neocomplcache_snippets_expand)
-" smap <C-k> <Plug>(neocomplcache_snippets_expand)
-
-" NeoComの自作スニペッツのフォルダ読み込み :NeoComplCacheEditSnippetsで編集
-" let g:neocomplcache_snippets_dir = $HOME . '/.vim/snippets'
-
 " Unite起動時にインサートモードで開始
 let g:unite_enable_start_insert = 1
 
@@ -126,17 +104,6 @@ let NERDSpaceDelims = 1
 nmap ,, <Plug>NERDCommenterToggle
 vmap ,, <Plug>NERDCommenterToggle
 
-" Ctrl +  o でタグアウトラインをトグル
-nnoremap <C-o> :TlistToggle<CR>
-" タグリストをコンパクトに表示
-let Tlist_Compact_Format = 1
-" 現在表示中のファイルのタグリストのみを表示
-let Tlist_Show_One_File = 1
-" タグの順番は名前でソートせずそのままの順番で
-let Tlist_Sort_Type = "order"
-" タグリストは右側に表示(project.vimのツリーが左にあるため)
-let Tlist_Use_Right_Window = 1
-
 " <Leader>Pで、プロジェクトをトグルで開閉する
 nmap <silent> <Leader>P <Plug>ToggleProject
 " <Leader>pで、デフォルトのプロジェクトを開く(デフォルト設定のこと)
@@ -149,9 +116,6 @@ let g:errormarker_errortext = '!!'
 let g:errormarker_warningtext = '??'
 let g:errormarker_errorgroup = 'Error'
 let g:errormarker_errorgroup = 'Todo'
-
-" Ctrl + c にて選択した true / false などをトグル
-vmap <C-c> <Plug>ToggleV
 
 " URLエンコード、デコード
 function! s:URLEncode()
@@ -267,7 +231,7 @@ vnoremap \ <Leader>
 nnoremap <C-x>c :qall!<CR>
 
 "コメントアウトが連続して入力されるのを禁止 :a!でも代用可
-"autocmd FileType * setlocal formatoptions-=ro
+autocmd FileType * setlocal formatoptions-=ro
 
 "全角スペースを　で表示
 highlight JpSpace cterm=underline ctermfg=Blue guifg=Blue
@@ -379,12 +343,6 @@ map <Leader>u :call HandleURI()<CR>
 " ファイルを開いたときに前回の編集箇所に移動
 autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
 
-" ウインドウを移動した際にファイルの変更を検知する
-" augroup vimrc-checktime
-	" autocmd!
-	" autocmd WinEnter * checktime
-" augroup END
-
 
 "}}}
 """"""""""" 言語ごとの設定 """""""""""{{{
@@ -406,11 +364,18 @@ let php_folding = 1
 " 文字列の中のSQLをハイライト
 let php_sql_query = 1
 
+" Baselibメソッドのハイライト
+let php_baselib = 1
+
 " HTMLもハイライト
 let php_htmlInStrings = 1
 
 " <? を無効にする→ハイライト除外にする
 let php_noShortTags = 1
+
+" ] や ) の対応エラーをハイライト
+let php_parent_error_close = 1
+let php_parent_error_open = 1
 
 "SQLのPHP文字リテラルへの整形
 function! SQLToPHP()
