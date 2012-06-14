@@ -364,11 +364,18 @@ let php_folding = 1
 " 文字列の中のSQLをハイライト
 let php_sql_query = 1
 
+" Baselibメソッドのハイライト
+let php_baselib = 1
+
 " HTMLもハイライト
 let php_htmlInStrings = 1
 
 " <? を無効にする→ハイライト除外にする
 let php_noShortTags = 1
+
+" ] や ) の対応エラーをハイライト
+let php_parent_error_close = 1
+let php_parent_error_open = 1
 
 "SQLのPHP文字リテラルへの整形
 function! SQLToPHP()
