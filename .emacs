@@ -219,9 +219,4 @@
 (setq-default flyspell-mode t)
 (setq ispell-dictionary "american")
 
-;;; 自動補完もC-n C-pで選択できるようにする
-(el-get 'sync '(auto-complete))
-(add-hook 'auto-complete-mode-hook
-          (lambda ()
-            (define-key ac-completing-map (kbd "C-n") 'ac-next)
-            (define-key ac-completing-map (kbd "C-p") 'ac-previous)))
+
