@@ -16,6 +16,7 @@
 (setq default-buffer-file-coding-system 'utf-8)
 
 ;; xterm-mouse-mode
+;; コンソールでもマウス操作させる
 ;; 参考 http://d.hatena.ne.jp/sabottenda/20120602/1338643214
 (unless (fboundp 'track-mouse)
   (defun track-mouse (e)))
@@ -87,8 +88,8 @@
 
 ;; 行番号表示 M-x wb-line-number-toggle で切り替え
 ;; 参考 http://homepage1.nifty.com/blankspace/emacs/wb-line-number.html
-(require 'wb-line-number)
-(wb-line-number-toggle)
+;; (require 'wb-line-number)
+;; (wb-line-number-toggle)
 
 ;; 下のバーに行と列を表示
 (column-number-mode t)
@@ -110,12 +111,9 @@
 (keyboard-translate ?\C-h ?\C-?)
 
 ;; 基本操作設定
-(define-key global-map (kbd "M-?") 'help-for-help)        ; ヘルプ
 (define-key global-map (kbd "C-z") 'undo)                 ; undo
-(define-key global-map (kbd "C-c i") 'indent-region)      ; インデント
-(define-key global-map (kbd "C-c C-i") 'hippie-expand)    ; 補完
 (define-key global-map (kbd "C-c g") 'grep)               ; grep
-(define-key global-map (kbd "C-c l") 'goto-line)      ; 指定行へ移動
+
 
 ;; ウィンドウ移動
 ;; 次のウィンドウへ移動
@@ -146,9 +144,6 @@
 
 ;;; ウィンドウ内に収まらないときだけ括弧内も光らせる。
 (setq show-paren-style 'mixed)
-
-;;; 現在行を目立たせる
-(global-hl-line-mode)
 
 ;;; カーソルの位置が何文字目かを表示する
 (column-number-mode t)
@@ -201,7 +196,6 @@
 
 ;; directoryの中にbase-names内のパスが含まれていたらその絶対パスを返す。
 ;; 含まれていなかったらdirectoryの親のディレクトリを再帰的に探す。
-;; 2011-03-19
 (defun find-path-in-parents (directory base-names)
   (or (find-if 'file-exists-p
                (mapcar (lambda (base-name)
