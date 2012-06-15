@@ -31,6 +31,7 @@
 (auto-install-compatibility-setup) ;install-elisp.elとコマンド名を同期
 
 ;; anything
+(require 'anything-startup)
 (global-set-key (kbd "C-x b") 'anything)
 
 ;; auto-complete
