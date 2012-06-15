@@ -16,6 +16,6 @@ Session.vim
 *.aux
 *.elc
 .zshrc.local
-
+.emacs.d/history
 .vim/bundle/
 
