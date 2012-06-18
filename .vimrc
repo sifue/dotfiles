@@ -227,9 +227,6 @@ set imdisable
 nnoremap \ <Leader>
 vnoremap \ <Leader>
 
-" 全てのバッファを捨てて強制終了する
-nnoremap <C-x>c :qall!<CR>
-
 "コメントアウトが連続して入力されるのを禁止 :a!でも代用可
 autocmd FileType * setlocal formatoptions-=ro
 
@@ -346,8 +343,10 @@ autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "norm
 
 "}}}
 """"""""""" 言語ごとの設定 """""""""""{{{
-"ctagsの埋め込み 各環境であるものを全て記述(なくても問題ない)
-set tags=~/.tags.ircbot,~/.tags.trunk,~/.tags.study
+"ctagsのファイルをカレントディレクトリから検索して上位にあるもの詠込む
+if has('path_extra')
+	set tags+=tags;
+endif
 
 """"" VIM用設定 """"""""
 " vimファイルに関して{と}による折りたたみ設定をする
