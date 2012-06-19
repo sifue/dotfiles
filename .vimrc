@@ -1,6 +1,6 @@
 "###############################################################
 "# My vimrc                                                    #
-"#      >lastutpdate: 2012.06.18                               #
+"#      >lastutpdate: 2012.06.19                               #
 "#      >auther: Soichiro Yoshimura <yoshimura@soichiro.org>   #
 "###############################################################
 "VimをなるべくVi互換にする
@@ -132,6 +132,24 @@ endfunction
 
 command! -nargs=0 -range URLEncode :<line1>,<line2>call <SID>URLEncode()
 command! -nargs=0 -range URLDecode :<line1>,<line2>call <SID>URLDecode()
+
+" zen-codingのインデント等の設定
+let g:user_zen_settings = {
+\  'lang' : 'ja',
+\  'indentation' : '\t',
+\  'html' : {
+\    'indentation' : ' ',
+\    'filters' : 'html',
+\   },
+\  'php' : {
+\    'extends' : 'html',
+\    'filters' : 'html,c',
+\  },
+\  'css' : {
+\    'filters' : 'fc',
+\  },
+\}
+
 
 "}}}
 """"""""""" Vimの基本的な設定  """""""""""{{{
