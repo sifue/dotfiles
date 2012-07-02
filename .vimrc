@@ -1,6 +1,6 @@
 "###############################################################
 "# My vimrc                                                    #
-"#      >lastutpdate: 2012.06.19                               #
+"#      >lastutpdate: 2012.07.03                               #
 "#      >auther: Soichiro Yoshimura <yoshimura@soichiro.org>   #
 "###############################################################
 "VimをなるべくVi互換にする
@@ -320,6 +320,7 @@ nnoremap <C-p> gT
 " vimrcの新しいタブでの編集と読み込みのショートカット設定
 nnoremap ;s :source $MYVIMRC<CR>
 nnoremap ;v :tabe $MYVIMRC<CR>
+nnoremap ;g :tabe $MYGVIMRC<CR>
 nnoremap ;l :tabe ~/.vimrc.local<CR>
 
 " :DeleteHideBufferで全ての隠れているバッファを削除する
