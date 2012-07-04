@@ -21,7 +21,7 @@ set nocompatible
 " :set ts=2
 "
 "}}}
-""""""""""" NeoBundle設定  """""""""""{{{
+""""""""""" NeoBundle設定  """""""""""{K-{{
 " https://github.com/Shougo/neobundle.vim
 " インストール
 " $ mkdir -p ~/.vim/bundle
@@ -37,8 +37,6 @@ endif
 NeoBundle 'Shougo/neobundle.vim'
 
 """""""" github
-" 強力な入力補完
-NeoBundle 'Shougo/neocomplcache'
 " Uniteコマンドによるフィルタ付き読み出し等
 NeoBundle 'Shougo/unite.vim'
 " CoffeeScriptのハイライト
@@ -87,7 +85,7 @@ filetype on
 filetype indent on
 filetype plugin on
 "}}}
-""""""""""" プラグインごとの設定 """""""""""{{{
+""""""""""" プラグインごとの設定 """""""""" v"{{{
 " Unite起動時にインサートモードで開始
 let g:unite_enable_start_insert = 1
 
@@ -102,16 +100,6 @@ nnoremap <silent> ;ur :<C-u>Unite -buffer-name=register register<CR>
 nnoremap <silent> ;um :<C-u>Unite file_mru<CR>
 " 全部乗せ
 nnoremap <silent> ;ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
-
-" MacVimの時のみneocomplcacheを利用
-if has('gui_macvim')
-	" neocomplcache 起動時に有効化
-	let g:neocomplcache_enable_at_startup = 1
-
-	" バックスペース時にポップアップしない設定を入れる
-	inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
-	inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
-endif
 
 " ,, でコメントアウトをトグル
 let NERDSpaceDelims = 1
