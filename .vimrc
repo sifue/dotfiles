@@ -37,6 +37,8 @@ endif
 NeoBundle 'Shougo/neobundle.vim'
 
 """""""" github
+" 強力な入力補完
+NeoBundle 'Shougo/neocomplcache'
 " Uniteコマンドによるフィルタ付き読み出し等
 NeoBundle 'Shougo/unite.vim'
 " CoffeeScriptのハイライト
@@ -100,6 +102,16 @@ nnoremap <silent> ;ur :<C-u>Unite -buffer-name=register register<CR>
 nnoremap <silent> ;um :<C-u>Unite file_mru<CR>
 " 全部乗せ
 nnoremap <silent> ;ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
+
+" MacVimの時のみneocomplcacheを利用
+if has('gui_macvim')
+	" neocomplcache 起動時に有効化
+	let g:neocomplcache_enable_at_startup = 1
+
+	" バックスペース時にポップアップしない設定を入れる
+	inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+	inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+endif
 
 " ,, でコメントアウトをトグル
 let NERDSpaceDelims = 1
