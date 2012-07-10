@@ -1,3 +1,5 @@
+These files are dotfiles for unix, mac, linux.
+
 #Clone from github
 ```
 cd ~
