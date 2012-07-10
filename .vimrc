@@ -85,7 +85,7 @@ filetype on
 filetype indent on
 filetype plugin on
 "}}}
-""""""""""" プラグインごとの設定 """""""""" v"{{{
+""""""""""" プラグインごとの設定 """""""""""{{{
 " Unite起動時にインサートモードで開始
 let g:unite_enable_start_insert = 1
 
@@ -163,6 +163,10 @@ let g:user_zen_settings = {
 \  },
 \}
 
+" surrround.vimの設定
+" Smartyテンプレート
+autocmd FileType html let b:surround_49  = "{t}\r{/t}"
+autocmd FileType html let b:surround_50  = "{pt num=$template_param}\r{/pt}"
 
 "}}}
 """"""""""" Vimの基本的な設定  """""""""""{{{
