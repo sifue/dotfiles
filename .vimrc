@@ -57,6 +57,8 @@ NeoBundle 'koron/chalice'
 NeoBundle 'Align'
 " 選択後 :SQLUFormatter でSQL整形
 NeoBundle 'vim-scripts/SQLUtilities'
+" PHP5.4にも対応している新しいPHPのシンタックスハイライト
+NeoBundle 'shawncplus/php.vim'
 
 """"""" vim-scripts repos
 " プロジェクトのツリー表示
@@ -79,7 +81,6 @@ NeoBundle 'JavaScript-syntax'
 NeoBundle 'pangloss/vim-javascript'
 " :Tlistでctagsの一覧表示
 NeoBundle 'taglist.vim'
-
 
 filetype on
 filetype indent on
@@ -256,6 +257,7 @@ set ttymouse=xterm2
 "MacVimやGVimを利用する際にIMEがモードの切替でオフとなる設定
 set imdisable
 
+
 "}}}
 """"""""""" 効率化UPのための設定 """""""""""{{{
 " <Leader>を\にリマッップ
@@ -393,8 +395,8 @@ au FileType vim setlocal foldmethod=marker
 au FileType php setlocal makeprg=php\ -l\ %
 au FileType php setlocal errorformat=%m\ in\ %f\ on\ line\ %l
 
-" PHPの関数やクラスの折りたたみ
-let php_folding = 1
+" PHPの関数やクラスの折りたたみ(非常に重い）
+let php_folding = 0
 
 " 文字列の中のSQLをハイライト
 let php_sql_query = 1
