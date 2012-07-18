@@ -21,7 +21,7 @@ set nocompatible
 " :set ts=2
 "
 "}}}
-""""""""""" NeoBundle設定  """""""""""{K-{{
+""""""""""" NeoBundle設定  """""""""""{{{
 " https://github.com/Shougo/neobundle.vim
 " インストール
 " $ mkdir -p ~/.vim/bundle
