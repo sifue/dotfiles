@@ -27,7 +27,7 @@ set nocompatible
 " $ mkdir -p ~/.vim/bundle
 " $ export GIT_SSL_NO_VERIFY=true
 " $ git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
-" :NeoBundleInstall でプラグインインストール
+" :NeoBundleInstall でプラグインインストール :NeoBundleInstall! で更新
 filetype plugin indent off     " required!
 if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim/

@@ -210,4 +210,12 @@
 (setq-default flyspell-mode t)
 (setq ispell-dictionary "american")
 
-
+;; run php lint when press f8 key
+;; php lint
+(defun phplint-thisfile ()
+(interactive)
+(compile (format "php -l %s" (buffer-file-name))))
+(add-hook 'php-mode-hook
+'(lambda ()
+(local-set-key [f8] 'phplint-thisfile)))
+;; end of php lint
