@@ -1,6 +1,6 @@
 "###############################################################
 "# My vimrc                                                    #
-"#      >lastutpdate: 2012.07.03                               #
+"#      >lastutpdate: 2012.07.26                               #
 "#      >auther: Soichiro Yoshimura <yoshimura@soichiro.org>   #
 "###############################################################
 "VimをなるべくVi互換にする
@@ -27,6 +27,7 @@ set nocompatible
 " $ mkdir -p ~/.vim/bundle
 " $ export GIT_SSL_NO_VERIFY=true
 " $ git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
+" :NeoBundleInstall でプラグインインストール
 filetype plugin indent off     " required!
 if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim/
@@ -39,8 +40,6 @@ NeoBundle 'Shougo/neobundle.vim'
 """""""" github
 " Uniteコマンドによるフィルタ付き読み出し等
 NeoBundle 'Shougo/unite.vim'
-" CoffeeScriptのハイライト
-NeoBundle 'kchmck/vim-coffee-script'
 " :JSHintコマンドによるJS文法チェック
 NeoBundle 'walm/jshint.vim'
 " ,,でトグルでコメントアウト
@@ -90,7 +89,7 @@ filetype plugin on
 " Unite起動時にインサートモードで開始
 let g:unite_enable_start_insert = 1
 
-" Uniteの各種ショートカット設定 
+" Uniteの各種ショートカット設定
 " バッファ一覧
 nnoremap <silent> ;ub :<C-u>Unite buffer<CR>
 " ファイル一覧  
@@ -131,7 +130,7 @@ let g:errormarker_warningtext = '??'
 let g:errormarker_errorgroup = 'Error'
 let g:errormarker_errorgroup = 'Todo'
 
-" URLエンコード、デコード
+" URLエンコード(:URLEncode)、デコード(:URLDecode)
 function! s:URLEncode()
 	let l:line = getline('.')
 	let l:encoded = AL_urlencode(l:line)
@@ -165,7 +164,7 @@ let g:user_zen_settings = {
 \}
 
 " surrround.vimの設定
-" Smartyテンプレート
+" Smartyテンプレート (選択してs1でtタグ、s2でptタグで囲う)
 autocmd FileType html let b:surround_49  = "{t}\r{/t}"
 autocmd FileType html let b:surround_50  = "{pt num=$template_param}\r{/pt}"
 
@@ -329,15 +328,6 @@ nnoremap ;v :tabe $MYVIMRC<CR>
 nnoremap ;g :tabe $MYGVIMRC<CR>
 nnoremap ;l :tabe ~/.vimrc.local<CR>
 
-" :DeleteHideBufferで全ての隠れているバッファを削除する
-function! s:delete_hide_buffer()
-	let list = filter(range(1, bufnr("$")), "bufexists(v:val) && !buflisted(v:val)")
-	for num in list
-		execute "bw ".num
-	endfor
-endfunction
-command! DeleteHideBuffer :call s:delete_hide_buffer()
-
 " :makeや:grepをした際に自動的にquickfixが開くようにする
 autocmd QuickfixCmdPost make,grep,grepadd,vimgrep,vimgrepadd if len(getqflist()) != 0 | cw | endif
 
@@ -347,7 +337,7 @@ augroup ettext
 	autocmd BufRead,BufNewFile *.txt setlocal expandtab nolist nonumber tw=0
 augroup END
 
-" UNCパスからsmbのURLに変更する
+" UNCパスからsmbのURLに変更する(:SMBfromUNC)
 function! SMBfromUNC()
   %s/\\\\/smb:\/\//g
   %s/\\/\//g
@@ -355,7 +345,7 @@ function! SMBfromUNC()
 endfunction
 command! SMBfromUNC :call SMBfromUNC()
 
-" smbのURLからUNCパスに変更する
+" smbのURLからUNCパスに変更する(:SMBtoUNC)
 function! SMBtoUNC()
   %s/smb:\/\//\\\\/g
   %s/\//\\/g
@@ -381,7 +371,7 @@ autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "norm
 
 "}}}
 """"""""""" 言語ごとの設定 """""""""""{{{
-"ctagsのファイルをカレントディレクトリから検索して上位にあるもの詠込む
+"ctagsのファイルをカレントディレクトリから検索して上位にあるもの読み込む
 if has('path_extra')
 	set tags+=tags;
 endif
@@ -414,7 +404,7 @@ let php_noShortTags = 1
 let php_parent_error_close = 1
 let php_parent_error_open = 1
 
-"SQLのPHP文字リテラルへの整形
+"SQLのPHP文字リテラルへの整形(:Sqltop, :Sqlfromp)
 function! SQLToPHP()
   %s/^\(.\+\)$/"\1 " \./g
   normal G$
@@ -433,7 +423,7 @@ command! Sqlfromp :call SQLFromPHP()
 
 
 """"" Java用設定 """"""""
-"SQLのJava文字リテラルへの整形
+"SQLのJava文字リテラルへの整形(:Sqltoj, :Sqlfromj)
 function! SQLToJava()
   %s/^\(.\+\)$/"\1 " \+/g
   normal G$
@@ -463,7 +453,7 @@ let g:neocomplcache_dictionary_filetype_lists = {
   \ }
 
 "}}}
-""""""""""" ローカルの設定があれば読み込み """"""""""""{{{
+""""""""""" ローカルの設定があれば読み込 み """"""""""""{{{
 if filereadable(expand('~/.vimrc.local'))
     source ~/.vimrc.local
 endif
