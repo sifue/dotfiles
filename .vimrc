@@ -1,6 +1,6 @@
 "###############################################################
 "# My vimrc                                                    #
-"#      >lastutpdate: 2012.07.26                               #
+"#      >lastutpdate: 2012.07.28                               #
 "#      >auther: Soichiro Yoshimura <yoshimura@soichiro.org>   #
 "###############################################################
 "VimをなるべくVi互換にする
@@ -446,6 +446,11 @@ au FileType ruby setlocal makeprg=ruby\ -c\ %
 au FileType ruby setlocal errorformat=%m\ in\ %f\ on\ line\ %l
 
 """"" Scala用設定 """"""""
+" ファイルタイプの追加
+augroup filetypedetect
+	autocmd! BufNewFile,BufRead *.scala setfiletype scala
+augroup END
+
 "ユーザ定義の辞書を指定
 let g:neocomplcache_dictionary_filetype_lists = {
   \ 'default' : '',
