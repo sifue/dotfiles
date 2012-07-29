@@ -449,6 +449,7 @@ au FileType ruby setlocal errorformat=%m\ in\ %f\ on\ line\ %l
 " ファイルタイプの追加
 augroup filetypedetect
 	autocmd! BufNewFile,BufRead *.scala setfiletype scala
+	autocmd! BufNewFile,BufRead *.sbt setfiletype scala
 augroup END
 
 "ユーザ定義の辞書を指定
