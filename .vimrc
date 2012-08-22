@@ -1,6 +1,6 @@
 "###############################################################
 "# My vimrc                                                    #
-"#      >lastutpdate: 2012.07.28                               #
+"#      >lastutpdate: 2012.08.22                               #
 "#      >auther: Soichiro Yoshimura <yoshimura@soichiro.org>   #
 "###############################################################
 "VimをなるべくVi互換にする
@@ -40,6 +40,8 @@ NeoBundle 'Shougo/neobundle.vim'
 """""""" github
 " Uniteコマンドによるフィルタ付き読み出し等
 NeoBundle 'Shougo/unite.vim'
+" Uniteコマンドでアウトラインを表示
+NeoBundle 'h1mesuke/unite-outline'
 " :JSHintコマンドによるJS文法チェック
 NeoBundle 'walm/jshint.vim'
 " ,,でトグルでコメントアウト
@@ -78,8 +80,6 @@ NeoBundle 'DBGp-client'
 NeoBundle 'JavaScript-syntax'
 " JavaScriptのインデント
 NeoBundle 'pangloss/vim-javascript'
-" :Tlistでctagsの一覧表示
-NeoBundle 'taglist.vim'
 
 filetype on
 filetype indent on
@@ -92,7 +92,7 @@ let g:unite_enable_start_insert = 1
 " Uniteの各種ショートカット設定
 " バッファ一覧
 nnoremap <silent> ;ub :<C-u>Unite buffer<CR>
-" ファイル一覧  
+" ファイル一覧
 nnoremap <silent> ;uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
 " レジスタ一覧
 nnoremap <silent> ;ur :<C-u>Unite -buffer-name=register register<CR>
@@ -101,21 +101,13 @@ nnoremap <silent> ;um :<C-u>Unite file_mru<CR>
 " 全部乗せ
 nnoremap <silent> ;ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
 
+" Ctrl +  o でタグアウトラインを表示
+nnoremap <C-o> :<C-u>Unite outline<CR>
+
 " ,, でコメントアウトをトグル
 let NERDSpaceDelims = 1
 nmap ,, <Plug>NERDCommenterToggle
 vmap ,, <Plug>NERDCommenterToggle
-
-" Ctrl +  o でタグアウトラインをトグル
-nnoremap <C-o> :TlistToggle<CR>
-" タグリストをコンパクトに表示
-let Tlist_Compact_Format = 0
-" 現在表示中のファイルのタグリストのみを表示
-let Tlist_Show_One_File = 1
-" タグの順番は名前でソートせずそのままの順番で
-let Tlist_Sort_Type = "order"
-" タグリストは右側に表示(project.vimのツリーが左にあるため)
-let Tlist_Use_Right_Window = 1
 
 " <Leader>Pで、プロジェクトをトグルで開閉する
 nmap <silent> <Leader>P <Plug>ToggleProject
