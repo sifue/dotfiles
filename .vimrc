@@ -1,6 +1,6 @@
 "###############################################################
 "# My vimrc                                                    #
-"#      >lastutpdate: 2012.08.22                               #
+"#      >lastutpdate: 2012.09.04                               #
 "#      >auther: Soichiro Yoshimura <yoshimura@soichiro.org>   #
 "###############################################################
 "VimをなるべくVi互換にする
@@ -60,6 +60,8 @@ NeoBundle 'Align'
 NeoBundle 'vim-scripts/SQLUtilities'
 " PHP5.4にも対応している新しいPHPのシンタックスハイライト
 NeoBundle 'shawncplus/php.vim'
+" :CodeSniffでPHP_CodeSnifferを実行するプラグイン
+NeoBundle 'bpearson/vim-phpcs'
 
 """"""" vim-scripts repos
 " プロジェクトのツリー表示
@@ -160,6 +162,10 @@ let g:user_zen_settings = {
 autocmd FileType html let b:surround_49  = "{t}\r{/t}"
 autocmd FileType html let b:surround_50  = "{pt num=$template_param}\r{/pt}"
 
+" :CodeSniffでPSRのルールを読み込み
+let g:Vimphpcs_Standard = 'PSR'
+
+
 "}}}
 """"""""""" Vimの基本的な設定  """""""""""{{{
 "バックスペースキーの動作を決定する
@@ -200,7 +206,7 @@ set hidden
 set fileencoding=utf-8
 
 "Insertモードで<Tab> を挿入するのに、適切な数の空白を使う
-"set expandtab
+set expandtab
 
 "ファイル内の <Tab> が対応する空白の数
 set tabstop=4
