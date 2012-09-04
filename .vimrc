@@ -162,8 +162,8 @@ let g:user_zen_settings = {
 autocmd FileType html let b:surround_49  = "{t}\r{/t}"
 autocmd FileType html let b:surround_50  = "{pt num=$template_param}\r{/pt}"
 
-" :CodeSniffでPSRのルールを読み込み
-let g:Vimphpcs_Standard = 'PSR'
+" :CodeSniffでstandardルールを読み込み
+let g:Vimphpcs_Standard = 'PSR1'
 
 
 "}}}
