@@ -206,7 +206,7 @@ set hidden
 set fileencoding=utf-8
 
 "Insertモードで<Tab> を挿入するのに、適切な数の空白を使う
-set expandtab
+" set expandtab
 
 "ファイル内の <Tab> が対応する空白の数
 set tabstop=4
