@@ -1,6 +1,6 @@
 "###############################################################
 "# My vimrc                                                    #
-"#      >lastutpdate: 2012.09.04                               #
+"#      >lastutpdate: 2012.09.25                               #
 "#      >auther: Soichiro Yoshimura <yoshimura@soichiro.org>   #
 "###############################################################
 "VimをなるべくVi互換にする
@@ -82,6 +82,8 @@ NeoBundle 'DBGp-client'
 NeoBundle 'JavaScript-syntax'
 " JavaScriptのインデント
 NeoBundle 'pangloss/vim-javascript'
+" gtagsのGtagsコメンドでの利用
+NeoBundle 'gtags.vim'
 
 filetype on
 filetype indent on
