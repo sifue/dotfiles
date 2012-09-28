@@ -60,8 +60,10 @@ NeoBundle 'Align'
 NeoBundle 'vim-scripts/SQLUtilities'
 " PHP5.4にも対応している新しいPHPのシンタックスハイライト
 NeoBundle 'shawncplus/php.vim'
-" :CodeSniffでPHP_CodeSnifferを実行するプラグイン
-NeoBundle 'bpearson/vim-phpcs'
+" vimshellに必要な非同期実行プラグイン (要コンパイル githubで確認)
+NeoBundle 'Shougo/vimproc'
+" :VimShellでシェルをウインドウを作成
+NeoBundle 'Shougo/vimshell'
 
 """"""" vim-scripts repos
 " プロジェクトのツリー表示
