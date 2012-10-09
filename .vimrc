@@ -93,6 +93,7 @@ filetype plugin on
 "}}}
 """"""""""" プラグインごとの設定 """""""""""{{{
 " エラーマーカーの設定
+let g:errormarker_disablemappings = 1
 let g:errormarker_errortext = '!!'
 let g:errormarker_warningtext = '??'
 let g:errormarker_errorgroup = 'Error'
