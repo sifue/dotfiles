@@ -38,6 +38,8 @@ endif
 NeoBundle 'Shougo/neobundle.vim'
 
 """""""" github
+" :make時のエラーマーカーを表示
+NeoBundle 'errormarker.vim'
 " Uniteコマンドによるフィルタ付き読み出し等
 NeoBundle 'Shougo/unite.vim'
 " Uniteコマンドでアウトラインを表示
@@ -90,6 +92,12 @@ filetype indent on
 filetype plugin on
 "}}}
 """"""""""" プラグインごとの設定 """""""""""{{{
+" エラーマーカーの設定
+let g:errormarker_errortext = '!!'
+let g:errormarker_warningtext = '??'
+let g:errormarker_errorgroup = 'Error'
+let g:errormarker_errorgroup = 'Todo'
+
 " Unite起動時にインサートモードで開始
 let g:unite_enable_start_insert = 1
 
