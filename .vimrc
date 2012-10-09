@@ -1,6 +1,6 @@
 "###############################################################
 "# My vimrc                                                    #
-"#      >lastutpdate: 2012.09.25                               #
+"#      >lastutpdate: 2012.10.09                               #
 "#      >auther: Soichiro Yoshimura <yoshimura@soichiro.org>   #
 "###############################################################
 "VimをなるべくVi互換にする
@@ -64,6 +64,8 @@ NeoBundle 'shawncplus/php.vim'
 NeoBundle 'Shougo/vimproc'
 " :VimShellでシェルをウインドウを作成
 NeoBundle 'Shougo/vimshell'
+" Smartyのシンタクスハイライト
+NeoBundle 'sifue/smarty.vim'
 
 """"""" vim-scripts repos
 " プロジェクトのツリー表示
@@ -84,8 +86,6 @@ NeoBundle 'DBGp-client'
 NeoBundle 'JavaScript-syntax'
 " JavaScriptのインデント
 NeoBundle 'pangloss/vim-javascript'
-" gtagsのGtagsコメンドでの利用
-NeoBundle 'gtags.vim'
 
 filetype on
 filetype indent on
@@ -166,8 +166,8 @@ let g:user_zen_settings = {
 autocmd FileType html let b:surround_49  = "{t}\r{/t}"
 autocmd FileType html let b:surround_50  = "{pt num=$template_param}\r{/pt}"
 
-" :CodeSniffでstandardルールを読み込み
-let g:Vimphpcs_Standard = 'PSR1'
+" Smartyのシンタクスハイライトを.htmlファイルにセット
+au BufRead,BufNewFile *.html set filetype=smarty
 
 
 "}}}
