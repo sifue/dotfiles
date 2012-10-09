@@ -76,8 +76,6 @@ NeoBundle 'surround.vim'
 NeoBundle 'vcscommand.vim'
 " :DirDiff <A:Src Directory> <B:Src Directory> でディレクトリ比較
 NeoBundle 'DirDiff.vim'
-" :make時のエラーマーカーを表示
-NeoBundle 'errormarker.vim'
 " tabでスニペット補完
 NeoBundle 'snipMate'
 " F5でxDebugのリモートデバッグ開始 :Bp でブレークポイント ,eで変数評価
@@ -121,12 +119,6 @@ nmap <silent> <Leader>P <Plug>ToggleProject
 nmap <silent> <Leader>p :Project ~/.vimprojects<CR>
 " サブプロジェクトを上に、vimgrepではなくgrepを使うように設定
 let g:proj_flags = 'imstTv'
-
-" エラーマーカーの設定
-let g:errormarker_errortext = '!!'
-let g:errormarker_warningtext = '??'
-let g:errormarker_errorgroup = 'Error'
-let g:errormarker_errorgroup = 'Todo'
 
 " URLエンコード(:URLEncode)、デコード(:URLDecode)
 function! s:URLEncode()
