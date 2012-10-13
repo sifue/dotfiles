@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/Users/soichiro/Dropbox/Dev/sbt/smircd/project/plugins'
+let g:netrw_dirhist_2='/Users/soichiro/Dropbox'
+let g:netrw_dirhist_3='/Users/soichiro/Dropbox/Documents'
+let g:netrw_dirhist_4='/Users/soichiro/Dropbox/Documents/blog'
