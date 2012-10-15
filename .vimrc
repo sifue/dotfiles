@@ -261,13 +261,11 @@ set ttymouse=xterm2
 "MacVimやGVimを利用する際にIMEがモードの切替でオフとなる設定
 set imdisable
 
-"Macで生じる文字化け対応
-if has('mac')
-	set termencoding=utf-8
-	set encoding=utf-8
-	set fileencoding=utf-8
-	set fileencodings=utf-8,cp932
-endif
+"UTF-8文字化け対応
+set termencoding=utf-8
+set encoding=utf-8
+set fileencoding=utf-8
+set fileencodings=utf-8,cp932
 
 
 "}}}
