@@ -5,7 +5,8 @@
 "###############################################################
 
 " カラースキーム設定
-colorscheme wombat
+colorscheme molokai
+" colorscheme wombat
 " colorscheme evening
 
 " 独自に見た目を設定
@@ -16,5 +17,6 @@ set cmdheight=1 " コマンドラインの高さ
 " set lines=90 columns=200 " 全画面表示起動したい方はコメントアウトを戻す
 
 " MacVimにおけるフォント設定
-set guifont=Source\ Code\ Pro:h12
+set guifont=Monaco:h12
+" set guifont=Source\ Code\ Pro:h12
 set guifontwide=ヒラギノ角ゴ\ ProN\ W3:h12
