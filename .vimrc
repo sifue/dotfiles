@@ -229,10 +229,10 @@ syntax on
 " MacVimでwombatを利用するとuniteが正しく表示できないで変更
 if has('mac')
 	" colorscheme wombat
-	colorscheme molokai
+	" colorscheme molokai
 else
-	" colorscheme wombat
-	colorscheme molokai
+	colorscheme wombat
+	" colorscheme molokai
 endif
 
 "ステータスラインを表示するウィンドウを設定する

@@ -5,8 +5,8 @@
 "###############################################################
 
 " カラースキーム設定
-colorscheme molokai
-" colorscheme wombat
+" colorscheme molokai
+colorscheme wombat
 " colorscheme evening
 
 " 独自に見た目を設定
