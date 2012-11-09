@@ -1,6 +1,6 @@
 "###############################################################
 "# My vimrc                                                    #
-"#      >lastutpdate: 2012.10.09                               #
+"#      >lastutpdate: 2012.11.09                               #
 "#      >auther: Soichiro Yoshimura <yoshimura@soichiro.org>   #
 "###############################################################
 "VimをなるべくVi互換にする
@@ -44,6 +44,8 @@ NeoBundle 'errormarker.vim'
 NeoBundle 'Shougo/unite.vim'
 " Uniteコマンドでアウトラインを表示
 NeoBundle 'h1mesuke/unite-outline'
+" キャッシュを備えた自動補完機能
+NeoBundle 'Shougo/neocomplcache'
 " :JSHintコマンドによるJS文法チェック
 NeoBundle 'walm/jshint.vim'
 " ,,でトグルでコメントアウト
@@ -62,10 +64,6 @@ NeoBundle 'Align'
 NeoBundle 'vim-scripts/SQLUtilities'
 " PHP5.4にも対応している新しいPHPのシンタックスハイライト
 NeoBundle 'shawncplus/php.vim'
-" vimshellに必要な非同期実行プラグイン (要コンパイル githubで確認)
-NeoBundle 'Shougo/vimproc'
-" :VimShellでシェルをウインドウを作成
-NeoBundle 'Shougo/vimshell'
 " Smartyのシンタクスハイライト
 NeoBundle 'sifue/smarty.vim'
 
@@ -91,7 +89,7 @@ filetype on
 filetype indent on
 filetype plugin on
 "}}}
-""""""""""" プラグインごとの設定 """""""""""{{{
+""""""""""" プラグインごとの設定 """""""""""{{{　
 " エラーマーカーの設定
 let g:errormarker_disablemappings = 1
 let g:errormarker_errortext = '!!'
@@ -116,6 +114,29 @@ nnoremap <silent> ;ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mr
 
 " Ctrl +  o でタグアウトラインを表示
 nnoremap <C-o> :<C-u>Unite outline<CR>
+
+" Neocomplcacheの設定
+" Disable AutoComplPop.
+let g:acp_enableAtStartup = 0
+" Use neocomplcache.
+let g:neocomplcache_enable_at_startup = 1
+" Use smartcase.
+let g:neocomplcache_enable_smart_case = 1
+" Use camel case completion.
+let g:neocomplcache_enable_camel_case_completion = 1
+" Use underbar completion.
+let g:neocomplcache_enable_underbar_completion = 1
+" Set minimum syntax keyword length.
+let g:neocomplcache_min_syntax_length = 3
+let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+" Plugin key-mappings.
+inoremap <expr><C-g>     neocomplcache#undo_completion()
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 " ,, でコメントアウトをトグル
 let NERDSpaceDelims = 1
@@ -172,7 +193,7 @@ au BufRead,BufNewFile *.html set filetype=smarty
 
 
 "}}}
-""""""""""" Vimの基本的な設定  """""""""""{{{
+""""""""""" Vimの基本的な設定  """""""""""{{{　
 "バックスペースキーの動作を決定する
 "2:indent,eol,startと同じ
 set backspace=2
