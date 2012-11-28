@@ -117,7 +117,7 @@ nnoremap <C-o> :<C-u>Unite outline<CR>
 
 " Neocomplcacheの設定
 " Disable AutoComplPop.
-let g:acp_enableAtStartup = 0
+let g:acp_enableAtStartup = 1
 " Use neocomplcache.
 let g:neocomplcache_enable_at_startup = 1
 " Use smartcase.
