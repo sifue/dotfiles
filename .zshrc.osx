@@ -22,7 +22,6 @@ export PATH=$ROO_HOME/bin:$PATH
 # RVM (Ruby)
 [ -s ${HOME}/.rvm/scripts/rvm ] && source ${HOME}/.rvm/scripts/rvm
 
-
 # ls
 alias ls='ls -G'
 
