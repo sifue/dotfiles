@@ -1,6 +1,6 @@
 "###############################################################
 "# My vimrc                                                    #
-"#      >lastutpdate: 2012.11.09                               #
+"#      >lastutpdate: 2012.12.31                               #
 "#      >auther: Soichiro Yoshimura <yoshimura@soichiro.org>   #
 "###############################################################
 "VimをなるべくVi互換にする
@@ -232,7 +232,8 @@ set hidden
 set fileencoding=utf-8
 
 "Insertモードで<Tab> を挿入するのに、適切な数の空白を使う
-" set expandtab
+set expandtab
+set ts=4
 
 "ファイル内の <Tab> が対応する空白の数
 set tabstop=4

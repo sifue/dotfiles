@@ -3,7 +3,7 @@ export EDITOR=vim
 export LANG=ja_JP.UTF-8
 
 # PATH
-export PATH=$PATH:/Developer/usr/bin/:/usr/local/google_appengine/:~/java/play-2.0.1/
+export PATH=/usr/local/bin/:/usr/local/sbin/:$PATH:/Developer/usr/bin/:/usr/local/google_appengine/:~/java/play-2.0.1/
 
 # RVM
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # Load RVM into a shell session *as a function*
