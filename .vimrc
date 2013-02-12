@@ -1,6 +1,6 @@
 "###############################################################
 "# My vimrc                                                    #
-"#      >lastutpdate: 2012.12.31                               #
+"#      >lastutpdate: 2013.02.12                               #
 "#      >auther: Soichiro Yoshimura <yoshimura@soichiro.org>   #
 "###############################################################
 "VimをなるべくVi互換にする
@@ -10,15 +10,12 @@ set nocompatible
 " 現在のファイルとのvimdiff
 " :vertical diffsplit {差分を見たい対象ファイル名}
 "
-" 現在のファイルのカレントディレクトリに移動
-" :cd %:h
-"
-" タブだけの行のタブを消す
-" :%s/^\t\+$//g
-"
 " タブを2スペースに置き換える
 " :set expandtab
 " :set ts=2
+"
+" コピー＆ペーストモード
+" :set paste
 "
 "}}}
 """"""""""" NeoBundle設定  """""""""""{{{
@@ -66,6 +63,8 @@ NeoBundle 'vim-scripts/SQLUtilities'
 NeoBundle 'shawncplus/php.vim'
 " Smartyのシンタクスハイライト
 NeoBundle 'sifue/smarty.vim'
+" ファジー検索に対応したファイラー
+NeoBundle 'kien/ctrlp.vim'
 
 """"""" vim-scripts repos
 " プロジェクトのツリー表示
@@ -84,6 +83,8 @@ NeoBundle 'DBGp-client'
 NeoBundle 'JavaScript-syntax'
 " JavaScriptのインデント
 NeoBundle 'pangloss/vim-javascript'
+" yamlのシンタックスハイライト
+NeoBundle 'yaml.vim'
 
 filetype on
 filetype indent on
@@ -347,14 +348,6 @@ vnoremap <silent> d d:let @z=@"<CR>
 " ビジュアルモードで選択したテキストを消してレジスタzの内容を貼付ける(連続貼付可)
 vnoremap <silent> p x"zP
 
-" Ctrl + j で裏バッファに切り替え
-nnoremap <silent> <C-j> <C-^>
-vnoremap <silent> <C-j> <C-^>
-
-" Ctrl + n or pでタブ移動
-nnoremap <C-n> gt
-nnoremap <C-p> gT
-
 " vimrcの新しいタブでの編集と読み込みのショートカット設定
 nnoremap ;s :source $MYVIMRC<CR>
 nnoremap ;v :tabe $MYVIMRC<CR>
@@ -385,18 +378,6 @@ function! SMBtoUNC()
   echo "Convert to UNC."
 endfunction
 command! SMBtoUNC :call SMBtoUNC()
-
-" <Leader>u でカーソル下のURL開く
-function! HandleURI()
-  let s:uri = matchstr(getline("."), '[a-z]*:\/\/[^ >,;:]*')
-  echo s:uri
-  if s:uri != ""
-    exec "!open \"" . s:uri . "\""
-  else
-    echo "No URI found in line."
-  endif
-endfunction
-map <Leader>u :call HandleURI()<CR>
 
 " ファイルを開いたときに前回の編集箇所に移動
 autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
