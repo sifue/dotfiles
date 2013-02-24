@@ -24,7 +24,7 @@ NeoBundle 'Shougo/unite.vim'
 NeoBundle 'h1mesuke/unite-outline'
 " PHP5.4にも対応している新しいPHPのシンタックスハイライト
 NeoBundle 'shawncplus/php.vim'
-" ファジー検索に対応したファイラー
+" Ctrl+pで起動するファジー検索に対応したファイラー
 NeoBundle 'kien/ctrlp.vim'
 
 " SVNやgitなど http://blog.blueblack.net/item_144 :VCS* で実行
