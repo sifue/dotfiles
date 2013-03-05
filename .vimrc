@@ -1,6 +1,6 @@
 "###############################################################
 "# My vimrc                                                    #
-"#      >lastutpdate: 2013.02.12                               #
+"#      >lastutpdate: 2013.03.05                               #
 "#      >auther: Soichiro Yoshimura <yoshimura@soichiro.org>   #
 "###############################################################
 "VimをなるべくVi互換にする
@@ -65,6 +65,10 @@ NeoBundle 'shawncplus/php.vim'
 NeoBundle 'sifue/smarty.vim'
 " ファジー検索に対応したファイラー
 NeoBundle 'kien/ctrlp.vim'
+" :CodeSniffでPHPCSの実行
+NeoBundle 'bpearson/vim-phpcs'
+" テンプレートエンジンtwigのシンタックスハイライト
+NeoBundle 'lunaru/vim-twig'
 
 """"""" vim-scripts repos
 " プロジェクトのツリー表示
@@ -191,6 +195,9 @@ autocmd FileType html let b:surround_50  = "{pt num=$template_param}\r{/pt}"
 
 " Smartyのシンタクスハイライトを.htmlファイルにセット
 au BufRead,BufNewFile *.html set filetype=smarty
+
+" PHPCSのスタイルを設定
+let Vimphpcs_Standard='PSR2'
 
 
 "}}}
