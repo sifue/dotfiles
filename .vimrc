@@ -345,6 +345,10 @@ vnoremap gf :tabe <cfile><CR>
 nmap n nzz
 nmap N Nzz
 
+" Ctrl + n or pでタブ移動
+nnoremap <C-n> gt
+nnoremap <C-p> gT
+
 " Ctrl + Shift + u で選択した単語を現在のファイル内でgrep (レジスタu使用)
 vnoremap <silent> <C-S-u> "uy:vimgrep /<C-r>u/ <C-r>%<CR>:copen<CR>gv=gv
 
