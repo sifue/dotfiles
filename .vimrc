@@ -69,6 +69,8 @@ NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'bpearson/vim-phpcs'
 " テンプレートエンジンtwigのシンタックスハイライト
 NeoBundle 'lunaru/vim-twig'
+" PHPの名前空間を保管してくれるプラグイン \uで補完
+NeoBundle 'arnaud-lb/vim-php-namespace'
 
 """"""" vim-scripts repos
 " プロジェクトのツリー表示
@@ -199,6 +201,9 @@ au BufRead,BufNewFile *.html set filetype=smarty
 " PHPCSのスタイルを設定
 let Vimphpcs_Standard='PSR2'
 
+" PHPの名前空間を保管する設定
+inoremap <Leader>e <C-O>:call PhpExpandClass()<CR>
+noremap <Leader>e :call PhpExpandClass()<CR>
 
 "}}}
 """"""""""" Vimの基本的な設定  """""""""""{{{　
