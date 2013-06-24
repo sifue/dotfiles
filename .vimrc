@@ -205,6 +205,9 @@ let Vimphpcs_Standard='PSR2'
 inoremap <Leader>e <C-O>:call PhpExpandClass()<CR>
 noremap <Leader>e :call PhpExpandClass()<CR>
 
+" ascファイルをJavaScriptとして認識する
+au BufNewFile,BufRead *.asc setf javascript
+
 "}}}
 """"""""""" Vimの基本的な設定  """""""""""{{{　
 "バックスペースキーの動作を決定する
@@ -368,12 +371,6 @@ nnoremap ;l :tabe ~/.vimrc.local<CR>
 
 " :makeや:grepをした際に自動的にquickfixが開くようにする
 autocmd QuickfixCmdPost make,grep,grepadd,vimgrep,vimgrepadd if len(getqflist()) != 0 | cw | endif
-
-" テキストファイル専用の設定
-augroup ettext
-	autocmd!
-	autocmd BufRead,BufNewFile *.txt setlocal expandtab nolist nonumber tw=0
-augroup END
 
 " UNCパスからsmbのURLに変更する(:SMBfromUNC)
 function! SMBfromUNC()
