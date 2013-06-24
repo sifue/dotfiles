@@ -69,7 +69,7 @@ NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'bpearson/vim-phpcs'
 " テンプレートエンジンtwigのシンタックスハイライト
 NeoBundle 'lunaru/vim-twig'
-" PHPの名前空間を保管してくれるプラグイン \uで補完
+" PHPの名前空間を保管してくれるプラグイン \uや\eで補完
 NeoBundle 'arnaud-lb/vim-php-namespace'
 
 """"""" vim-scripts repos
