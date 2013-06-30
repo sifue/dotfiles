@@ -66,7 +66,7 @@ NeoBundle 'sifue/smarty.vim'
 " ファジー検索に対応したファイラー
 NeoBundle 'kien/ctrlp.vim'
 " :CodeSniffでPHPCSの実行
-NeoBundle 'bpearson/vim-phpcs'
+" NeoBundle 'bpearson/vim-phpcs'
 " テンプレートエンジンtwigのシンタックスハイライト
 NeoBundle 'lunaru/vim-twig'
 " PHPの名前空間を保管してくれるプラグイン \uや\eで補完
