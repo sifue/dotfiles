@@ -269,7 +269,7 @@ if has('mac')
 	" colorscheme wombat
 	" colorscheme molokai
 else
-	colorscheme wombat
+	" colorscheme wombat
 	" colorscheme molokai
 endif
 
