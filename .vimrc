@@ -107,19 +107,17 @@ let g:errormarker_errorgroup = 'Error'
 let g:errormarker_errorgroup = 'Todo'
 
 " Unite起動時にインサートモードで開始
-let g:unite_enable_start_insert = 1
+" let g:unite_enable_start_insert = 1
 
 " Uniteの各種ショートカット設定
 " バッファ一覧
 nnoremap <silent> ;ub :<C-u>Unite buffer<CR>
 " ファイル一覧
-nnoremap <silent> ;uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+nnoremap <silent> ;uf :<C-u>Unite file buffer<CR>
 " レジスタ一覧
-nnoremap <silent> ;ur :<C-u>Unite -buffer-name=register register<CR>
+nnoremap <silent> ;ur :<C-u>Unite register<CR>
 " 最近使用したファイル一覧
 nnoremap <silent> ;um :<C-u>Unite file_mru<CR>
-" 全部乗せ
-nnoremap <silent> ;ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
 
 " Ctrl +  o でタグアウトラインを表示
 nnoremap <C-o> :<C-u>Unite outline<CR>
