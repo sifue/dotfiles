@@ -71,6 +71,8 @@ NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'lunaru/vim-twig'
 " PHPの名前空間を保管してくれるプラグイン \uや\eで補完
 NeoBundle 'arnaud-lb/vim-php-namespace'
+" vimでマークダウンを扱うプラグイン
+NeoBundle 'plasticboy/vim-markdown'
 
 """"""" vim-scripts repos
 " プロジェクトのツリー表示
