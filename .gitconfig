@@ -1,6 +1,6 @@
 [user]
 	name = Soichiro-Yoshimura
-	email = soichiro_yoshimura@dwango.co.jp
+	email = yoshimura@soichiro.org
 [core]
 	excludesfile = /Users/soichiro_yoshimura/.gitignore_global
 	editor = vim
