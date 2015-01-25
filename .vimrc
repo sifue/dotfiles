@@ -1,6 +1,6 @@
 "###############################################################
 "# My vimrc                                                    #
-"#      >lastutpdate: 2013.08.20                               #
+"#      >lastutpdate: 2015.01.25                               #
 "#      >auther: Soichiro Yoshimura <yoshimura@soichiro.org>   #
 "###############################################################
 "VimをなるべくVi互換にする
@@ -93,8 +93,10 @@ NeoBundle 'JavaScript-syntax'
 NeoBundle 'pangloss/vim-javascript'
 " yamlのシンタックスハイライト
 NeoBundle 'yaml.vim'
-" ステータスラインを綺麗にみせるプラグイン
-NeoBundle 'bling/vim-airline'
+" markdownのシンタクスハイライトのためのプラグイン
+NeoBundle 'godlygeek/tabular'
+NeoBundle 'plasticboy/vim-markdown'
+
 
 filetype on
 filetype indent on
@@ -210,6 +212,9 @@ noremap <Leader>e :call PhpExpandClass()<CR>
 " ascファイルをJavaScriptとして認識する
 au BufNewFile,BufRead *.asc setf javascript
 
+" markdownのシンタクスハイライトにおいてデフォルトの折りたたみをなしにする
+"let g:vim_markdown_folding_disabled=1
+
 "}}}
 """"""""""" Vimの基本的な設定  """""""""""{{{　
 " バックスペースキーの動作を決定する
@@ -285,6 +290,7 @@ set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}G8%=%l,%c
 " vimのバックアップファイルとスワップファイル
 set nobackup
 set noswapfile
+set noundofile
 
 " バッファをクリップボードにコピー(for OSX)
 set clipboard=unnamed,autoselect
@@ -485,7 +491,12 @@ let g:neocomplcache_dictionary_filetype_lists = {
   \ 'scala' : $HOME . '/.vim/dict/scala.dict',
   \ }
 
+"""""" markdown用設定 """"""""
+" MacVimはこの処理が必要
+" https://yaleman.org/2012/02/28/enabling-markdown-syntax-for-md-files-in-macvim/
+
 "}}}
+
 """"""""""" ローカルの設定があれば読み込 み """"""""""""{{{
 if filereadable(expand('~/.vimrc.local'))
     source ~/.vimrc.local
