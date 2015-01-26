@@ -213,7 +213,7 @@ noremap <Leader>e :call PhpExpandClass()<CR>
 au BufNewFile,BufRead *.asc setf javascript
 
 " markdownのシンタクスハイライトにおいてデフォルトの折りたたみをなしにする
-"let g:vim_markdown_folding_disabled=1
+let g:vim_markdown_folding_disabled=1
 
 "}}}
 """"""""""" Vimの基本的な設定  """""""""""{{{　
