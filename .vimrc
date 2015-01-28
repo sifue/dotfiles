@@ -39,16 +39,12 @@ NeoBundle 'Shougo/neobundle.vim'
 NeoBundle 'errormarker.vim'
 " Uniteコマンドによるフィルタ付き読み出し等
 NeoBundle 'Shougo/unite.vim'
-" Uniteコマンドでアウトラインを表示
-NeoBundle 'h1mesuke/unite-outline'
+" Uniteの過去のファイルを参照するmruコマンド
+NeoBundle 'Shougo/neomru.vim'
 " キャッシュを備えた自動補完機能
 NeoBundle 'Shougo/neocomplcache'
 " :JSHintコマンドによるJS文法チェック
 NeoBundle 'walm/jshint.vim'
-" ,,でトグルでコメントアウト
-NeoBundle 'scrooloose/nerdcommenter'
-" Scalaのハイライト
-NeoBundle 'derekwyatt/vim-scala'
 " zendogingプラグイン
 NeoBundle 'mattn/zencoding-vim'
 " <Leader>rで:QuickRunという言語ごとの実行コマンド
@@ -63,15 +59,14 @@ NeoBundle 'vim-scripts/SQLUtilities'
 NeoBundle 'shawncplus/php.vim'
 " Smartyのシンタクスハイライト
 NeoBundle 'sifue/smarty.vim'
-" ファジー検索に対応したファイラー
-NeoBundle 'kien/ctrlp.vim'
 " :CodeSniffでPHPCSの実行
 " NeoBundle 'bpearson/vim-phpcs'
 " テンプレートエンジンtwigのシンタックスハイライト
 NeoBundle 'lunaru/vim-twig'
 " PHPの名前空間を保管してくれるプラグイン \uや\eで補完
 NeoBundle 'arnaud-lb/vim-php-namespace'
-" vimでマークダウンを扱うプラグイン
+" markdownのシンタクスハイライトのためのプラグイン
+NeoBundle 'godlygeek/tabular'
 NeoBundle 'plasticboy/vim-markdown'
 
 """"""" vim-scripts repos
@@ -93,10 +88,6 @@ NeoBundle 'JavaScript-syntax'
 NeoBundle 'pangloss/vim-javascript'
 " yamlのシンタックスハイライト
 NeoBundle 'yaml.vim'
-" markdownのシンタクスハイライトのためのプラグイン
-NeoBundle 'godlygeek/tabular'
-NeoBundle 'plasticboy/vim-markdown'
-
 
 filetype on
 filetype indent on
@@ -123,9 +114,6 @@ nnoremap <silent> ;ur :<C-u>Unite register<CR>
 " 最近使用したファイル一覧
 nnoremap <silent> ;um :<C-u>Unite file_mru<CR>
 
-" Ctrl +  o でタグアウトラインを表示
-nnoremap <C-o> :<C-u>Unite outline<CR>
-
 " Neocomplcacheの設定
 " Disable AutoComplPop.
 let g:acp_enableAtStartup = 1
@@ -148,11 +136,6 @@ autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
-" ,, でコメントアウトをトグル
-let NERDSpaceDelims = 1
-nmap ,, <Plug>NERDCommenterToggle
-vmap ,, <Plug>NERDCommenterToggle
 
 " <Leader>Pで、プロジェクトをトグルで開閉する
 nmap <silent> <Leader>P <Plug>ToggleProject
