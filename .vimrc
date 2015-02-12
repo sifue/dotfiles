@@ -1,6 +1,6 @@
 "###############################################################
 "# My vimrc                                                    #
-"#      >lastutpdate: 2015.01.25                               #
+"#      >lastutpdate: 2015.02.12                               #
 "#      >auther: Soichiro Yoshimura <yoshimura@soichiro.org>   #
 "###############################################################
 "VimをなるべくVi互換にする
@@ -28,7 +28,9 @@ set nocompatible
 filetype plugin indent off     " required!
 if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim/
-  call neobundle#rc(expand('~/.vim/bundle/'))
+  call neobundle#begin(expand('~/.vim/bundle/'))
+  NeoBundleFetch 'Shougo/neobundle.vim'
+  call neobundle#end()
 endif
 
 " gitを使ったプラグインマネージャ 基本Vundleと一緒
@@ -46,7 +48,7 @@ NeoBundle 'Shougo/neocomplcache'
 " :JSHintコマンドによるJS文法チェック
 NeoBundle 'walm/jshint.vim'
 " zendogingプラグイン
-NeoBundle 'mattn/zencoding-vim'
+NeoBundle 'mattn/emmet-vim'
 " <Leader>rで:QuickRunという言語ごとの実行コマンド
 NeoBundle 'thinca/vim-quickrun'
 " URLエンコード、デコードするためのプラグイン
