@@ -1,0 +1,66 @@
+"###############################################################
+"# My ideavimrc                                                #
+"#      >lastutpdate: 2015.03.23                               #
+"#      >auther: Soichiro Yoshimura <yoshimura@soichiro.org>   #
+"###############################################################
+"VimをなるべくVi互換にする
+set nocompatible
+
+""""""""""" Vimの基本的な設定  """""""""""{{{　
+" バックスペースキーの動作を決定する
+" 2:indent,eol,startと同じ
+set backspace=2
+
+" 行数表示
+set number
+
+" 新しい行を開始したときに、新しい行のインデントを現在行と同じ量にする
+set autoindent
+
+" 検索で小文字なら大文字を無視、大文字なら無視しない設定
+set smartcase
+
+" (no)検索をファイルの末尾まで検索したら、ファイルの先頭へループする
+set nowrapscan
+
+" インクリメンタルサーチを行う
+set incsearch
+
+" highlight matches with last search pattern
+set hlsearch
+
+" 閉じ括弧が入力されたとき、対応する括弧を表示する
+set showmatch
+
+" カーソルが何行目の何列目に置かれているかを表示する
+set ruler
+
+" 新しい行を作ったときに高度な自動インデントを行う
+set smartindent
+
+" 保存しないで他のファイルを表示することが出来るようにする
+set hidden
+
+"}}}
+
+""""""""""" 効率化UPのための設定 """""""""""{{{
+" <Leader>を\にリマッップ
+nnoremap \ <Leader>
+vnoremap \ <Leader>
+
+" サーチハイライトををESC二回で消す
+nnoremap <Esc><Esc> :nohlsearch<CR><Esc>
+
+" ヴィジュアルモードで選択したテキストをnで検索する(レジスタv使用)
+vnoremap <silent> n "vy/\V<C-r>=substitute(escape(@v,'\/'),"\n",'\\n','g')<CR><CR>
+
+" 検索語が画面中央にくるように
+nmap n nzz
+nmap N Nzz
+
+" ヤンク、切り取り時にレジスタ"の値をzにもコピーしておく(連続貼付可に使う)
+vnoremap <silent> y y:let @z=@"<CR>
+vnoremap <silent> d d:let @z=@"<CR>
+
+" ビジュアルモードで選択したテキストを消してレジスタzの内容を貼付ける(連続貼付可)
+vnoremap <silent> p x"zP

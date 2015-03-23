@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DOT_FILES=(.gitconfig .gitignore .screenrc .vim .vimrc .gvimrc .emacs .emacs.d .tmux.conf .sbtconfig)
+DOT_FILES=(.gitconfig .gitignore .screenrc .vim .vimrc .gvimrc .emacs .emacs.d .tmux.conf .sbtconfig .ideavimrc)
 
 for file in ${DOT_FILES[@]}
 do
