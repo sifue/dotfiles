@@ -90,6 +90,8 @@ NeoBundle 'JavaScript-syntax'
 NeoBundle 'pangloss/vim-javascript'
 " yamlのシンタックスハイライト
 NeoBundle 'yaml.vim'
+" pluntumlのシンタクスハイライト
+NeoBundle "aklt/plantuml-syntax"
 
 filetype on
 filetype indent on
@@ -386,6 +388,8 @@ command! SMBtoUNC :call SMBtoUNC()
 " ファイルを開いたときに前回の編集箇所に移動
 autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
 
+" plantumlスクリプトの設定
+let g:plantuml_executable_script="~/local/bin/plantuml"
 
 "}}}
 """"""""""" 言語ごとの設定 """""""""""{{{
@@ -481,7 +485,6 @@ let g:neocomplcache_dictionary_filetype_lists = {
 " https://yaleman.org/2012/02/28/enabling-markdown-syntax-for-md-files-in-macvim/
 
 "}}}
-
 """"""""""" ローカルの設定があれば読み込 み """"""""""""{{{
 if filereadable(expand('~/.vimrc.local'))
     source ~/.vimrc.local
