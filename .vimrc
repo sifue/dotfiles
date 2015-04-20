@@ -90,7 +90,7 @@ NeoBundle 'JavaScript-syntax'
 NeoBundle 'pangloss/vim-javascript'
 " yamlのシンタックスハイライト
 NeoBundle 'yaml.vim'
-" pluntumlのシンタクスハイライト
+" pluntumlのシンタクスハイライトと:makeコマンド
 NeoBundle "aklt/plantuml-syntax"
 
 filetype on
@@ -201,6 +201,9 @@ au BufNewFile,BufRead *.asc setf javascript
 
 " markdownのシンタクスハイライトにおいてデフォルトの折りたたみをなしにする
 let g:vim_markdown_folding_disabled=1
+
+" plantumlスクリプトの設定
+let g:plantuml_executable_script="~/dotfiles/plantuml"
 
 "}}}
 """"""""""" Vimの基本的な設定  """""""""""{{{　
@@ -387,9 +390,6 @@ command! SMBtoUNC :call SMBtoUNC()
 
 " ファイルを開いたときに前回の編集箇所に移動
 autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
-
-" plantumlスクリプトの設定
-let g:plantuml_executable_script="~/dotfiles/plantuml"
 
 "}}}
 """"""""""" 言語ごとの設定 """""""""""{{{
