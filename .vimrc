@@ -389,7 +389,7 @@ command! SMBtoUNC :call SMBtoUNC()
 autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
 
 " plantumlスクリプトの設定
-let g:plantuml_executable_script="~/local/bin/plantuml"
+let g:plantuml_executable_script="~/dotfiles/plantuml"
 
 "}}}
 """"""""""" 言語ごとの設定 """""""""""{{{
