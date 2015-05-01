@@ -70,6 +70,8 @@ NeoBundle 'arnaud-lb/vim-php-namespace'
 " markdownのシンタクスハイライトのためのプラグイン
 NeoBundle 'godlygeek/tabular'
 NeoBundle 'plasticboy/vim-markdown'
+" Scalaのシンタクスハイライト
+NeoBundle 'derekwyatt/vim-scala'
 
 """"""" vim-scripts repos
 " プロジェクトのツリー表示
