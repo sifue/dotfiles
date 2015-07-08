@@ -70,7 +70,7 @@ if has('vim_starting')
     NeoBundle 'plasticboy/vim-markdown'
     " Scalaのシンタクスハイライト
     NeoBundle 'derekwyatt/vim-scala'
-    
+
     """"""" vim-scripts repos
     " プロジェクトのツリー表示
     NeoBundle 'project.tar.gz'
