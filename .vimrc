@@ -1,6 +1,6 @@
 "###############################################################
 "# My vimrc                                                    #
-"#      >lastutpdate: 2015.02.12                               #
+"#      >lastutpdate: 2015.07.08                               #
 "#      >auther: Soichiro Yoshimura <yoshimura@soichiro.org>   #
 "###############################################################
 "VimをなるべくVi互換にする
@@ -27,73 +27,74 @@ set nocompatible
 " :NeoBundleInstall でプラグインインストール :NeoBundleInstall! で更新
 filetype plugin indent off     " required!
 if has('vim_starting')
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
-  call neobundle#begin(expand('~/.vim/bundle/'))
-  NeoBundleFetch 'Shougo/neobundle.vim'
-  call neobundle#end()
+    set runtimepath+=~/.vim/bundle/neobundle.vim/
+    call neobundle#begin(expand('~/.vim/bundle'))
+    NeoBundleFetch 'Shougo/neobundle.vim'
+
+    " gitを使ったプラグインマネージャ 基本Vundleと一緒
+    NeoBundle 'Shougo/neobundle.vim'
+
+    """""""" github
+    " :make時のエラーマーカーを表示
+    NeoBundle 'errormarker.vim'
+    " Uniteコマンドによるフィルタ付き読み出し等
+    NeoBundle 'Shougo/unite.vim'
+    " Uniteの過去のファイルを参照するmruコマンド
+    NeoBundle 'Shougo/neomru.vim'
+    " キャッシュを備えた自動補完機能
+    NeoBundle 'Shougo/neocomplcache'
+    " :JSHintコマンドによるJS文法チェック
+    NeoBundle 'walm/jshint.vim'
+    " zendogingプラグイン
+    NeoBundle 'mattn/emmet-vim'
+    " <Leader>rで:QuickRunという言語ごとの実行コマンド
+    NeoBundle 'thinca/vim-quickrun'
+    " URLエンコード、デコードするためのプラグイン
+    NeoBundle 'koron/chalice'
+    " SQL の整形のために必要なプラグイン
+    NeoBundle 'Align'
+    " 選択後 :SQLUFormatter でSQL整形
+    NeoBundle 'vim-scripts/SQLUtilities'
+    " PHP5.4にも対応している新しいPHPのシンタックスハイライト
+    NeoBundle 'shawncplus/php.vim'
+    " Smartyのシンタクスハイライト
+    NeoBundle 'sifue/smarty.vim'
+    " :CodeSniffでPHPCSの実行
+    " NeoBundle 'bpearson/vim-phpcs'
+    " テンプレートエンジンtwigのシンタックスハイライト
+    NeoBundle 'lunaru/vim-twig'
+    " PHPの名前空間を保管してくれるプラグイン \uや\eで補完
+    NeoBundle 'arnaud-lb/vim-php-namespace'
+    " markdownのシンタクスハイライトのためのプラグイン
+    NeoBundle 'godlygeek/tabular'
+    NeoBundle 'plasticboy/vim-markdown'
+    " Scalaのシンタクスハイライト
+    NeoBundle 'derekwyatt/vim-scala'
+    
+    """"""" vim-scripts repos
+    " プロジェクトのツリー表示
+    NeoBundle 'project.tar.gz'
+    " 括弧囲みの編集操作
+    NeoBundle 'surround.vim'
+    " SVNやgitなど http://blog.blueblack.net/item_144 :VCS* で実行
+    NeoBundle 'vcscommand.vim'
+    " :DirDiff <A:Src Directory> <B:Src Directory> でディレクトリ比較
+    NeoBundle 'DirDiff.vim'
+    " tabでスニペット補完
+    NeoBundle 'snipMate'
+    " F5でxDebugのリモートデバッグ開始 :Bp でブレークポイント ,eで変数評価
+    NeoBundle 'DBGp-client'
+    " JavaScriptのシンタクスハイライト
+    NeoBundle 'JavaScript-syntax'
+    " JavaScriptのインデント
+    NeoBundle 'pangloss/vim-javascript'
+    " yamlのシンタックスハイライト
+    NeoBundle 'yaml.vim'
+    " pluntumlのシンタクスハイライトと:makeコマンド
+    NeoBundle "aklt/plantuml-syntax"
+
+    call neobundle#end()
 endif
-
-" gitを使ったプラグインマネージャ 基本Vundleと一緒
-NeoBundle 'Shougo/neobundle.vim'
-
-"""""""" github
-" :make時のエラーマーカーを表示
-NeoBundle 'errormarker.vim'
-" Uniteコマンドによるフィルタ付き読み出し等
-NeoBundle 'Shougo/unite.vim'
-" Uniteの過去のファイルを参照するmruコマンド
-NeoBundle 'Shougo/neomru.vim'
-" キャッシュを備えた自動補完機能
-NeoBundle 'Shougo/neocomplcache'
-" :JSHintコマンドによるJS文法チェック
-NeoBundle 'walm/jshint.vim'
-" zendogingプラグイン
-NeoBundle 'mattn/emmet-vim'
-" <Leader>rで:QuickRunという言語ごとの実行コマンド
-NeoBundle 'thinca/vim-quickrun'
-" URLエンコード、デコードするためのプラグイン
-NeoBundle 'koron/chalice'
-" SQL の整形のために必要なプラグイン
-NeoBundle 'Align'
-" 選択後 :SQLUFormatter でSQL整形
-NeoBundle 'vim-scripts/SQLUtilities'
-" PHP5.4にも対応している新しいPHPのシンタックスハイライト
-NeoBundle 'shawncplus/php.vim'
-" Smartyのシンタクスハイライト
-NeoBundle 'sifue/smarty.vim'
-" :CodeSniffでPHPCSの実行
-" NeoBundle 'bpearson/vim-phpcs'
-" テンプレートエンジンtwigのシンタックスハイライト
-NeoBundle 'lunaru/vim-twig'
-" PHPの名前空間を保管してくれるプラグイン \uや\eで補完
-NeoBundle 'arnaud-lb/vim-php-namespace'
-" markdownのシンタクスハイライトのためのプラグイン
-NeoBundle 'godlygeek/tabular'
-NeoBundle 'plasticboy/vim-markdown'
-" Scalaのシンタクスハイライト
-NeoBundle 'derekwyatt/vim-scala'
-
-""""""" vim-scripts repos
-" プロジェクトのツリー表示
-NeoBundle 'project.tar.gz'
-" 括弧囲みの編集操作
-NeoBundle 'surround.vim'
-" SVNやgitなど http://blog.blueblack.net/item_144 :VCS* で実行
-NeoBundle 'vcscommand.vim'
-" :DirDiff <A:Src Directory> <B:Src Directory> でディレクトリ比較
-NeoBundle 'DirDiff.vim'
-" tabでスニペット補完
-NeoBundle 'snipMate'
-" F5でxDebugのリモートデバッグ開始 :Bp でブレークポイント ,eで変数評価
-NeoBundle 'DBGp-client'
-" JavaScriptのシンタクスハイライト
-NeoBundle 'JavaScript-syntax'
-" JavaScriptのインデント
-NeoBundle 'pangloss/vim-javascript'
-" yamlのシンタックスハイライト
-NeoBundle 'yaml.vim'
-" pluntumlのシンタクスハイライトと:makeコマンド
-NeoBundle "aklt/plantuml-syntax"
 
 filetype on
 filetype indent on
@@ -249,6 +250,7 @@ set fileencoding=utf-8
 " Insertモードで<Tab> を挿入するのに、適切な数の空白を使う
 set expandtab
 set ts=4
+au BufNewFile,BufRead *.txt setlocal noexpandtab
 
 " ファイル内の <Tab> が対応する空白の数
 set tabstop=4
@@ -307,6 +309,9 @@ set fileencodings=utf-8,cp932
 
 " 256色対応
 set t_Co=256
+
+" txtを自動改行しない
+autocmd FileType text setlocal textwidth=0
 
 "}}}
 """"""""""" 効率化UPのための設定 """""""""""{{{
