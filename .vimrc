@@ -409,6 +409,7 @@ endif
 " vimファイルに関して{と}による折りたたみ設定をする
 au FileType vim setlocal foldmethod=marker
 
+
 """"" PHP用設定 """"""""
 " :makeでPHP構文チェック
 au FileType php setlocal makeprg=php\ -l\ %
@@ -490,6 +491,8 @@ let g:neocomplcache_dictionary_filetype_lists = {
 """""" markdown用設定 """"""""
 " MacVimはこの処理が必要
 " https://yaleman.org/2012/02/28/enabling-markdown-syntax-for-md-files-in-macvim/
+" :makeでmarkdown生成
+au FileType markdown setlocal makeprg=python\ ~/dotfiles/make_markdown.py\ %
 
 "}}}
 """"""""""" ローカルの設定があれば読み込 み """"""""""""{{{
