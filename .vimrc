@@ -488,12 +488,6 @@ let g:neocomplcache_dictionary_filetype_lists = {
   \ 'scala' : $HOME . '/.vim/dict/scala.dict',
   \ }
 
-"""""" markdown用設定 """"""""
-" MacVimはこの処理が必要
-" https://yaleman.org/2012/02/28/enabling-markdown-syntax-for-md-files-in-macvim/
-" :makeでmarkdown生成
-au FileType markdown setlocal makeprg=python\ ~/dotfiles/make_markdown.py\ %
-
 "}}}
 """"""""""" ローカルの設定があれば読み込 み """"""""""""{{{
 if filereadable(expand('~/.vimrc.local'))
