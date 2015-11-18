@@ -55,12 +55,6 @@ if has('vim_starting')
     NeoBundle 'Align'
     " 選択後 :SQLUFormatter でSQL整形
     NeoBundle 'vim-scripts/SQLUtilities'
-    " PHP5.4にも対応している新しいPHPのシンタックスハイライト
-    NeoBundle 'shawncplus/php.vim'
-    " Smartyのシンタクスハイライト
-    NeoBundle 'sifue/smarty.vim'
-    " :CodeSniffでPHPCSの実行
-    " NeoBundle 'bpearson/vim-phpcs'
     " テンプレートエンジンtwigのシンタックスハイライト
     NeoBundle 'lunaru/vim-twig'
     " PHPの名前空間を保管してくれるプラグイン \uや\eで補完
