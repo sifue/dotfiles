@@ -18,6 +18,8 @@ Session.vim
 .zshrc.local
 .emacs.d/history
 .vim/bundle/
+.vim/autoload/
+.vim/plugged/
 .vim/.netrwhist
 .emacs.d/ac-comphist.dat
 .emacs.d/history

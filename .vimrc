@@ -1,6 +1,6 @@
 "###############################################################
 "# My vimrc                                                    #
-"#      >lastutpdate: 2016.11.22                               #
+"#      >lastutpdate: 2017.06.16                               #
 "#      >auther: Soichiro Yoshimura <yoshimura@soichiro.org>   #
 "###############################################################
 "VimをなるべくVi互換にする
@@ -58,14 +58,14 @@ set fileencoding=utf-8
 
 " Insertモードで<Tab> を挿入するのに、適切な数の空白を使う
 set expandtab
-set ts=4
+set ts=2
 au BufNewFile,BufRead *.txt setlocal noexpandtab
 
 " ファイル内の <Tab> が対応する空白の数
-set tabstop=4
+set tabstop=2
 
 " 自動インデントの各段階に使われる空白の数
-set shiftwidth=4
+set shiftwidth=2
 
 " 行頭の余白内で Tab を打ち込むと、'shiftwidth' の数だけインデントする
 "set smarttab
@@ -112,6 +112,17 @@ set t_Co=256
 " txtを自動改行しない
 autocmd FileType text setlocal textwidth=0
 
+"}}}
+""""""""""" プラグイン """""""""""{{{
+" プラグインマネージャー
+" https://github.com/junegunn/vim-plug
+" Specify a directory for plugins (for Neovim: ~/.local/share/nvim/plugged)
+call plug#begin('~/.vim/plugged')
+
+Plug 'justmao945/vim-clang'
+
+" Initialize plugin system
+call plug#end()
 "}}}
 """"""""""" 効率化UPのための設定 """""""""""{{{
 " <Leader>を\にリマッップ
