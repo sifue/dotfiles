@@ -10,9 +10,15 @@ set nocompatible
 " 現在のファイルとのvimdiff
 " :vertical diffsplit {差分を見たい対象ファイル名}
 "
+" 水平分割 C-W C-W で移動
+" :split
+"
 " タブを2スペースに置き換える
 " :set expandtab
 " :set ts=2
+"
+" 自動インデントの各段階に使われる空白の数
+" :set shiftwidth=2
 "
 " コピー＆ペーストモード
 " :set paste
@@ -39,7 +45,7 @@ set nowrapscan
 set incsearch
 
 " highlight matches with last search pattern
-set hlsearch
+"set hlsearch
 
 " 閉じ括弧が入力されたとき、対応する括弧を表示する
 set showmatch
@@ -68,7 +74,7 @@ set tabstop=2
 set shiftwidth=2
 
 " 行頭の余白内で Tab を打ち込むと、'shiftwidth' の数だけインデントする
-"set smarttab
+set smarttab
 
 " 強調表示(色付け)のON/OFF設定
 syntax on
@@ -137,8 +143,8 @@ highlight JpSpace cterm=underline ctermfg=Blue guifg=Blue
 au BufRead,BufNew * match JpSpace /　/
 
 "タブを見えるように設定
-set list
-set listchars=tab:>-,trail:-
+"set list
+"set listchars=tab:>-,trail:-
 
 " サーチハイライトををESC二回で消す
 nnoremap <Esc><Esc> :nohlsearch<CR><Esc>
