@@ -128,7 +128,9 @@ call plug#begin('~/.vim/plugged')
 Plug 'justmao945/vim-clang'
 let g:clang_c_options = '-std=gnu11'
 let g:clang_cpp_options = '-std=c++11 -stdlib=libc++'
-
+" :ClangFormat
+nnoremap cf :ClangFormat <CR>
+vnoremap cf :ClangFormat <CR>
 
 " Initialize plugin system
 call plug#end()
