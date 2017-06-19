@@ -126,6 +126,10 @@ autocmd FileType text setlocal textwidth=0
 call plug#begin('~/.vim/plugged')
 
 Plug 'justmao945/vim-clang'
+let g:clang_auto = 0
+let g:clang_complete_auto = 0
+let g:clang_auto_select = 0
+let g:clang_use_library = 1
 let g:clang_c_options = '-std=gnu11'
 let g:clang_cpp_options = '-std=c++11 -stdlib=libc++'
 " :ClangFormat
