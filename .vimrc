@@ -92,7 +92,8 @@ set noswapfile
 set noundofile
 
 " バッファをクリップボードにコピー(for OSX)
-set clipboard=unnamed,autoselect
+" tmuxで共存できないため
+" set clipboard=unnamed,autoselect
 
 "自動改行オフ
 set tw=0
