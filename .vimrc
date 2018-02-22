@@ -44,9 +44,6 @@ set nowrapscan
 " インクリメンタルサーチを行う
 set incsearch
 
-" highlight matches with last search pattern
-"set hlsearch
-
 " 閉じ括弧が入力されたとき、対応する括弧を表示する
 set showmatch
 
@@ -61,11 +58,6 @@ set hidden
 
 " カレントバッファ内のファイルの文字エンコーディングを設定する
 set fileencoding=utf-8
-
-" Insertモードで<Tab> を挿入するのに、適切な数の空白を使う
-set expandtab
-set ts=2
-au BufNewFile,BufRead *.txt setlocal noexpandtab
 
 " ファイル内の <Tab> が対応する空白の数
 set tabstop=2
@@ -90,10 +82,6 @@ set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}G8%=%l,%c
 set nobackup
 set noswapfile
 set noundofile
-
-" バッファをクリップボードにコピー(for OSX)
-" tmuxで共存できないため
-" set clipboard=unnamed,autoselect
 
 "自動改行オフ
 set tw=0
@@ -120,112 +108,6 @@ set t_Co=256
 autocmd FileType text setlocal textwidth=0
 
 "}}}
-""""""""""" プラグイン """""""""""{{{
-" プラグインマネージャー
-" https://github.com/junegunn/vim-plug
-" Specify a directory for plugins (for Neovim: ~/.local/share/nvim/plugged)
-call plug#begin('~/.vim/plugged')
-
-Plug 'justmao945/vim-clang'
-let g:clang_auto = 0
-let g:clang_complete_auto = 0
-let g:clang_auto_select = 0
-let g:clang_use_library = 1
-let g:clang_c_options = '-std=gnu11'
-let g:clang_cpp_options = '-std=c++11 -stdlib=libc++'
-" :ClangFormat
-nnoremap cf :ClangFormat <CR>
-vnoremap cf :ClangFormat <CR>
-
-" Initialize plugin system
-call plug#end()
-"}}}
-""""""""""" 効率化UPのための設定 """""""""""{{{
-" <Leader>を\にリマッップ
-nnoremap \ <Leader>
-vnoremap \ <Leader>
-
-"コメントアウトが連続して入力されるのを禁止 :a!でも代用可
-autocmd FileType * setlocal formatoptions-=ro
-
-"全角スペースを　で表示
-highlight JpSpace cterm=underline ctermfg=Blue guifg=Blue
-au BufRead,BufNew * match JpSpace /　/
-
-"タブを見えるように設定
-"set list
-"set listchars=tab:>-,trail:-
-
-" サーチハイライトををESC二回で消す
-nnoremap <Esc><Esc> :nohlsearch<CR><Esc>
-
-" 挿入モードとノーマルモードでステータスラインの色を変更する
-au InsertEnter * hi StatusLine guifg=DarkBlue guibg=DarkYellow gui=none ctermfg=Blue ctermbg=Yellow cterm=none
-au InsertLeave * hi StatusLine guifg=Black guibg=White gui=none ctermfg=Black ctermbg=White cterm=none
-
-"バイナリ編集(xxd)モード（vim -b での起動、もしくは *.bin で発動します）
-augroup BinaryXXD
-    autocmd!
-    autocmd BufReadPre  *.bin let &binary =1
-    autocmd BufReadPost * if &binary | silent %!xxd -g 1
-    autocmd BufReadPost * set ft=xxd | endif
-    autocmd BufWritePre * if &binary | %!xxd -r
-    autocmd BufWritePre * endif
-    autocmd BufWritePost * if &binary | silent %!xxd -g 1
-    autocmd BufWritePost * set nomod | endif
-augroup END
-
-" ヴィジュアルモードで選択したテキストをnで検索する(レジスタv使用)
-vnoremap <silent> n "vy/\V<C-r>=substitute(escape(@v,'\/'),"\n",'\\n','g')<CR><CR>
-
-" gfでカーソル下のファイル名を新しいタブで開く
-nnoremap gf :tabe <cfile><CR>
-vnoremap gf :tabe <cfile><CR>
-
-" 検索語が画面中央にくるように
-nmap n nzz
-nmap N Nzz
-
-" Ctrl + Shift + u で選択した単語を現在のファイル内でgrep (レジスタu使用)
-vnoremap <silent> <C-S-u> "uy:vimgrep /<C-r>u/ <C-r>%<CR>:copen<CR>gv=gv
-
-" ヤンク、切り取り時にレジスタ"の値をzにもコピーしておく(連続貼付可に使う)
-vnoremap <silent> y y:let @z=@"<CR>
-vnoremap <silent> d d:let @z=@"<CR>
-
-" ビジュアルモードで選択したテキストを消してレジスタzの内容を貼付ける(連続貼付可)
-vnoremap <silent> p x"zP
-
-" vimrcの新しいタブでの編集と読み込みのショートカット設定
-nnoremap ;s :source $MYVIMRC<CR>
-nnoremap ;v :tabe $MYVIMRC<CR>
-nnoremap ;g :tabe $MYGVIMRC<CR>
-nnoremap ;l :tabe ~/.vimrc.local<CR>
-
-" :makeや:grepをした際に自動的にquickfixが開くようにする
-autocmd QuickfixCmdPost make,grep,grepadd,vimgrep,vimgrepadd if len(getqflist()) != 0 | cw | endif
-
-" UNCパスからsmbのURLに変更する(:SMBfromUNC)
-function! SMBfromUNC()
-  %s/\\\\/smb:\/\//g
-  %s/\\/\//g
-  echo "Convert from UNC."
-endfunction
-command! SMBfromUNC :call SMBfromUNC()
-
-" smbのURLからUNCパスに変更する(:SMBtoUNC)
-function! SMBtoUNC()
-  %s/smb:\/\//\\\\/g
-  %s/\//\\/g
-  echo "Convert to UNC."
-endfunction
-command! SMBtoUNC :call SMBtoUNC()
-
-" ファイルを開いたときに前回の編集箇所に移動
-autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
-
-"}}}
-
 """"""""""" ローカルの設定があれば読み込 み """"""""""""{{{
 if filereadable(expand('~/.vimrc.local'))
     source ~/.vimrc.local
