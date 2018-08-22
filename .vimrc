@@ -13,10 +13,6 @@ set nocompatible
 " 水平分割 C-W C-W で移動
 " :split
 "
-" タブを2スペースに置き換える
-" :set expandtab
-" :set ts=2
-"
 " 自動インデントの各段階に使われる空白の数
 " :set shiftwidth=2
 "
@@ -31,9 +27,6 @@ set backspace=2
 
 " 行数表示
 set number
-
-" 新しい行を開始したときに、新しい行のインデントを現在行と同じ量にする
-set autoindent
 
 " 検索で小文字なら大文字を無視、大文字なら無視しない設定
 set smartcase
@@ -50,14 +43,14 @@ set showmatch
 " カーソルが何行目の何列目に置かれているかを表示する
 set ruler
 
-" 新しい行を作ったときに高度な自動インデントを行う
-set smartindent
-
 " 保存しないで他のファイルを表示することが出来るようにする
 set hidden
 
 " カレントバッファ内のファイルの文字エンコーディングを設定する
 set fileencoding=utf-8
+
+" タブを2スペースに置き換える
+set expandtab
 
 " ファイル内の <Tab> が対応する空白の数
 set tabstop=2
@@ -68,9 +61,20 @@ set shiftwidth=2
 " 行頭の余白内で Tab を打ち込むと、'shiftwidth' の数だけインデントする
 set smarttab
 
+" 新しい行を開始したときに、新しい行のインデントを現在行と同じ量にする
+set autoindent
+
+" 新しい行を作ったときに高度な自動インデントを行う
+set smartindent
+
 " 強調表示(色付け)のON/OFF設定
 syntax on
 
+" 空白文字の可視化
+set list
+
+" 空白文字の可視化設定
+set listchars=tab:>-,trail:.
 " ステータスラインを表示するウィンドウを設定する
 " 2:常にステータスラインを表示する
 set laststatus=2
@@ -107,9 +111,3 @@ set t_Co=256
 " txtを自動改行しない
 autocmd FileType text setlocal textwidth=0
 
-"}}}
-""""""""""" ローカルの設定があれば読み込 み """"""""""""{{{
-if filereadable(expand('~/.vimrc.local'))
-    source ~/.vimrc.local
-endif
-"}}}
