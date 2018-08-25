@@ -49,14 +49,14 @@ set hidden
 " カレントバッファ内のファイルの文字エンコーディングを設定する
 set fileencoding=utf-8
 
-" タブを2スペースに置き換える
+" タブを4スペースに置き換える
 set expandtab
 
 " ファイル内の <Tab> が対応する空白の数
-set tabstop=2
+set tabstop=4
 
 " 自動インデントの各段階に使われる空白の数
-set shiftwidth=2
+set shiftwidth=4
 
 " 行頭の余白内で Tab を打ち込むと、'shiftwidth' の数だけインデントする
 set smarttab
