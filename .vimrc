@@ -113,10 +113,10 @@ set t_Co=256
 autocmd FileType text setlocal textwidth=0
 
 " cppファイルをF4でコンパイルする
-autocmd filetype cpp nnoremap <F4> :!g++ % -std=c++14 -o %:r <CR>
+autocmd filetype cpp nnoremap <F4> :!g++ % -std=c++11 -o %:r <CR>
 
 " cppファイルをF5でコンパイルして実行までする
-autocmd filetype cpp nnoremap <F5> :!g++ % -std=c++14 -o %:r && ./%:r <CR>
+autocmd filetype cpp nnoremap <F5> :!g++ % -std=c++11 -o %:r ; ./%:r <CR>
 
 " cppファイルをF6でコピペしやすいようにコンソールにコードを表示
 autocmd filetype cpp nnoremap <F6> :!cat % <CR>
