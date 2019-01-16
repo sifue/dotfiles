@@ -113,10 +113,10 @@ set t_Co=256
 autocmd FileType text setlocal textwidth=0
 
 " cppファイルをF4でコンパイルする
-autocmd filetype cpp nnoremap <F4> :!g++ % -std=gnu++1y -O2 -fsanitize=undefined -o %:r <CR>
+autocmd filetype cpp nnoremap <F4> :!g++ % -std=gnu++1y -O2 -o %:r <CR>
 
 " cppファイルをF5でコンパイルして実行までする
-autocmd filetype cpp nnoremap <F5> :!g++ % -std=gnu++1y -O2 -fsanitize=undefined -o %:r ; ./%:r <CR>
+autocmd filetype cpp nnoremap <F5> :!g++ % -std=gnu++1y -O2 -o %:r ; ./%:r <CR>
 
 " F6で実行だけする
 autocmd filetype cpp nnoremap <F6> :!./%:r <CR>
