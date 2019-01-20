@@ -88,6 +88,9 @@ set nobackup
 set noswapfile
 set noundofile
 
+" ビープ音をオフに設定
+set vb t_vb=
+
 "自動改行オフ
 set tw=0
 
