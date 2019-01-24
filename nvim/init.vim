@@ -1,6 +1,6 @@
 "###############################################################
-"# My vimrc                                                    #
-"#      >lastutpdate: 2018.08.25                               #
+"#  my init.vim for neovim                                     #
+"#      >lastutpdate: 2019.01.24                               #
 "#      >auther: Soichiro Yoshimura <yoshimura@soichiro.org>   #
 "###############################################################
 "VimをなるべくVi互換にする
@@ -20,6 +20,7 @@ set nocompatible
 " :set paste
 "
 "}}}
+
 """"""""""" Vimの基本的な設定  """""""""""{{{　
 " バックスペースキーの動作を決定する
 " 2:indent,eol,startと同じ
@@ -99,9 +100,6 @@ set tw=0
 
 " マウスモード有効
 set mouse=a
-
-" xtermとscreen対応
-set ttymouse=xterm2
 
 " MacVimやGVimを利用する際にIMEがモードの切替でオフとなる設定
 set imdisable
