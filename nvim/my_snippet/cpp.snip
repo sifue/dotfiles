@@ -43,28 +43,30 @@ alias   competitive cmp
         }
         cout << maxPlayer << endl;
     }
-
+# Multi Array
+snippet     ma
+options     head
+alias   multiarray
+    int data[${1:i}[${2:j}] = {0};
+    DEBUG(${0:TARGET});
 # DEBUG
 snippet     d
 options     head
 abbr        DEBUG()
-    DEBUG({${0:TARGET})
-
+    DEBUG(${0:TARGET});
 # vector DEBUG
 snippet     vd
 options     head
 abbr        DEBUG()
-    rep(i, ${1:v}.size()) DEBUG($1[i].${0:TARGET})
-
+    rep(i, ${1:v}.size()) DEBUG($1[i].${0:TARGET});
 # queue DEBUG
 snippet     qd
 options     head
 abbr        DEBUG()
     while (!${1:q}.empty()) {
-        DEBUG($1.top().{${0:TARGET})
+        DEBUG($1.top().{${0:TARGET});
         que.pop();
     }
-
 # next_permitaion
 snippet     next_permitaion
 options     head
@@ -74,7 +76,6 @@ options     head
     do {
         print(v);
     } while (next_permutation(all(v)));
-
 # set
 snippet     set
 options     head
@@ -95,7 +96,6 @@ options     head
     } else {
         cout << "not found" << endl;
     }
-
 # priority_queue
 snippet pq
 options     head
@@ -113,7 +113,6 @@ alias   priority_queue
         cout << que.top() << endl;
         que.pop();
     }
-
 # queue
 snippet q
 options     head
@@ -129,7 +128,6 @@ alias   queue
         cout << que.front() << " "; // 先頭要素を参照する
         que.pop(); // 先頭要素を削除
     }
-
 # struct
 snippet st
 options     head
@@ -142,7 +140,6 @@ alias   struct
             return d == right.d ? typeCount < right.typeCount : d > right.d;
         }
     };
-
 # class
 snippet cl
 options     head
@@ -167,7 +164,6 @@ alias   class
         v_2.push_back(s.c);
         return v_1 < v_2;
     }
-
 # complex
 snippet complex
 options     head
@@ -183,4 +179,3 @@ alias   cplx
     double dot(P a, P b) { return (a * conj(b)).X; }
     
     double cross(P a, P b) { return (a * conj(b)).Y; }
-
