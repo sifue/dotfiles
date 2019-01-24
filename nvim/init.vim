@@ -160,9 +160,9 @@ filetype plugin indent on
 syntax enable
 
 " If you want to install not installed plugins on startup.
-"if dein#check_install()
-"  call dein#install()
-"endif
+if dein#check_install()
+  call dein#install()
+endif
 
 "End dein Scripts-------------------------
 let g:neosnippet#snippets_directory='~/.vim/my_snippet'
