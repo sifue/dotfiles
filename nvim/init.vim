@@ -128,6 +128,9 @@ autocmd filetype cpp nnoremap <F6> :!./%:r <CR>
 " cppファイルをF7でコピペしやすいようにコンソールにコードを表示
 autocmd filetype cpp nnoremap <F7> :!cat % <CR>
 
+
+" dein インストール
+" https://github.com/Shougo/dein.vim
 "dein Scripts-----------------------------
 if &compatible
   set nocompatible               " Be iMproved
@@ -160,11 +163,13 @@ filetype plugin indent on
 syntax enable
 
 " If you want to install not installed plugins on startup.
-if dein#check_install()
-  call dein#install()
-endif
+" if dein#check_install()
+"   call dein#install()
+" endif
 
 "End dein Scripts-------------------------
+
+" neosnippetsの設定
 let g:neosnippet#snippets_directory='~/.vim/my_snippet'
 
 " SuperTab like snippets behavior.
