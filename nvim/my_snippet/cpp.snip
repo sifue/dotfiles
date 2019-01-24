@@ -64,12 +64,13 @@ snippet     qd
 options     head
 abbr        DEBUG()
     while (!${1:q}.empty()) {
-        DEBUG($1.top().{${0:TARGET});
+        DEBUG($1.top().${0:TARGET});
         que.pop();
     }
 # next_permitaion
-snippet     next_permitaion
+snippet     np
 options     head
+alias    next_permutation
     // 昇順にソート済みの入力
     vector<int> v = {1, 2, 3};
     
