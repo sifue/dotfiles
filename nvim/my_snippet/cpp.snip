@@ -1,0 +1,186 @@
+# competitive cpp template
+snippet comp
+options     head
+alias   competitive cmp
+    #include <bits/stdc++.h>  // g++ -std=c++14 -o a a.cpp
+    
+    using namespace std;
+    
+    typedef pair<int, int> P;
+    typedef long long ll;
+    
+    #define rep(i, n) for(int i = 0; i < (n); i++)
+    #define repto(i, n) for(int i = 0; i <= (n); i++)
+    #define all(c) (c).begin(), (c).end()
+    #define uniq(c) c.erase(unique(all(c)), (c).end())
+    #define _1 first
+    #define _2 second
+    #define pb push_back
+    #define INF 1145141919
+    #define MOD 1000000007
+    #define DEBUG(x) cout << #x << ": " << x << endl;
+    
+    int dx[4] = {1, 0, -1, 0}, dy[4] = {0, 1, 0, -1};
+    
+    __attribute__((constructor))
+    void initial() {
+        cin.tie(0);
+        ios::sync_with_stdio(false);
+    }
+    
+    int main() {
+        int N;
+        cin >> N;
+        int maxPlayer = 0;
+        int minB = INF;
+        rep(i, N) {
+            int A, B;
+            cin >> A >> B;
+            if (B < minB) {
+                maxPlayer = A + B;
+                minB = B;
+            }
+        }
+        cout << maxPlayer << endl;
+    }
+
+# DEBUG
+snippet     d
+options     head
+abbr        DEBUG()
+    DEBUG({${0:TARGET})
+
+# vector DEBUG
+snippet     vd
+options     head
+abbr        DEBUG()
+    rep(i, ${1:v}.size()) DEBUG($1[i].${0:TARGET})
+
+# queue DEBUG
+snippet     qd
+options     head
+abbr        DEBUG()
+    while (!${1:q}.empty()) {
+        DEBUG($1.top().{${0:TARGET})
+        que.pop();
+    }
+
+# next_permitaion
+snippet     next_permitaion
+options     head
+    // 昇順にソート済みの入力
+    vector<int> v = {1, 2, 3};
+    
+    do {
+        print(v);
+    } while (next_permutation(all(v)));
+
+# set
+snippet     set
+options     head
+    // intをキーとして扱う集合
+    set<int> s;
+    
+    // 挿入
+    s.insert(3);
+    s.insert(1);
+    s.insert(4);
+    
+    // 検索 : キー(int)を指定し、対応する値を得る
+    decltype(s)::iterator it = s.find(1);
+    if (it != s.end()) {
+        // 発見した
+        int value = *it;
+        cout << value << endl;
+    } else {
+        cout << "not found" << endl;
+    }
+
+# priority_queue
+snippet pq
+options     head
+alias   priority_queue
+    // intを要素に持つ優先順位付きキュー
+    priority_queue<int> que;
+    
+    // データを追加する
+    que.push(3);
+    que.push(1);
+    que.push(4);
+    
+    // 中身の出力
+    while (!que.empty()) {
+        cout << que.top() << endl;
+        que.pop();
+    }
+
+# queue
+snippet q
+options     head
+alias   queue
+    queue<int> que;
+    
+    // 要素を追加
+    que.push(1);
+    que.push(2);
+    que.push(3);
+    
+    while (!que.empty()) {
+        cout << que.front() << " "; // 先頭要素を参照する
+        que.pop(); // 先頭要素を削除
+    }
+
+# struct
+snippet st
+options     head
+alias   struct
+    struct Sushi {
+        int i;
+        ll d;
+        int typeCount;
+        bool operator<( const Sushi& right ) const {
+            return d == right.d ? typeCount < right.typeCount : d > right.d;
+        }
+    };
+
+# class
+snippet cl
+options     head
+alias   class
+    class Surface {
+        public:
+            int a;
+            int b;
+            int c;
+        bool operator<(const Surface& s) const;
+    };
+    
+    bool Surface::operator<(const Surface& s) const
+    {
+        vector<int> v_1;
+        v_1.push_back(a);
+        v_1.push_back(b);
+        v_1.push_back(c);
+        vector<int> v_2;
+        v_2.push_back(s.a);
+        v_2.push_back(s.b);
+        v_2.push_back(s.c);
+        return v_1 < v_2;
+    }
+
+# complex
+snippet complex
+options     head
+alias   cplx
+    template <class T> bool operator<(const complex<T> &a, const complex<T> &b) {
+        return a.real() == b.real() ? a.imag() < b.imag() : a.real() < b.real();
+    }
+    
+    typedef complex<double> P;
+    #define X real()
+    #define Y imag()
+    
+    double dot(P a, P b) { return (a * conj(b)).X; }
+    
+    double cross(P a, P b) { return (a * conj(b)).Y; }
+

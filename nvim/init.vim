@@ -148,8 +148,8 @@ if dein#load_state('/home/ubuntu/.cache/dein')
   call dein#add('/home/ubuntu/.cache/dein/repos/github.com/Shougo/dein.vim')
 
   " Add or remove your plugins here like this:
-  call dein#add('Shougo/deoplete.nvim')
-  let g:deoplete#enable_at_startup = 1
+  "call dein#add('Shougo/deoplete.nvim')
+  "let g:deoplete#enable_at_startup = 1
   call dein#add('Shougo/neosnippet.vim')
   call dein#add('Shougo/neosnippet-snippets')
 
@@ -170,7 +170,7 @@ syntax enable
 "End dein Scripts-------------------------
 
 " neosnippetsの設定
-let g:neosnippet#snippets_directory='~/.vim/my_snippet'
+let g:neosnippet#snippets_directory='~/dotfiles/nvim/my_snippet'
 
 " SuperTab like snippets behavior.
 imap  <expr><TAB>
