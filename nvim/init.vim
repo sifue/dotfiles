@@ -117,16 +117,16 @@ set t_Co=256
 autocmd FileType text setlocal textwidth=0
 
 " cppファイルをF4でコンパイルする
-autocmd filetype cpp nnoremap <F4> :!g++ % -std=gnu++1y -O2 -o %:r <CR>
+autocmd filetype cpp nnoremap <F4> :terminal g++ % -std=gnu++1y -O2 -o %:r <CR>
 
 " cppファイルをF5でコンパイルして実行までする
-autocmd filetype cpp nnoremap <F5> :!g++ % -std=gnu++1y -O2 -o %:r ; ./%:r <CR>
+autocmd filetype cpp nnoremap <F5> :terminal g++ % -std=gnu++1y -O2 -o %:r ; ./%:r <CR>
 
 " F6で実行だけする
-autocmd filetype cpp nnoremap <F6> :!./%:r <CR>
+autocmd filetype cpp nnoremap <F6> :terminal ./%:r <CR>
 
 " cppファイルをF7でコピペしやすいようにコンソールにコードを表示
-autocmd filetype cpp nnoremap <F7> :!cat % <CR>
+autocmd filetype cpp nnoremap <F7> :terminal cat % <CR>
 
 
 " dein インストール
