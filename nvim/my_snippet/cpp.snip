@@ -47,41 +47,46 @@ alias   competitive cmp
 snippet     rep
 options     head
     rep(i, ${1:i}) {
-        ${0:TARGET}
+        ${0}
     }
 # Repto
 snippet     repto
 options     head
     repto(i, ${1:i}) {
-        ${0:TARGET}
+        ${0}
     }
-# Multi Array
+# cout
 snippet     pl
 options     head
 alias   cout
-    cout << ${0:TARGET} << endl;
+    cout << ${0} << endl;
+# cout
+snippet     coutf
+options     head
+alias   coutfixed fixed
+    cout << fixed << setprecision(6) << ${0} << endl;
 # Multi Array
 snippet     ma
 options     head
 alias   multiarray
     int data[${1:i}][${2:j}] = {0};
-    DEBUG(${0:TARGET});
+    DEBUG(${0});
 # DEBUG
 snippet     d
 options     head
 abbr        DEBUG()
-    DEBUG(${0:TARGET});
+    DEBUG(${0});
 # vector DEBUG
 snippet     vd
 options     head
 abbr        DEBUG()
-    rep(i, ${1:v}.size()) DEBUG($1[i].${0:TARGET});
+    rep(i, ${1:v}.size()) DEBUG($1[i].${0});
 # queue DEBUG
 snippet     qd
 options     head
 abbr        DEBUG()
     while (!${1:q}.empty()) {
-        DEBUG($1.top().${0:TARGET});
+        DEBUG($1.top().${0});
         que.pop();
     }
 # next_permitaion
