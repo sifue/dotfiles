@@ -125,10 +125,6 @@ autocmd filetype cpp nnoremap <F5> :terminal g++ % -std=gnu++1y -O2 -o %:r ; ./%
 " F6で実行だけする
 autocmd filetype cpp nnoremap <F6> :terminal ./%:r <CR>
 
-" cppファイルをF7でコピペしやすいようにコンソールにコードを表示
-autocmd filetype cpp nnoremap <F7> :terminal cat % <CR>
-
-
 " dein インストール
 "dein Scripts-----------------------------
 if &compatible
