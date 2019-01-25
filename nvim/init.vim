@@ -116,14 +116,17 @@ set t_Co=256
 " txtファイルを自動改行しない
 autocmd FileType text setlocal textwidth=0
 
+" terminalのterminalモードからの復帰をESCでする
+tnoremap <silent> <ESC> <C-\><C-n>
+
 " cppファイルをF4でコンパイルする
-autocmd filetype cpp nnoremap <F4> :terminal g++ % -std=gnu++1y -O2 -o %:r <CR>
+autocmd filetype cpp nnoremap <F4> :split term://g++ % -std=gnu++1y -O2 -o %:r <CR>
 
 " cppファイルをF5でコンパイルして実行までする
-autocmd filetype cpp nnoremap <F5> :terminal g++ % -std=gnu++1y -O2 -o %:r ; ./%:r <CR>
+autocmd filetype cpp nnoremap <F5> :split term://g++ % -std=gnu++1y -O2 -o %:r ; ./%:r <CR>
 
 " F6で実行だけする
-autocmd filetype cpp nnoremap <F6> :terminal ./%:r <CR>
+autocmd filetype cpp nnoremap <F6> :split term://./%:r <CR>
 
 " dein インストール
 "dein Scripts-----------------------------
@@ -161,7 +164,6 @@ if dein#check_install()
 endif
 
 "End dein Scripts-------------------------
-
 
 " neosnippetsの設定
 let g:neosnippet#snippets_directory='~/dotfiles/nvim/my_snippet'
