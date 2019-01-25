@@ -43,9 +43,22 @@ alias   competitive cmp
         }
         cout << maxPlayer << endl;
     }
+# Rep
+snippet     rep
+options     head
+    rep(i, ${1:i}) {
+        ${0:TARGET}
+    }
+# Repto
+snippet     repto
+options     head
+    repto(i, ${1:i}) {
+        ${0:TARGET}
+    }
 # Multi Array
 snippet     pl
 options     head
+alias   cout
     cout << ${0:TARGET} << endl;
 # Multi Array
 snippet     ma
