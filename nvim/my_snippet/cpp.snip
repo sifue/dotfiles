@@ -201,3 +201,13 @@ alias   cplx
     double dot(P a, P b) { return (a * conj(b)).X; }
     
     double cross(P a, P b) { return (a * conj(b)).Y; }
+# ctoi
+snippet ctoi
+options     head
+    int ctoi(char c) {
+        if (c >= '0' && c <= '9') {
+            return c - '0';
+        }
+        return 0;
+    }
+
