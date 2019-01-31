@@ -77,6 +77,9 @@ set list
 " 検索文字をハイライト
 set hls
 
+" ハイライトを消す設定
+nmap <Esc><Esc> :nohl<CR>
+
 " 空白文字の可視化設定
 set listchars=tab:>-,trail:.
 
