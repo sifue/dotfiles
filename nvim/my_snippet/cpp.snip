@@ -215,4 +215,15 @@ options     head
         }
         return 0;
     }
-
+# gcd
+snippet gcd
+options     head
+    ll euclidean_gcd(ll a, ll b) {
+        if(a < b) euclidean_gcd(b, a);
+        ll r;
+        while ((r = a % b)) {
+            a = b;
+            b = r;
+        }
+        return b;
+    }
