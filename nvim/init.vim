@@ -1,6 +1,6 @@
 "###############################################################
 "#  my init.vim for neovim                                     #
-"#      >lastutpdate: 2019.01.24                               #
+"#      >lastutpdate: 2019.02.20                               #
 "#      >auther: Soichiro Yoshimura <yoshimura@soichiro.org>   #
 "###############################################################
 "VimをなるべくVi互換にする
@@ -97,6 +97,9 @@ set noundofile
 
 " ビープ音をオフに設定
 set vb t_vb=
+
+" スクロール時に余分なバッファを持ってスクロール
+set scrolloff=16
 
 "自動改行オフ
 set tw=0
