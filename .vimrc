@@ -100,6 +100,10 @@ set vb t_vb=
 "自動改行オフ
 set tw=0
 
+"gdb利用のための:Termdebug
+packadd termdebug
+let g:termdebug_wide = 163
+
 " マウスモード有効
 set mouse=a
 
