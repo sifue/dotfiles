@@ -6,6 +6,10 @@ export LANG=ja_JP.UTF-8
 alias ls='ls -G'
 
 ################# zsh setting
+# 補完機能
+autoload -U compinit
+compinit
+
 # VCSまわりの設定
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git svn hg bzr
@@ -74,4 +78,4 @@ bindkey "^N" history-beginning-search-forward-end
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
