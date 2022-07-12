@@ -1,8 +1,3 @@
-"###############################################################
-"# My vimrc                                                    #
-"#      >lastutpdate: 2018.08.25                               #
-"#      >auther: Soichiro Yoshimura <yoshimura@soichiro.org>   #
-"###############################################################
 "VimをなるべくVi互換にする
 set nocompatible
 
