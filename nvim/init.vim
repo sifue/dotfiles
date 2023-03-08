@@ -6,6 +6,9 @@
 "VimをなるべくVi互換にする
 set nocompatible
 
+"カラースキーム
+:color evening
+
 """"""""""" メモ """""""""""{{{
 " 現在のファイルとのvimdiff
 " :vertical diffsplit {差分を見たい対象ファイル名}
@@ -167,3 +170,6 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
+
+" GitHub Copilot Settings
+let g:copilot_node_command = '~/.nvm/versions/node/v18.13.0/bin/node'
