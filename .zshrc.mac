@@ -2,6 +2,9 @@
 export EDITOR=vim
 export LANG=ja_JP.UTF-8
 
+################# Alias
+alias gitlog='git log --oneline --graph --decorate'
+
 ################# zsh setting
 # 補完機能
 autoload -U compinit
