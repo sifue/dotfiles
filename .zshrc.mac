@@ -83,3 +83,8 @@ export NVM_DIR="$HOME/.nvm"
 
 # Python3.8
 export PATH="$HOME/Library/Python/3.8/bin:$PATH"
+
+[ -f "/Users/soichiro_yoshimura/.ghcup/env" ] && source "/Users/soichiro_yoshimura/.ghcup/env" # ghcup-env
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
