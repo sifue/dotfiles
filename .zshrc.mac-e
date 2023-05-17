@@ -85,15 +85,3 @@ export NVM_DIR="$HOME/.nvm"
 export PATH="$HOME/Library/Python/3.8/bin:$PATH"
 
 [ -f "/Users/soichiro_yoshimura/.ghcup/env" ] && source "/Users/soichiro_yoshimura/.ghcup/env" # ghcup-env
-
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-
-# local/bin
-export PATH="$HOME/local/bin:$PATH"
-
-# JAVA
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-11.0.2.jdk/Contents/Home

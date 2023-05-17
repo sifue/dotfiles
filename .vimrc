@@ -131,3 +131,9 @@ autocmd filetype cpp nnoremap <F6> :!./%:r <CR>
 
 " cppファイルをF7でコピペしやすいようにコンソールにコードを表示
 autocmd filetype cpp nnoremap <F7> :!cat % <CR>
+
+" c cpp py hs js tsファイルの末尾スペースを除去
+aug space
+    au!
+    autocmd BufWritePre *.c,*.cpp,*.py,*.hs,*.js,*.ts :%s/\s\+$//e
+aug END
