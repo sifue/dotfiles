@@ -81,19 +81,24 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# Python3.8
-export PATH="$HOME/Library/Python/3.8/bin:$PATH"
-
+# GHCi
 [ -f "/Users/soichiro_yoshimura/.ghcup/env" ] && source "/Users/soichiro_yoshimura/.ghcup/env" # ghcup-env
 
+# iterm2
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 # local/bin
 export PATH="$HOME/local/bin:$PATH"
 
 # JAVA
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-11.0.2.jdk/Contents/Home
+# export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-11.0.2.jdk/Contents/Home
+
+# Python3.9
+export PATH="$HOME/Library/Python/3.9/bin:$PATH"
+
+# Coursier (Scala)
+export PATH="$PATH:/Users/soichiro_yoshimura/Library/Application Support/Coursier/bin"
+
+# Rust(rustup)
+source "$HOME/.cargo/env"
+
