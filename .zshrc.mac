@@ -92,9 +92,13 @@ export PATH="$HOME/local/bin:$PATH"
 
 # JAVA
 # export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-11.0.2.jdk/Contents/Home
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-25.jdk/Contents/Home/
 
 # Python3.9
 export PATH="$HOME/Library/Python/3.9/bin:$PATH"
+
+# uv Python
+source $HOME/.local/bin/env
 
 # Coursier (Scala)
 export PATH="$PATH:/Users/soichiro_yoshimura/Library/Application Support/Coursier/bin"
@@ -102,3 +106,5 @@ export PATH="$PATH:/Users/soichiro_yoshimura/Library/Application Support/Coursie
 # Rust(rustup)
 source "$HOME/.cargo/env"
 
+
+. "$HOME/.local/bin/env"
