@@ -14,6 +14,8 @@ colorscheme evening
 " :set shiftwidth=2
 " :set paste
 "}}}
+"
+" WSLではCtrl + Shift + Vが貼り付けになるため矩形選択がCtrl+Q
 
 """"""""""" Vimの基本的な設定 """""""""""{{{
 
